@@ -265,7 +265,7 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "admin:build",
-            "proxyConfig": "apps/anvlop-admin/proxy.conf.json"
+            "proxyConfig": "apps/admin/proxy.conf.json"
           },
           "configurations": {
             "production": {
