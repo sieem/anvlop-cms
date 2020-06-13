@@ -6,13 +6,13 @@ import { IUser } from "@anvlop/api-interfaces";
 export class User extends Document implements IUser {
     @Prop()
     name: string;
-    @Prop({ required: true })
+    @Prop({ required: true, unique: true })
     email: string;
     @Prop({ required: true })
     password: string;
     @Prop({ required: true })
     role: string;
-    @Prop()
+    @Prop({ unique: true })
     resetToken: string;
 }
 

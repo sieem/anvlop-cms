@@ -1,4 +1,4 @@
-import { IsInt, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 import { IUser } from '@anvlop/api-interfaces';
 
 export class CreateUserDto implements IUser {
