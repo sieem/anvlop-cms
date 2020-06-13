@@ -16,7 +16,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@anvlop/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@anvlop/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@anvlop/admin/projects": ["libs/admin/projects/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
