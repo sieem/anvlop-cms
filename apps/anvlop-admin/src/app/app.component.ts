@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Message } from '@anvlop/api-interfaces';
 
 @Component({
   selector: 'anvlop-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'anvlop-admin';
+  hello$ = this.http.get<Message>('/api/hello');
+  constructor(private http: HttpClient) { }
 }
