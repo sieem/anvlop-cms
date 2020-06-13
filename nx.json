@@ -38,6 +38,13 @@
     "anvlop-admin-e2e": {
       "tags": [],
       "implicitDependencies": ["anvlop-admin"]
+    },
+    "admin": {
+      "tags": []
+    },
+    "admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["admin"]
     }
   }
 }

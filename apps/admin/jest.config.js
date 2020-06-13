@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'anvlop-admin',
+  name: 'admin',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/anvlop-admin',
+  coverageDirectory: '../../coverage/apps/admin',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
