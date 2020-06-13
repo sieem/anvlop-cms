@@ -32,13 +32,6 @@
     "api-interfaces": {
       "tags": []
     },
-    "anvlop-admin": {
-      "tags": []
-    },
-    "anvlop-admin-e2e": {
-      "tags": [],
-      "implicitDependencies": ["anvlop-admin"]
-    },
     "admin": {
       "tags": []
     },
