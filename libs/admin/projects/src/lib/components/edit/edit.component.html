@@ -19,7 +19,11 @@
         <input type="description" name="description" formControlName="description">
     </div>
 
-    <anvlop-assets [projectForm]="projectForm" [(assets)]="assets" [projectLoaded]="projectLoaded.asObservable()"></anvlop-assets>
+    <anvlop-assets 
+    [projectId]="projectId"
+    [projectForm]="projectForm" 
+    [(assets)]="assets" 
+    [projectLoaded]="projectLoaded.asObservable()"></anvlop-assets>
 
     <div class="inputGroup right">
         <input type="submit" value="Save">

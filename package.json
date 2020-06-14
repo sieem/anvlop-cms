@@ -42,7 +42,7 @@
     "@nestjs/jwt": "^7.0.0",
     "@nestjs/mongoose": "^7.0.1",
     "@nestjs/passport": "^7.0.0",
-    "@nestjs/platform-express": "^6.8.3",
+    "@nestjs/platform-express": "^6.11.11",
     "@nrwl/angular": "9.3.0",
     "bcrypt": "^5.0.0",
     "class-validator": "^0.12.2",

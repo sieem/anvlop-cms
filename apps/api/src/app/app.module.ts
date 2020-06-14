@@ -3,6 +3,7 @@ import { UserModule } from '@anvlop/api/user';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProjectModule } from '@anvlop/api/project';
 import { AuthModule } from '@anvlop/api/auth';
+import { AssetModule } from '@anvlop/api/asset';
 
 @Module({
   imports: [
@@ -10,6 +11,7 @@ import { AuthModule } from '@anvlop/api/auth';
     UserModule,
     ProjectModule,
     AuthModule,
+    AssetModule,
   ],
   controllers: [],
 })

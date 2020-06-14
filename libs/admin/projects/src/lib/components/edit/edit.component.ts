@@ -15,7 +15,7 @@ export class EditComponent implements OnInit {
 
   public projectForm: FormGroup;
   public assets: FormArray;
-  private projectId: string;
+  public projectId: string;
   public submitted = false;
   public projectLoaded: Subject<IProject> = new Subject<IProject>();
 

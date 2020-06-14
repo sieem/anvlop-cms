@@ -56,6 +56,9 @@
     },
     "admin-auth": {
       "tags": []
+    },
+    "api-asset": {
+      "tags": []
     }
   }
 }

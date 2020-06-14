@@ -3,5 +3,6 @@
     <div formArrayName="assets" *ngFor="let control of assets.controls; index as i">
         <input [formGroupName]="i" [formControl]="assets.controls[i]" />
     </div>
-    <button (click)="addAsset()">Add asset</button>
+    <input type="file" name="Add asset" (change)="onFileChange($event)" />
 </div>
+
