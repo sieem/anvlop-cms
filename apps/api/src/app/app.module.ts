@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-import { UsersModule } from './user/users.module';
+import { UserModule } from '@anvlop/api/user';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProjectModule } from '@anvlop/api/project';
 
 @Module({
   imports: [
     MongooseModule.forRoot('mongodb://localhost/anvlop-cms'),
-    UsersModule,
+    UserModule,
     ProjectModule,
   ],
   controllers: [],

@@ -44,6 +44,9 @@
     },
     "api-project": {
       "tags": []
+    },
+    "api-user": {
+      "tags": []
     }
   }
 }
