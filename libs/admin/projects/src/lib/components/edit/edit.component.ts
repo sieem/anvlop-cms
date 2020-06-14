@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { IProject } from '@anvlop/api-interfaces';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'anvlop-edit',
@@ -9,18 +12,71 @@ import { IProject } from '@anvlop/api-interfaces';
 })
 export class EditComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
+  public projectForm: FormGroup;
+  private projectId: string;
+  public submitted = false;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private http: HttpClient,
+    private route: ActivatedRoute,
+    ) { }
 
   ngOnInit(): void {
-    const body: IProject = {
-      title: 'test',
-      slug: 'test2',
-      year: '2020',
-      description: 'desc',
-      assets: [],
+    this.projectForm = this.formBuilder.group({
+      title: ['', [Validators.required]],
+      slug: ['', [Validators.required]],
+      year: ['', []],
+      description: ['', []],
+      assets: ['', []]
+    });
+
+    this.route.params.subscribe(async (params) => {
+      if (!params.projectId) {
+        return;
+      }
+      
+      this.projectId = params.projectId;
+      try {
+        const project: IProject = await this.http.get<any>('/api/project/' + this.projectId).toPromise();
+
+        this.projectForm.setValue({
+          title: project.title,
+          slug: project.slug,
+          year: project.year,
+          description: project.description,
+          assets: project.assets,
+        })
+      } catch (error) {
+        console.log(error);
+        this.toastr.error(error, `Error`);
+      }
+
+    })
+  }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.projectForm.invalid) {
+      this.toastr.error('Invalid form');
+      return;
     }
-    console.log(this.http.get('api/projects'));
-    this.http.post<any>('/api/project', body).subscribe();
+
+    this.loginUser();
+  }
+
+  loginUser() {
+
+    const body = { ...this.projectForm.value}
+
+    this.http.put<any>(`/api/project/${this.projectId}`, body).subscribe(
+      (res: any) => {
+        this.toastr.info('Saved that damn thing.');
+      },
+      err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
+    )
   }
 
 }

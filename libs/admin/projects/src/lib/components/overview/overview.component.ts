@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { IProject } from '@anvlop/api-interfaces';
+import { Project } from '@anvlop/api-interfaces';
 
 @Component({
   selector: 'anvlop-overview',
@@ -8,7 +8,7 @@ import { IProject } from '@anvlop/api-interfaces';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  projects$ = this.http.get<IProject[]>('/api/projects');
+  projects$ = this.http.get<Project[]>('/api/projects');
 
   constructor(private http: HttpClient) { }
 

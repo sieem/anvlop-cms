@@ -3,6 +3,10 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
 import { OverviewComponent } from './components/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { EditComponent } from './components/edit/edit.component';
 
 export const adminProjectsRoutes: Route[] = [
@@ -15,13 +19,21 @@ export const adminProjectsRoutes: Route[] = [
     component: EditComponent
   },
   {
-    path: 'edit/:projectSlug',
+    path: 'edit/:projectId',
     component: EditComponent
   },
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   declarations: [OverviewComponent, EditComponent],
   exports: [OverviewComponent, EditComponent],
 })
