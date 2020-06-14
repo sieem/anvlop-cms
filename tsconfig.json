@@ -19,7 +19,9 @@
       "@anvlop/api-interfaces": ["libs/api-interfaces/src/index.ts"],
       "@anvlop/admin/projects": ["libs/admin/projects/src/index.ts"],
       "@anvlop/api/project": ["libs/api/project/src/index.ts"],
-      "@anvlop/api/user": ["libs/api/user/src/index.ts"]
+      "@anvlop/api/user": ["libs/api/user/src/index.ts"],
+      "@anvlop/api/auth": ["libs/api/auth/src/index.ts"],
+      "@anvlop/constants": ["libs/constants/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

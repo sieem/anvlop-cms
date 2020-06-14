@@ -2,18 +2,19 @@ import { Controller, Get, Post, Body, HttpStatus, HttpException, Param, Put, Del
 import { UserService } from './user.service';
 import { User } from '@anvlop/api-interfaces';
 import { CreateUserDto } from '@anvlop/api-interfaces';
-import { LocalAuthGuard } from '@anvlop/api/auth';
+import { LocalAuthGuard, JwtAuthGuard } from '@anvlop/api/auth';
 
 @Controller()
 export class UserController {
     constructor(private readonly UserService: UserService) { }
 
-    @UseGuards(LocalAuthGuard)
+    @UseGuards(JwtAuthGuard)
     @Get('users')
     async findAll(): Promise<User[]> {
         return this.UserService.findAll();
     }
 
+    @UseGuards(JwtAuthGuard)
     @Get('user/:id')
     async findOneById(@Param() params: any): Promise<User> {
         try {
@@ -23,6 +24,7 @@ export class UserController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post('user')
     async create(@Body() createUserDto: CreateUserDto) {
         try {
@@ -32,6 +34,7 @@ export class UserController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Put('user/:id')
     async update(@Body() updatedValues: User, @Param() params: any) {
         try {
@@ -41,6 +44,7 @@ export class UserController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete('user/:id')
     async delete(@Param() params: any) {
         try {
