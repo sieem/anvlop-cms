@@ -9,7 +9,7 @@ import { IProject } from '@anvlop/api-interfaces';
   styleUrls: ['./assets.component.scss']
 })
 export class AssetsComponent implements OnInit {
-  @Input('form') form: FormGroup;
+  @Input('projectForm') projectForm: FormGroup;
   @Input('assets') assets: FormArray;
   @Input('events') events: Observable<IProject>;
   private eventsSubscription: Subscription; 
@@ -18,7 +18,6 @@ export class AssetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.eventsSubscription = this.events.subscribe((project) => {
-      console.log(project);
       this.assets.removeAt(0);
 
       for (const asset of project.assets) {
