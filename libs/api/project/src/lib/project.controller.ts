@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { Project } from '@anvlop/api-interfaces';
 import { CreateProjectDto } from '@anvlop/api-interfaces';
+import { JwtAuthGuard } from '@anvlop/api/auth';
 
 @Controller()
 export class ProjectController {
@@ -21,6 +22,7 @@ export class ProjectController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Post('project')
     async create(@Body() createProjectDto: CreateProjectDto) {
         try {
@@ -30,6 +32,7 @@ export class ProjectController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Put('project/:id')
     async update(@Body() updatedValues: Project, @Param() params: any) {
         try {
@@ -39,6 +42,7 @@ export class ProjectController {
         }
     }
 
+    @UseGuards(JwtAuthGuard)
     @Delete('project/:id')
     async delete(@Param() params: any) {
         try {
