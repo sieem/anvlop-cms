@@ -53,6 +53,9 @@
     },
     "constants": {
       "tags": []
+    },
+    "admin-auth": {
+      "tags": []
     }
   }
 }
