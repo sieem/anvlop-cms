@@ -1,21 +1,21 @@
 import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete } from '@nestjs/common';
-import { ProjectsService } from './projects.service';
+import { ProjectService } from './project.service';
 import { Project } from './schemas/project.schema';
 import { CreateProjectDto } from './dto/create-project.dto';
 
 @Controller()
-export class ProjectsController {
-    constructor(private readonly projectsService: ProjectsService) { }
+export class ProjectController {
+    constructor(private readonly ProjectService: ProjectService) { }
 
     @Get('projects')
     async findAll(): Promise<Project[]> {
-        return this.projectsService.findAll();
+        return this.ProjectService.findAll();
     }
 
     @Get('project/:id')
     async findOneById(@Param() params: any): Promise<Project> {
         try {
-            return await this.projectsService.findById(params.id);
+            return await this.ProjectService.findById(params.id);
         } catch (error) {
             throw new HttpException(error, HttpStatus.NOT_FOUND);
         }
@@ -24,7 +24,7 @@ export class ProjectsController {
     @Post('project')
     async create(@Body() createProjectDto: CreateProjectDto) {
         try {
-            return await this.projectsService.create(createProjectDto);
+            return await this.ProjectService.create(createProjectDto);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }
@@ -33,7 +33,7 @@ export class ProjectsController {
     @Put('project/:id')
     async update(@Body() updatedValues: Project, @Param() params: any) {
         try {
-            return await this.projectsService.update(updatedValues, params.id);
+            return await this.ProjectService.update(updatedValues, params.id);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }
@@ -42,7 +42,7 @@ export class ProjectsController {
     @Delete('project/:id')
     async delete(@Param() params: any) {
         try {
-            return await this.projectsService.delete(params.id);
+            return await this.ProjectService.delete(params.id);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }

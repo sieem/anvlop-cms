@@ -41,6 +41,9 @@
     },
     "admin-projects": {
       "tags": []
+    },
+    "api-project": {
+      "tags": []
     }
   }
 }

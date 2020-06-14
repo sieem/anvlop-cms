@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import {
-  AdminProjectsModule,
+  AdminProjectModule,
   adminProjectsRoutes,
 } from '@anvlop/admin/projects';
 
@@ -16,7 +16,7 @@ import {
       [{ path: 'projects', children: adminProjectsRoutes }],
       { initialNavigation: 'enabled' }
     ),
-    AdminProjectsModule,
+    AdminProjectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

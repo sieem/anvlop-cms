@@ -25,4 +25,4 @@ export const adminProjectsRoutes: Route[] = [
   declarations: [OverviewComponent, EditComponent],
   exports: [OverviewComponent, EditComponent],
 })
-export class AdminProjectsModule {}
+export class AdminProjectModule {}

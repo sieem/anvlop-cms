@@ -5,7 +5,7 @@ import { Project } from './schemas/project.schema';
 import { CreateProjectDto } from './dto/create-project.dto';
 
 @Injectable()
-export class ProjectsService {
+export class ProjectService {
     constructor(@InjectModel(Project.name) private projectModel: Model<Project>) { }
 
     async findAll(): Promise<Project[]> {
