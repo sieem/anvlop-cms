@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete } from '@nestjs/common';
 import { ProjectService } from './project.service';
-import { Project } from './schemas/project.schema';
-import { CreateProjectDto } from './dto/create-project.dto';
+import { Project } from '@anvlop/api-interfaces';
+import { CreateProjectDto } from '@anvlop/api-interfaces';
 
 @Controller()
 export class ProjectController {

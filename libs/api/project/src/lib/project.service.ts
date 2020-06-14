@@ -1,8 +1,8 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Project } from './schemas/project.schema';
-import { CreateProjectDto } from './dto/create-project.dto';
+import { Project } from '@anvlop/api-interfaces';
+import { CreateProjectDto } from '@anvlop/api-interfaces';
 
 @Injectable()
 export class ProjectService {

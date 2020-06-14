@@ -1,12 +1,14 @@
-import { Controller, Get, Post, Body, HttpStatus, HttpException, Param, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpStatus, HttpException, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { UserService } from './user.service';
-import { User } from './schemas/user.schema';
-import { CreateUserDto } from './dto/create-user.dto';
+import { User } from '@anvlop/api-interfaces';
+import { CreateUserDto } from '@anvlop/api-interfaces';
+import { LocalAuthGuard } from '@anvlop/api/auth';
 
 @Controller()
 export class UserController {
     constructor(private readonly UserService: UserService) { }
 
+    @UseGuards(LocalAuthGuard)
     @Get('users')
     async findAll(): Promise<User[]> {
         return this.UserService.findAll();
