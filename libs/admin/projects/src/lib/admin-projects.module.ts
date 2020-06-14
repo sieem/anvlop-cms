@@ -8,6 +8,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EditComponent } from './components/edit/edit.component';
+import { AssetsComponent } from './components/assets/assets.component';
 
 export const adminProjectsRoutes: Route[] = [
   {
@@ -34,7 +35,7 @@ export const adminProjectsRoutes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
   ],
-  declarations: [OverviewComponent, EditComponent],
+  declarations: [OverviewComponent, EditComponent, AssetsComponent],
   exports: [OverviewComponent, EditComponent],
 })
 export class AdminProjectModule {}

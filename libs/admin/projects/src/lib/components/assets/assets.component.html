@@ -1,0 +1,7 @@
+<div class="inputGroup" [formGroup]="form">
+    <label for="assets">Assets</label>
+    <div formArrayName="assets" *ngFor="let control of assets.controls; index as i">
+        <input [formGroupName]="i" [formControl]="assets.controls[i]" />
+    </div>
+    <button (click)="addAsset()">Add asset</button>
+</div>

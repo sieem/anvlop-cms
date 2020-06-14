@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { IProject } from '@anvlop/api-interfaces';
 import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'anvlop-edit',
@@ -13,9 +14,10 @@ import { ActivatedRoute } from '@angular/router';
 export class EditComponent implements OnInit {
 
   public projectForm: FormGroup;
-  assets: FormArray;
+  public assets: FormArray;
   private projectId: string;
   public submitted = false;
+  eventsSubject: Subject<void> = new Subject<void>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -43,7 +45,6 @@ export class EditComponent implements OnInit {
       this.projectId = params.projectId;
       try {
         const project: IProject = await this.http.get<any>('/api/project/' + this.projectId).toPromise();
-        
 
         this.projectForm.setValue({
           title: project.title,
@@ -53,11 +54,7 @@ export class EditComponent implements OnInit {
           assets: ['']
         });
 
-        this.assets.removeAt(0);
-
-        for (const asset of project.assets) {
-          this.addAsset(asset);
-        }
+        this.eventsSubject.next(project);
 
       } catch (error) {
         console.log(error);
@@ -65,11 +62,6 @@ export class EditComponent implements OnInit {
       }
 
     })
-  }
-
-  addAsset(asset: string = '') {
-    this.assets.push(new FormControl(asset));
-    return this.assets;
   }
 
   onSubmit() {
