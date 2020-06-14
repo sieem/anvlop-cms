@@ -9,7 +9,15 @@ export const adminProjectsRoutes: Route[] = [
   {
     path: '',
     component: OverviewComponent
-  }
+  },
+  {
+    path: 'edit',
+    component: EditComponent
+  },
+  {
+    path: 'edit/:projectId',
+    component: EditComponent
+  },
 ];
 
 @NgModule({
