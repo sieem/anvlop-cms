@@ -4,7 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AdminProjectModule, adminProjectsRoutes } from '@anvlop/admin/projects';
-import { AdminAuthModule, adminAuthRoutes } from '@anvlop/admin/auth';
+import { AdminAuthModule, adminAuthRoutes, AdminAuthInterceptor } from '@anvlop/admin/auth';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,13 @@ import { AdminAuthModule, adminAuthRoutes } from '@anvlop/admin/auth';
     AdminProjectModule,
     AdminAuthModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AdminAuthInterceptor,
+      multi: true
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
