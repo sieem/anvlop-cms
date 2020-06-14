@@ -8,12 +8,35 @@ import { CreateProjectDto } from './dto/create-project.dto';
 export class ProjectsService {
     constructor(@InjectModel(Project.name) private projectModel: Model<Project>) { }
 
-    async create(createProjectDto: CreateProjectDto): Promise<Project> {
-        const createdProject = new this.projectModel(createProjectDto);
-        await createdProject.save();
-    }
-
     async findAll(): Promise<Project[]> {
         return this.projectModel.find().exec();
+    }
+
+    async findById(id: string): Promise<Project> {
+        return await this.projectModel.findById(id).exec();
+    }
+
+    async create(createProjectDto: CreateProjectDto): Promise<Project> {
+        const createdProject = new this.projectModel(createProjectDto);
+        return await createdProject.save();
+    }
+
+    async update(updatedValues: Project, id: string): Promise<Project> {
+        const oldProject = await this.findById(id);
+        const updatedProject = oldProject;
+
+        for (const key in updatedValues) {
+            if (!updatedValues.hasOwnProperty(key)) {
+                continue;
+            }
+            updatedProject[key] = updatedValues[key];
+        }
+
+        return await updatedProject.save();
+    }
+
+    async delete(id: string) {
+        const project = await this.findById(id);
+        return await project.remove();
     }
 }
