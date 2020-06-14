@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, HttpStatus, HttpException, Param, Put, Del
 import { UserService } from './user.service';
 import { User } from '@anvlop/api-interfaces';
 import { CreateUserDto } from '@anvlop/api-interfaces';
-import { LocalAuthGuard, JwtAuthGuard } from '@anvlop/api/auth';
+import { JwtAuthGuard } from '@anvlop/api/auth';
 
 @Controller()
 export class UserController {
