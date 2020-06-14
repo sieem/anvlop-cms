@@ -8,12 +8,13 @@ export class User extends Document implements IUser {
     name: string;
     @Prop({ required: true, unique: true })
     email: string;
-    @Prop({ required: true })
+    @Prop({ required: true, select: false })
     password: string;
     @Prop({ required: true })
     role: string;
     @Prop({ unique: true })
     resetToken: string;
 }
+
 
 export const UserSchema = SchemaFactory.createForClass(User);
