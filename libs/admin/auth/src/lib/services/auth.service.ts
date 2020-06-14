@@ -23,9 +23,9 @@ export class AuthService {
   }
 
   logoutUser() {
-    if (confirm("Are you sure you want to logout?")) {
+    if (confirm('Are you sure you want to logout?')) {
       localStorage.removeItem('token');
-      this.router.navigate(['/inloggen'])
+      this.router.navigate(['/'])
     }
   }
 }

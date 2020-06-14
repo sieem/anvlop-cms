@@ -23,7 +23,7 @@ export class FormService {
   }
 
   public formatDate(value) {
-    const returnDate = moment(value, "YYYY-MM-DD").format(this.visualDateFormat)
+    const returnDate = moment(value, 'YYYY-MM-DD').format(this.visualDateFormat)
     if (returnDate === 'Invalid date') {
       return 'Nog te plannen';
     }
