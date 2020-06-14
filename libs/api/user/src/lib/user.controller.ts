@@ -6,19 +6,19 @@ import { JwtAuthGuard } from '@anvlop/api/auth';
 
 @Controller()
 export class UserController {
-    constructor(private readonly UserService: UserService) { }
+    constructor(private readonly userService: UserService) { }
 
     @UseGuards(JwtAuthGuard)
     @Get('users')
     async findAll(): Promise<User[]> {
-        return this.UserService.findAll();
+        return this.userService.findAll();
     }
 
     @UseGuards(JwtAuthGuard)
     @Get('user/:id')
     async findOneById(@Param() params: any): Promise<User> {
         try {
-            return await this.UserService.findById(params.id);
+            return await this.userService.findById(params.id);
         } catch (error) {
             throw new HttpException(error, HttpStatus.NOT_FOUND);
         }
@@ -28,7 +28,7 @@ export class UserController {
     @Post('user')
     async create(@Body() createUserDto: CreateUserDto) {
         try {
-            return await this.UserService.create(createUserDto);
+            return await this.userService.create(createUserDto);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }
@@ -38,7 +38,7 @@ export class UserController {
     @Put('user/:id')
     async update(@Body() updatedValues: User, @Param() params: any) {
         try {
-            return await this.UserService.update(updatedValues, params.id);
+            return await this.userService.update(updatedValues, params.id);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }
@@ -48,7 +48,7 @@ export class UserController {
     @Delete('user/:id')
     async delete(@Param() params: any) {
         try {
-            return await this.UserService.delete(params.id);
+            return await this.userService.delete(params.id);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }
