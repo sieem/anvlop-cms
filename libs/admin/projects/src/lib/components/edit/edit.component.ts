@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { IProject } from '@anvlop/api-interfaces';
 import { ActivatedRoute } from '@angular/router';
@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EditComponent implements OnInit {
 
   public projectForm: FormGroup;
+  assets: FormArray;
   private projectId: string;
   public submitted = false;
 
@@ -29,8 +30,10 @@ export class EditComponent implements OnInit {
       slug: ['', [Validators.required]],
       year: ['', []],
       description: ['', []],
-      assets: ['', []]
+      assets: this.formBuilder.array([[]])
     });
+
+    this.assets = this.projectForm.get('assets') as FormArray;
 
     this.route.params.subscribe(async (params) => {
       if (!params.projectId) {
@@ -40,20 +43,33 @@ export class EditComponent implements OnInit {
       this.projectId = params.projectId;
       try {
         const project: IProject = await this.http.get<any>('/api/project/' + this.projectId).toPromise();
+        
 
         this.projectForm.setValue({
           title: project.title,
           slug: project.slug,
           year: project.year,
           description: project.description,
-          assets: project.assets,
-        })
+          assets: ['']
+        });
+
+        this.assets.removeAt(0);
+
+        for (const asset of project.assets) {
+          this.addAsset(asset);
+        }
+
       } catch (error) {
         console.log(error);
         this.toastr.error(error, `Error`);
       }
 
     })
+  }
+
+  addAsset(asset: string = '') {
+    this.assets.push(new FormControl(asset));
+    return this.assets;
   }
 
   onSubmit() {
@@ -64,12 +80,7 @@ export class EditComponent implements OnInit {
       return;
     }
 
-    this.loginUser();
-  }
-
-  loginUser() {
-
-    const body = { ...this.projectForm.value}
+    const body = { ...this.projectForm.value }
 
     this.http.put<any>(`/api/project/${this.projectId}`, body).subscribe(
       (res: any) => {
@@ -78,5 +89,4 @@ export class EditComponent implements OnInit {
       err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
     )
   }
-
 }
