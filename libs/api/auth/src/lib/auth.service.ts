@@ -13,7 +13,6 @@ export class AuthService {
   ) {}
 
   async validateUser(username: string, pass: string): Promise<any> {
-    console.log(username, pass);
     const user = await this.userModel.findOne({ email: username }).select('+password').exec();
     if (user && await this.comparePassword(pass, user.password)) {
       // TODO: delete password

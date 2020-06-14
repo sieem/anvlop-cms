@@ -50,7 +50,6 @@ export class LoginComponent implements OnInit {
 
     this.http.post<any>('/api/login', body).subscribe(
       (res: any) => {
-        console.log(res);
         this.auth.saveToken(res.access_token);
         this.router.navigate(['/']);
       },
