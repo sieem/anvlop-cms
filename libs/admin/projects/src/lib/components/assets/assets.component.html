@@ -1,4 +1,4 @@
-<div class="inputGroup" [formGroup]="form">
+<div class="inputGroup" [formGroup]="projectForm">
     <label for="assets">Assets</label>
     <div formArrayName="assets" *ngFor="let control of assets.controls; index as i">
         <input [formGroupName]="i" [formControl]="assets.controls[i]" />
