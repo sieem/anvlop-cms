@@ -10,7 +10,7 @@ export class ProjectsService {
 
     async create(createProjectDto: CreateProjectDto): Promise<Project> {
         const createdProject = new this.projectModel(createProjectDto);
-        return createdProject.save();
+        await createdProject.save();
     }
 
     async findAll(): Promise<Project[]> {

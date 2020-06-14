@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
 import { ProjectsService } from './projects.service';
 import { Project } from './schemas/project.schema';
 import { CreateProjectDto } from './dto/create-project.dto';
@@ -9,7 +9,11 @@ export class ProjectsController {
 
     @Post('project')
     async create(@Body() createProjectDto: CreateProjectDto) {
-        this.projectsService.create(createProjectDto);
+        try {
+            await this.projectsService.create(createProjectDto);
+        } catch (error) {
+            throw new HttpException(error, HttpStatus.BAD_REQUEST);
+        }
     }
 
     @Get('projects')
