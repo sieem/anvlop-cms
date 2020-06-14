@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
   public assets: FormArray;
   private projectId: string;
   public submitted = false;
-  eventsSubject: Subject<void> = new Subject<void>();
+  public projectLoaded: Subject<IProject> = new Subject<IProject>();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,7 +54,7 @@ export class EditComponent implements OnInit {
           assets: ['']
         });
 
-        this.eventsSubject.next(project);
+        this.projectLoaded.next(project);
 
       } catch (error) {
         console.log(error);

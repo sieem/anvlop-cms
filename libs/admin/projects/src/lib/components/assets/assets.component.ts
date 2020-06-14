@@ -11,13 +11,13 @@ import { IProject } from '@anvlop/api-interfaces';
 export class AssetsComponent implements OnInit {
   @Input('projectForm') projectForm: FormGroup;
   @Input('assets') assets: FormArray;
-  @Input('events') events: Observable<IProject>;
-  private eventsSubscription: Subscription; 
+  @Input('projectLoaded') projectLoaded: Observable<IProject>;
+  private projectLoadedSubcription: Subscription; 
 
   constructor() { }
 
   ngOnInit(): void {
-    this.eventsSubscription = this.events.subscribe((project) => {
+    this.projectLoadedSubcription = this.projectLoaded.subscribe((project) => {
       // remove the default empty field
       this.assets.removeAt(0);
 
@@ -32,6 +32,6 @@ export class AssetsComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.eventsSubscription.unsubscribe();
+    this.projectLoadedSubcription.unsubscribe();
   }
 }
