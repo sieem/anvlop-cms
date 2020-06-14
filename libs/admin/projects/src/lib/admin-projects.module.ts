@@ -11,11 +11,11 @@ export const adminProjectsRoutes: Route[] = [
     component: OverviewComponent
   },
   {
-    path: 'edit',
+    path: 'edit/new',
     component: EditComponent
   },
   {
-    path: 'edit/:projectId',
+    path: 'edit/:projectSlug',
     component: EditComponent
   },
 ];

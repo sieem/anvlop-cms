@@ -1,5 +1,5 @@
 <div class="overview">
     <div class="project" *ngFor="let project of projects$ | async">
-        {{ project.title }}
+        <a [routerLink]="['edit', project.slug]" routerLinkActive="router-link-active" >{{ project.title }}</a>
     </div>
 </div>
