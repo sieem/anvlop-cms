@@ -1,11 +1,41 @@
 import { Injectable } from '@nestjs/common';
+import * as admin from 'firebase-admin';
 
 @Injectable()
 export class AssetService {
+    fireBaseInit = admin.initializeApp({
+        credential: admin.credential.cert('./firebase.json'),
+        storageBucket: "anvlop-cms.appspot.com"
+    });
+    bucket = admin.storage().bucket();
+
     constructor() { }
 
-    async upload(projectId: string, file) {
-        console.log(file);
-        // TODO: Put the file somewhere
+    async upload(projectId: string, file): Promise<any> {
+        //https://storage.cloud.google.com/[BUCKET_NAME]/[OBJECT_NAME]
+        let fileUpload = this.bucket.file(`${projectId}/${Date.now()}_${file.originalname}`);
+
+        await new Promise((resolve, reject) => {
+            const blobStream = fileUpload.createWriteStream({
+                metadata: {
+                    contentType: file.mimetype
+                }
+            });
+
+            blobStream.on('error', (error) => {
+                console.error('Something is wrong! Unable to upload at the moment.');
+                reject();
+            });
+
+            blobStream.on('finish', async () => {
+                resolve();
+            });
+
+            blobStream.end(file.buffer);
+        });
+
+        return {
+            filename: fileUpload.name,
+        };
     }
 }

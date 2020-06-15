@@ -14,7 +14,7 @@ export class AssetsComponent implements OnInit {
   @Input('projectForm') projectForm: FormGroup;
   @Input('assets') assets: FormArray;
   @Input('projectLoaded') projectLoaded: Observable<IProject>;
-  public uploadResponse: any = { status: '', message: '', filePath: '' };
+  public uploadProgress: number;
   private projectLoadedSubcription: Subscription; 
 
   constructor(
@@ -36,6 +36,10 @@ export class AssetsComponent implements OnInit {
     this.assets.push(new FormControl(asset));
   }
 
+  removeAsset(asset:string) {
+    this.assets.removeAt(this.assets.value.indexOf(asset));
+  }
+
   onFileChange(event) {
     if (event.target.files.length > 0) {
       const asset = event.target.files[0];
@@ -45,10 +49,13 @@ export class AssetsComponent implements OnInit {
 
       this.uploadService.upload(this.projectId, formData).subscribe(
         (res) => {
-          if (res && res.message === 100) {
-            this.addAsset(asset.name)
+          if (res && res.filename) {
+            this.addAsset(res.filename);
           }
-          this.uploadResponse = res
+
+          if (res && res.progress) {
+            this.uploadProgress = res.progress
+          }
         },
         (err) => console.log(err)
       );

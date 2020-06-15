@@ -12,7 +12,7 @@ export class AssetController {
     @UseInterceptors(FileInterceptor('asset'))
     async update(@UploadedFile() file, @Param() params: any) {
         try {
-            return await this.assetService.upload(params.id, file);
+            return await this.assetService.upload(params.projectId, file);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }
