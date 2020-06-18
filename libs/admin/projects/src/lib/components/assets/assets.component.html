@@ -8,6 +8,6 @@
         <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{value}}" alt="" width="100" (click)="removeAsset(value)">
     </div>
     <div>{{uploadProgress}}%</div>
-    <input type="file" name="Add asset" (change)="onFileChange($event)" />
+    <input type="file" multiple name="Add asset" (change)="onFileChange($event)" />
 </div>
 

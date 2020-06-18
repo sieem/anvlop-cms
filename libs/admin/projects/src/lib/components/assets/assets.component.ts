@@ -41,25 +41,24 @@ export class AssetsComponent implements OnInit {
   }
 
   onFileChange(event) {
-    if (event.target.files.length > 0) {
-      const asset = event.target.files[0];
+    if (!!event.target.files) {
+      for (const asset of event.target.files) {
+        const formData = new FormData();
+        formData.append('asset', asset);
 
-      const formData = new FormData();
-      formData.append('asset', asset);
+        this.uploadService.upload(this.projectId, formData).subscribe(
+          (res) => {
+            if (res && res.filename) {
+              this.addAsset(res.filename);
+            }
 
-      this.uploadService.upload(this.projectId, formData).subscribe(
-        (res) => {
-          if (res && res.filename) {
-            this.addAsset(res.filename);
-          }
-
-          if (res && res.progress) {
-            this.uploadProgress = res.progress
-          }
-        },
-        (err) => console.log(err)
-      );
-      
+            if (res && res.progress) {
+              this.uploadProgress = res.progress
+            }
+          },
+          (err) => console.log(err)
+        );
+      }
     }
   }
 
