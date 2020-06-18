@@ -13,7 +13,7 @@ export class AssetController {
     @UseInterceptors(FileInterceptor('asset'))
     async update(@UploadedFile() file, @Param() params: any) {
         if (allowedFileTypes.indexOf(file.mimetype) === -1) {
-            throw new HttpException(error, HttpStatus.BAD_REQUEST);
+            throw new HttpException(`Filetype not allowed: ${file.mimetype}`, HttpStatus.BAD_REQUEST);
         }
         try {
             return await this.assetService.upload(params.projectId, file);
