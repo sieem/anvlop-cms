@@ -48,6 +48,7 @@
     "class-validator": "^0.12.2",
     "core-js": "^2.5.4",
     "firebase-admin": "^8.12.1",
+    "jimp": "^0.13.0",
     "mongoose": "^5.9.18",
     "ngx-toastr": "^12.1.0",
     "passport": "^0.4.1",

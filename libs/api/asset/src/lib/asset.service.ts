@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
+import { ImageService } from './image.service';
 
 @Injectable()
 export class AssetService {
@@ -9,9 +10,11 @@ export class AssetService {
     });
     bucket = admin.storage().bucket();
 
-    constructor() { }
+    constructor(private imageService: ImageService) { }
 
     async upload(projectId: string, file): Promise<any> {
+        file = await this.imageService.convert(file);
+
         //https://storage.cloud.google.com/[BUCKET_NAME]/[OBJECT_NAME]
         let fileUpload = this.bucket.file(`${projectId}/${Date.now()}_${file.originalname}`);
 
