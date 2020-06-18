@@ -67,6 +67,8 @@ export class AssetsComponent implements OnInit {
           (err) => console.log(err)
         );
       }
+
+      event.target.value = '';
     }
   }
 
