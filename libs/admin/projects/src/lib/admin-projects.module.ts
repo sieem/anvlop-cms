@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { QuillModule } from 'ngx-quill'
 
 import { EditComponent } from './components/edit/edit.component';
 import { AssetsComponent } from './components/assets/assets.component';
@@ -34,6 +35,7 @@ export const adminProjectsRoutes: Route[] = [
     ToastrModule,
     FormsModule,
     ReactiveFormsModule,
+    QuillModule.forRoot(),
   ],
   declarations: [OverviewComponent, EditComponent, AssetsComponent],
   exports: [OverviewComponent, EditComponent],
