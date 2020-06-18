@@ -2,6 +2,7 @@ import { Controller, Post, Body, HttpException, HttpStatus, Param, UseGuards, Us
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AssetService } from './asset.service';
 import { JwtAuthGuard } from '@anvlop/api/auth';
+import { allowedFileTypes } from '@anvlop/constants';
 
 @Controller()
 export class AssetController {
@@ -11,6 +12,9 @@ export class AssetController {
     @Post('asset/:projectId')
     @UseInterceptors(FileInterceptor('asset'))
     async update(@UploadedFile() file, @Param() params: any) {
+        if (allowedFileTypes.indexOf(file.mimetype) === -1) {
+            throw new HttpException(error, HttpStatus.BAD_REQUEST);
+        }
         try {
             return await this.assetService.upload(params.projectId, file);
         } catch (error) {

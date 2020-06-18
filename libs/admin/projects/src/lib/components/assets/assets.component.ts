@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { IProject } from '@anvlop/api-interfaces';
+import { allowedFileTypes } from '@anvlop/constants';
 import { UploadService } from '../../services/upload.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'anvlop-assets',
@@ -19,6 +21,7 @@ export class AssetsComponent implements OnInit {
 
   constructor(
     private uploadService: UploadService,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +46,11 @@ export class AssetsComponent implements OnInit {
   onFileChange(event) {
     if (!!event.target.files) {
       for (const asset of event.target.files) {
+        if (allowedFileTypes.indexOf(asset.type) === -1) {
+          this.toastr.error(asset.type, `Filetype not supported`);
+          continue;
+        }
+
         const formData = new FormData();
         formData.append('asset', asset);
 
