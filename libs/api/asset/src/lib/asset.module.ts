@@ -6,6 +6,6 @@ import { ImageService } from './image.service';
 @Module({
     controllers: [AssetController],
     providers: [AssetService, ImageService],
-    exports: [],
+    exports: [AssetService],
 })
 export class AssetModule { }

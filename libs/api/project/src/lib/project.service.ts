@@ -3,10 +3,14 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Project } from '@anvlop/api-interfaces';
 import { CreateProjectDto } from '@anvlop/api-interfaces';
+import { AssetService } from '@anvlop/api/asset';
 
 @Injectable()
 export class ProjectService {
-    constructor(@InjectModel(Project.name) private projectModel: Model<Project>) { }
+    constructor(
+        @InjectModel(Project.name) private projectModel: Model<Project>,
+        private assetService: AssetService,
+    ) { }
 
     async findAll(): Promise<Project[]> {
         return this.projectModel.find().exec();
@@ -31,6 +35,8 @@ export class ProjectService {
             }
             updatedProject[key] = updatedValues[key];
         }
+
+        this.assetService.deleteUnusedFiles(updatedProject);
 
         return await updatedProject.save();
     }

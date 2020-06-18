@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import { ImageService } from './image.service';
+import { Project } from '@anvlop/api-interfaces';
 
 @Injectable()
 export class AssetService {
@@ -26,7 +27,7 @@ export class AssetService {
             });
 
             blobStream.on('error', (error) => {
-                console.error('Something is wrong! Unable to upload at the moment.');
+                console.error('Something is wrong! Unable to upload at the moment.', error);
                 reject();
             });
 
@@ -40,5 +41,17 @@ export class AssetService {
         return {
             filename: fileUpload.name,
         };
+    }
+
+    async deleteUnusedFiles(project: Project) {
+        const files = await this.bucket.getFiles( { directory: project._id });
+
+        for (const file of files[0]) {
+            if (project.assets.indexOf(file.name) > -1) {
+                continue;
+            }
+
+            file.delete();
+        }
     }
 }
