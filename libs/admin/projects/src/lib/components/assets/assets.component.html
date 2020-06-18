@@ -1,9 +1,5 @@
 <div class="inputGroup" [formGroup]="projectForm">
     <label for="assets">Assets</label>
-    <div formArrayName="assets" *ngFor="let control of assets.controls; index as i">
-        <input [formGroupName]="i" [formControl]="control" />
-    </div>
-
     <div formArrayName="assets" *ngFor="let value of assets.value; index as i">
         <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{value}}" alt="" width="100" (click)="removeAsset(value)">
     </div>
