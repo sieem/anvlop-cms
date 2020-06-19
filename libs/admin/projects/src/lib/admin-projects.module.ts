@@ -11,6 +11,8 @@ import { QuillModule } from 'ngx-quill'
 import { EditComponent } from './components/edit/edit.component';
 import { AssetsComponent } from './components/assets/assets.component';
 
+import { SortablejsModule } from 'ngx-sortablejs';
+
 export const adminProjectsRoutes: Route[] = [
   {
     path: '',
@@ -36,6 +38,7 @@ export const adminProjectsRoutes: Route[] = [
     FormsModule,
     ReactiveFormsModule,
     QuillModule.forRoot(),
+    SortablejsModule.forRoot({ animation: 150 }),
   ],
   declarations: [OverviewComponent, EditComponent, AssetsComponent],
   exports: [OverviewComponent, EditComponent],
