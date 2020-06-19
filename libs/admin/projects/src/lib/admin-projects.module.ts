@@ -19,7 +19,7 @@ export const adminProjectsRoutes: Route[] = [
     component: OverviewComponent
   },
   {
-    path: 'edit/new',
+    path: 'new',
     component: EditComponent
   },
   {

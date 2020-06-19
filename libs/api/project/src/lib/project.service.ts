@@ -20,9 +20,10 @@ export class ProjectService {
         return await this.projectModel.findById(id).exec();
     }
 
-    async create(createProjectDto: CreateProjectDto): Promise<Project> {
+    async create(createProjectDto: CreateProjectDto): Promise<any> {
         const createdProject = new this.projectModel(createProjectDto);
-        return await createdProject.save();
+        const savedProject = await createdProject.save()
+        return { projectId: savedProject._id };
     }
 
     async update(updatedValues: Project, id: string): Promise<Project> {

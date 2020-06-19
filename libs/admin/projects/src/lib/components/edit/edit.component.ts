@@ -1,9 +1,9 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { IProject, IAsset } from '@anvlop/api-interfaces';
-import { ActivatedRoute } from '@angular/router';
+import { IProject } from '@anvlop/api-interfaces';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Component({
@@ -24,6 +24,7 @@ export class EditComponent implements OnInit {
     private toastr: ToastrService,
     private http: HttpClient,
     private route: ActivatedRoute,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -74,11 +75,21 @@ export class EditComponent implements OnInit {
 
     const body = { ...this.projectForm.value }
 
-    this.http.put<any>(`/api/project/${this.projectId}`, body).subscribe(
-      (res: any) => {
-        this.toastr.info('Saved that damn thing.');
-      },
-      err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
-    )
+    if (this.projectId) {
+      this.http.put<any>(`/api/project/${this.projectId}`, body).subscribe(
+        (res: any) => {
+          this.toastr.info('Saved that damn thing.');
+        },
+        err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
+      );
+    } else {
+      this.http.post<any>(`/api/project`, body).subscribe(
+        (res: any) => {
+          this.toastr.info('Saved that damn thing.');
+          this.router.navigate(['projects', 'edit', res.projectId]);
+        },
+        err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
+      )
+    }
   }
 }
