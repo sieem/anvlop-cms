@@ -45,9 +45,10 @@ export class AssetService {
 
     async deleteUnusedFiles(project: Project) {
         const files = await this.bucket.getFiles( { directory: project._id });
+        const projectAssets = project.assets.map((el) => el.src );
 
         for (const file of files[0]) {
-            if (project.assets.indexOf(file.name) > -1) {
+            if (projectAssets.indexOf(file.name) > -1) {
                 continue;
             }
 

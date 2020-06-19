@@ -1,5 +1,6 @@
 import { IsString, IsArray } from 'class-validator';
 import { IProject } from '@anvlop/api-interfaces';
+import { IAsset } from '../asset/asset.schema';
 
 export class CreateProjectDto implements IProject {
     @IsString()
@@ -15,5 +16,5 @@ export class CreateProjectDto implements IProject {
     description: string;
 
     @IsArray()
-    assets: string[];
+    assets: IAsset[];
 }

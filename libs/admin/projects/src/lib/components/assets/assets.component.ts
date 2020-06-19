@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
-import { IProject } from '@anvlop/api-interfaces';
+import { IProject, IAsset } from '@anvlop/api-interfaces';
 import { allowedFileTypes } from '@anvlop/constants';
 import { UploadService } from '../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
@@ -35,12 +35,18 @@ export class AssetsComponent implements OnInit {
     });
   }
 
-  addAsset(asset: string = '') {
-    this.assets.push(new FormControl(asset));
+  addAsset(asset:IAsset) {
+    this.assets.push(new FormGroup({
+      mainAsset: new FormControl(asset.mainAsset),
+      src: new FormControl(asset.src)
+    }));
   }
 
   removeAsset(asset:string) {
-    this.assets.removeAt(this.assets.value.indexOf(asset));
+    const assetsFlat = this.assets.value.map((el) => el.src);
+    this.assets.removeAt(assetsFlat.indexOf(asset));
+  }
+
   }
 
   onFileChange(event) {
@@ -57,7 +63,9 @@ export class AssetsComponent implements OnInit {
         this.uploadService.upload(this.projectId, formData).subscribe(
           (res) => {
             if (res && res.filename) {
-              this.addAsset(res.filename);
+              this.addAsset({
+                src: res.filename
+              });
             }
 
             if (res && res.progress) {

@@ -2,7 +2,7 @@ import { Component, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup, FormArray, FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { IProject } from '@anvlop/api-interfaces';
+import { IProject, IAsset } from '@anvlop/api-interfaces';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
 

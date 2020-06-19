@@ -1,8 +1,12 @@
 <div class="inputGroup" [formGroup]="projectForm">
     <label for="assets">Assets</label>
     <div class="assets" [sortablejs]="assets">
-        <div formArrayName="assets" *ngFor="let asset of assets.controls; index as i">
-            <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{asset.value}}" alt="" width="100" (click)="removeAsset(asset.value)">
+        <div formArrayName="assets" 
+        *ngFor="let asset of assets.controls">
+            <div *ngIf="asset.value" [class.mainAsset]="asset.value.mainAsset">
+                <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{asset.value.src}}" alt="" width="100">
+                <div class="delete" (click)="removeAsset(asset.value.src)">x</div>
+            </div>
         </div>
     </div>
 
