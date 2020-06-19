@@ -26,9 +26,6 @@ export class AssetsComponent implements OnInit {
 
   ngOnInit(): void {
     this.projectLoadedSubcription = this.projectLoaded.subscribe((project) => {
-      // remove the default empty field
-      this.assets.removeAt(0);
-
       for (const asset of project.assets) {
         this.addAsset(asset);
       }

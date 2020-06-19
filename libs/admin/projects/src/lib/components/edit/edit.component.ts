@@ -33,7 +33,7 @@ export class EditComponent implements OnInit {
       slug: ['', [Validators.required]],
       year: ['', []],
       description: ['', []],
-      assets: this.formBuilder.array([[]])
+      assets: this.formBuilder.array([])
     });
 
     this.assets = this.projectForm.get('assets') as FormArray;
@@ -52,7 +52,7 @@ export class EditComponent implements OnInit {
           slug: project.slug,
           year: project.year,
           description: project.description,
-          assets: ['']
+          assets: []
         });
 
         this.projectLoaded.next(project);
