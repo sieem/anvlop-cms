@@ -47,6 +47,18 @@ export class AssetsComponent implements OnInit {
     this.assets.removeAt(assetsFlat.indexOf(asset));
   }
 
+  makeMainAsset(asset) {
+    for (const assetControl of this.assets.controls) {
+      let mainAsset = null;
+      if (assetControl.value.src === asset) {
+        mainAsset = true;
+      }
+
+      assetControl.setValue({
+        mainAsset,
+        src: assetControl.value.src,
+      });
+    }
   }
 
   onFileChange(event) {

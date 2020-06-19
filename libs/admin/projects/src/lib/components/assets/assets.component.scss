@@ -1,7 +1,11 @@
 .assets{
     display: flex;
 
-    .delete {
+    .delete, .star {
         cursor: pointer;
+    }
+
+    .mainAsset {
+        border: 3px dotted goldenrod;
     }
 }
