@@ -69,7 +69,7 @@ export class AssetsComponent implements OnInit {
         const formData = new FormData();
         formData.append('asset', asset);
 
-        this.uploadService.upload(this.projectId, formData).subscribe(
+        this.uploadService.upload(this.projectId || 'newProject', formData).subscribe(
           (res) => {
             if (res && res.filename) {
               this.addAsset({

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import { ImageService } from './image.service';
-import { Project } from '@anvlop/api-interfaces';
+import { Project, IAsset } from '@anvlop/api-interfaces';
 
 @Injectable()
 export class AssetService {
@@ -41,6 +41,16 @@ export class AssetService {
         return {
             filename: fileUpload.name,
         };
+    }
+
+    moveNewProjectFiles(projectId: string, files: IAsset[]): void {
+        try {
+            for (const file of files) {
+                this.bucket.file(file.src).move(file.src.replace('newProject', projectId));
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     async deleteUnusedFiles(project: Project) {
