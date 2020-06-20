@@ -58,6 +58,7 @@ export class ProjectService {
 
     async delete(id: string) {
         const project = await this.findById(id);
+        this.assetService.deleteProject(id);
         return await project.remove();
     }
 }

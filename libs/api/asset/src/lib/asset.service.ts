@@ -53,7 +53,7 @@ export class AssetService {
         }
     }
 
-    async deleteUnusedFiles(project: Project) {
+    async deleteUnusedFiles(project: Project): Promise<void> {
         const files = await this.bucket.getFiles( { directory: project._id });
         const projectAssets = project.assets.map((el) => el.src );
 
@@ -62,6 +62,14 @@ export class AssetService {
                 continue;
             }
 
+            file.delete();
+        }
+    }
+
+    async deleteProject(projectId: string): Promise<void> {
+        const files = await this.bucket.getFiles({ directory: projectId });
+
+        for (const file of files[0]) {
             file.delete();
         }
     }
