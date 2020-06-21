@@ -3,6 +3,7 @@ import { ProjectService } from './project.service';
 import { Project } from '@anvlop/shared/interfaces';
 import { CreateProjectDto } from '@anvlop/shared/interfaces';
 import { JwtAuthGuard } from '@anvlop/api/auth';
+import { Types, isValidObjectId } from 'mongoose';
 
 @Controller()
 export class ProjectController {
@@ -13,10 +14,14 @@ export class ProjectController {
         return this.projectService.findAll();
     }
 
-    @Get('project/:id')
+    @Get('project/:idOrSlug')
     async findOneById(@Param() params: any): Promise<Project> {
         try {
-            return await this.projectService.findById(params.id);
+            if (isValidObjectId(params.idOrSlug) && Types.ObjectId(params.idOrSlug).toHexString() === params.idOrSlug) {
+                return await this.projectService.findById(params.idOrSlug);
+            }
+
+            return await this.projectService.findBySlug(params.idOrSlug);
         } catch (error) {
             throw new HttpException(error, HttpStatus.NOT_FOUND);
         }

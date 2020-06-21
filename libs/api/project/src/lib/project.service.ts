@@ -16,6 +16,10 @@ export class ProjectService {
         return this.projectModel.find().exec();
     }
 
+    async findBySlug(slug: string): Promise<Project> {
+        return await this.projectModel.findOne({ slug }).exec();
+    }
+
     async findById(id: string): Promise<Project> {
         return await this.projectModel.findById(id).exec();
     }
