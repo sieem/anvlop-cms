@@ -24,9 +24,6 @@
     }
   },
   "projects": {
-    "anvlop-ui": {
-      "tags": []
-    },
     "anvlop-ui-e2e": {
       "tags": [],
       "implicitDependencies": [
@@ -67,6 +64,9 @@
       "tags": []
     },
     "shared-constants": {
+      "tags": []
+    },
+    "ui-static": {
       "tags": []
     }
   }

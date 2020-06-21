@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'anvlop-ui',
-  preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/apps/anvlop-ui',
+  name: 'ui-static',
+  preset: '../../../jest.config.js',
+  coverageDirectory: '../../../coverage/apps/ui/static',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
