@@ -7,7 +7,7 @@ import { Project, IAsset } from '@anvlop/shared/interfaces';
 export class AssetService {
     fireBaseInit = admin.initializeApp({
         credential: admin.credential.cert('./firebase.json'),
-        storageBucket: "anvlop-cms.appspot.com"
+        storageBucket: 'anvlop-cms.appspot.com'
     });
     bucket = admin.storage().bucket();
 
@@ -17,7 +17,7 @@ export class AssetService {
         file = await this.imageService.convert(file);
 
         //https://storage.cloud.google.com/[BUCKET_NAME]/[OBJECT_NAME]
-        let fileUpload = this.bucket.file(`${projectId}/${Date.now()}_${file.originalname}`);
+        const fileUpload = this.bucket.file(`${projectId}/${Date.now()}_${file.originalname}`);
 
         await new Promise((resolve, reject) => {
             const blobStream = fileUpload.createWriteStream({

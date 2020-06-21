@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { IProject, IAsset } from '@anvlop/shared/interfaces';
@@ -11,11 +11,11 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './assets.component.html',
   styleUrls: ['./assets.component.scss']
 })
-export class AssetsComponent implements OnInit {
-  @Input('projectId') projectId: string;
-  @Input('projectForm') projectForm: FormGroup;
-  @Input('assets') assets: FormArray;
-  @Input('projectLoaded') projectLoaded: Observable<IProject>;
+export class AssetsComponent implements OnInit, OnDestroy {
+  @Input() projectId: string;
+  @Input() projectForm: FormGroup;
+  @Input() assets: FormArray;
+  @Input() projectLoaded: Observable<IProject>;
   public uploadProgress: number;
   private projectLoadedSubcription: Subscription; 
 
