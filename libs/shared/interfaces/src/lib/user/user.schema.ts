@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { IUser } from "@anvlop/api-interfaces";
+import { IUser } from "@anvlop/shared/interfaces";
 
 @Schema()
 export class User extends Document implements IUser {

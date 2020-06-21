@@ -1,8 +1,8 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User } from '@anvlop/api-interfaces';
-import { CreateUserDto } from '@anvlop/api-interfaces';
+import { User } from '@anvlop/shared/interfaces';
+import { CreateUserDto } from '@anvlop/shared/interfaces';
 import * as bcrypt from 'bcrypt';
 import { bcryptConstants } from '@anvlop/constants';
 

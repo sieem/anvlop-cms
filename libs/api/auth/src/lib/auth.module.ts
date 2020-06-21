@@ -7,7 +7,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
 import { AuthController } from './auth.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from '@anvlop/api-interfaces';
+import { User, UserSchema } from '@anvlop/shared/interfaces';
 
 @Module({
   imports: [

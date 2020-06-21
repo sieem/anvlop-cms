@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
-import { IProject } from "@anvlop/api-interfaces";
+import { IProject } from "@anvlop/shared/interfaces";
 import { IAsset } from '../asset/asset.schema';
 
 @Schema()

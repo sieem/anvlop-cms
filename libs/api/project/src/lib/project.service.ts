@@ -1,8 +1,8 @@
 import { Model } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Project } from '@anvlop/api-interfaces';
-import { CreateProjectDto } from '@anvlop/api-interfaces';
+import { Project } from '@anvlop/shared/interfaces';
+import { CreateProjectDto } from '@anvlop/shared/interfaces';
 import { AssetService } from '@anvlop/api/asset';
 
 @Injectable()

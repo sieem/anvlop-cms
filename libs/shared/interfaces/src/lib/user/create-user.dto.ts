@@ -1,5 +1,5 @@
 import { IsString } from 'class-validator';
-import { IUser } from '@anvlop/api-interfaces';
+import { IUser } from '@anvlop/shared/interfaces';
 
 export class CreateUserDto implements IUser {
     @IsString()

@@ -1,5 +1,5 @@
 import { IsString, IsArray } from 'class-validator';
-import { IProject } from '@anvlop/api-interfaces';
+import { IProject } from '@anvlop/shared/interfaces';
 import { IAsset } from '../asset/asset.schema';
 
 export class CreateProjectDto implements IProject {

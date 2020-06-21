@@ -36,9 +36,6 @@
     "api": {
       "tags": []
     },
-    "api-interfaces": {
-      "tags": []
-    },
     "api-project": {
       "tags": []
     },
@@ -67,6 +64,9 @@
       "tags": []
     },
     "ui-admin-auth": {
+      "tags": []
+    },
+    "shared-interfaces": {
       "tags": []
     }
   }

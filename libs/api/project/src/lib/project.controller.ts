@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards } from '@nestjs/common';
 import { ProjectService } from './project.service';
-import { Project } from '@anvlop/api-interfaces';
-import { CreateProjectDto } from '@anvlop/api-interfaces';
+import { Project } from '@anvlop/shared/interfaces';
+import { CreateProjectDto } from '@anvlop/shared/interfaces';
 import { JwtAuthGuard } from '@anvlop/api/auth';
 
 @Controller()

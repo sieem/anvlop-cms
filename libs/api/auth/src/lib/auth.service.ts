@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
-import { User } from '@anvlop/api-interfaces';
+import { User } from '@anvlop/shared/interfaces';
 import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Project } from '@anvlop/api-interfaces';
+import { Project } from '@anvlop/shared/interfaces';
 import { switchMapTo } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 

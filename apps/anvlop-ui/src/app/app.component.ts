@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@anvlop/api-interfaces';
+import { Message } from '@anvlop/shared/interfaces';
 
 @Component({
   selector: 'anvlop-root',

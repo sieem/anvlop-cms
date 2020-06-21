@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import { ImageService } from './image.service';
-import { Project, IAsset } from '@anvlop/api-interfaces';
+import { Project, IAsset } from '@anvlop/shared/interfaces';
 
 @Injectable()
 export class AssetService {

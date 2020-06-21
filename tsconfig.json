@@ -21,9 +21,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@anvlop/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
-      ],
       "@anvlop/api/project": [
         "libs/api/project/src/index.ts"
       ],
@@ -44,6 +41,9 @@
       ],
       "@anvlop/ui/admin/auth": [
         "libs/ui/admin/auth/src/index.ts"
+      ],
+      "@anvlop/shared/interfaces": [
+        "libs/shared/interfaces/src/index.ts"
       ]
     }
   },
