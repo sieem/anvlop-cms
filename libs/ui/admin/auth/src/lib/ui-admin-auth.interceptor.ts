@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from './services/auth.service';
 
 @Injectable()
-export class AdminAuthInterceptor implements HttpInterceptor {
+export class UiAdminAuthInterceptor implements HttpInterceptor {
 
   constructor(private readonly auth: AuthService) {}
 
