@@ -22,20 +22,19 @@ export class ProjectService {
 
     async create(createProjectDto: CreateProjectDto): Promise<any> {
         const createdProject = new this.projectModel(createProjectDto);
-        const savedProject = await createdProject.save();
 
         try {
-            await this.assetService.moveNewProjectFiles(savedProject._id, savedProject.assets);
+            await this.assetService.moveNewProjectFiles(createdProject._id, createdProject.assets);
         } catch (error) {
             console.log(error);
         }
 
-        savedProject.assets = savedProject.assets.map((asset) => {
-            asset.src = asset.src.replace('newProject', savedProject._id);
+        createdProject.assets = createdProject.assets.map((asset) => {
+            asset.src = asset.src.replace('newProject', createdProject._id);
             return asset;
         });
 
-        await savedProject.save();
+        const savedProject = await createdProject.save();
 
         return { projectId: savedProject._id };
     }
