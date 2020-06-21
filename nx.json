@@ -51,9 +51,6 @@
     "constants": {
       "tags": []
     },
-    "admin-auth": {
-      "tags": []
-    },
     "api-asset": {
       "tags": []
     },
@@ -67,6 +64,9 @@
       ]
     },
     "ui-admin-projects": {
+      "tags": []
+    },
+    "ui-admin-auth": {
       "tags": []
     }
   }

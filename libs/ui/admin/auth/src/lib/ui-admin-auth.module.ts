@@ -27,4 +27,4 @@ export const adminAuthRoutes: Route[] = [
   declarations: [LoginComponent],
   exports: [LoginComponent],
 })
-export class AdminAuthModule {}
+export class UiAdminAuthModule {}

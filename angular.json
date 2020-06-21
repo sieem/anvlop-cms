@@ -340,41 +340,6 @@
         }
       }
     },
-    "admin-auth": {
-      "projectType": "library",
-      "root": "libs/admin/auth",
-      "sourceRoot": "libs/admin/auth/src",
-      "prefix": "anvlop",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/admin/auth/tsconfig.lib.json",
-              "libs/admin/auth/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/admin/auth/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/admin/auth/jest.config.js",
-            "tsConfig": "libs/admin/auth/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/admin/auth/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "api-asset": {
       "root": "libs/api/asset",
       "sourceRoot": "libs/api/asset/src",
@@ -566,6 +531,41 @@
             "tsConfig": "libs/ui/admin/projects/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/ui/admin/projects/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "ui-admin-auth": {
+      "projectType": "library",
+      "root": "libs/ui/admin/auth",
+      "sourceRoot": "libs/ui/admin/auth/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/admin/auth/tsconfig.lib.json",
+              "libs/ui/admin/auth/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/admin/auth/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/admin/auth/jest.config.js",
+            "tsConfig": "libs/ui/admin/auth/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/admin/auth/src/test-setup.ts"
           }
         }
       },

@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { AdminAuthModule } from './admin-auth.module';
+import { UiAdminAuthModule } from './ui-admin-auth.module';
 
-describe('AdminAuthModule', () => {
+describe('UiAdminAuthModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AdminAuthModule],
+      imports: [UiAdminAuthModule],
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(AdminAuthModule).toBeDefined();
+    expect(UiAdminAuthModule).toBeDefined();
   });
 });

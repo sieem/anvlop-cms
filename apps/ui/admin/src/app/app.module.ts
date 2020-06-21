@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AdminProjectModule, adminProjectsRoutes } from '@anvlop/ui/admin/projects';
-import { AdminAuthModule, adminAuthRoutes, AdminAuthInterceptor } from '@anvlop/admin/auth';
+import { UiAdminAuthModule, adminAuthRoutes, UiAdminAuthInterceptor } from '@anvlop/ui/admin/auth';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -19,12 +19,12 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
       { initialNavigation: 'enabled' }
     ),
     AdminProjectModule,
-    AdminAuthModule,
+    UiAdminAuthModule,
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AdminAuthInterceptor,
+      useClass: UiAdminAuthInterceptor,
       multi: true
     },
   ],

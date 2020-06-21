@@ -36,14 +36,14 @@
       "@anvlop/constants": [
         "libs/constants/src/index.ts"
       ],
-      "@anvlop/admin/auth": [
-        "libs/admin/auth/src/index.ts"
-      ],
       "@anvlop/api/asset": [
         "libs/api/asset/src/index.ts"
       ],
       "@anvlop/ui/admin/projects": [
         "libs/ui/admin/projects/src/index.ts"
+      ],
+      "@anvlop/ui/admin/auth": [
+        "libs/ui/admin/auth/src/index.ts"
       ]
     }
   },

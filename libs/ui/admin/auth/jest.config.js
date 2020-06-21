@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'admin-auth',
-  preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/admin/auth',
+  name: 'ui-admin-auth',
+  preset: '../../../../jest.config.js',
+  coverageDirectory: '../../../../coverage/libs/ui/admin/auth',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
