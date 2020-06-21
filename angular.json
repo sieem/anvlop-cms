@@ -224,41 +224,6 @@
         }
       }
     },
-    "admin-projects": {
-      "projectType": "library",
-      "root": "libs/admin/projects",
-      "sourceRoot": "libs/admin/projects/src",
-      "prefix": "anvlop",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/admin/projects/tsconfig.lib.json",
-              "libs/admin/projects/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "!libs/admin/projects/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/admin/projects/jest.config.js",
-            "tsConfig": "libs/admin/projects/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "libs/admin/projects/src/test-setup.ts"
-          }
-        }
-      },
-      "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
-        }
-      }
-    },
     "api-project": {
       "root": "libs/api/project",
       "sourceRoot": "libs/api/project/src",
@@ -572,6 +537,41 @@
               "!apps/ui/admin-e2e/**"
             ]
           }
+        }
+      }
+    },
+    "ui-admin-projects": {
+      "projectType": "library",
+      "root": "libs/ui/admin/projects",
+      "sourceRoot": "libs/ui/admin/projects/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/admin/projects/tsconfig.lib.json",
+              "libs/ui/admin/projects/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/ui/admin/projects/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/admin/projects/jest.config.js",
+            "tsConfig": "libs/ui/admin/projects/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/admin/projects/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
         }
       }
     }

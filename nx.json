@@ -39,9 +39,6 @@
     "api-interfaces": {
       "tags": []
     },
-    "admin-projects": {
-      "tags": []
-    },
     "api-project": {
       "tags": []
     },
@@ -68,6 +65,9 @@
       "implicitDependencies": [
         "admin"
       ]
+    },
+    "ui-admin-projects": {
+      "tags": []
     }
   }
 }

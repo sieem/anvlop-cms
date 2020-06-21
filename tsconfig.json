@@ -10,21 +10,45 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@anvlop/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@anvlop/admin/projects": ["libs/admin/projects/src/index.ts"],
-      "@anvlop/api/project": ["libs/api/project/src/index.ts"],
-      "@anvlop/api/user": ["libs/api/user/src/index.ts"],
-      "@anvlop/api/auth": ["libs/api/auth/src/index.ts"],
-      "@anvlop/constants": ["libs/constants/src/index.ts"],
-      "@anvlop/admin/auth": ["libs/admin/auth/src/index.ts"],
-      "@anvlop/api/asset": ["libs/api/asset/src/index.ts"]
+      "@anvlop/api-interfaces": [
+        "libs/api-interfaces/src/index.ts"
+      ],
+      "@anvlop/api/project": [
+        "libs/api/project/src/index.ts"
+      ],
+      "@anvlop/api/user": [
+        "libs/api/user/src/index.ts"
+      ],
+      "@anvlop/api/auth": [
+        "libs/api/auth/src/index.ts"
+      ],
+      "@anvlop/constants": [
+        "libs/constants/src/index.ts"
+      ],
+      "@anvlop/admin/auth": [
+        "libs/admin/auth/src/index.ts"
+      ],
+      "@anvlop/api/asset": [
+        "libs/api/asset/src/index.ts"
+      ],
+      "@anvlop/ui/admin/projects": [
+        "libs/ui/admin/projects/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
