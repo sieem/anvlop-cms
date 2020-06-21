@@ -16,7 +16,7 @@ export const uiStaticProjectsRoutes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule.forChild(uiStaticProjectsRoutes)],
   declarations: [OverviewComponent, ProjectComponent],
 })
 export class UiStaticProjectsModule {}

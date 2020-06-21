@@ -25,7 +25,9 @@
     "workspace-schematic": "nx workspace-schematic",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "scully": "scully",
+    "scully:serve": "scully serve"
   },
   "private": true,
   "dependencies": {
@@ -44,6 +46,9 @@
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^6.11.11",
     "@nrwl/angular": "9.3.0",
+    "@scullyio/init": "0.0.28",
+    "@scullyio/ng-lib": "latest",
+    "@scullyio/scully": "latest",
     "bcrypt": "^5.0.0",
     "class-validator": "^0.12.2",
     "core-js": "^2.5.4",

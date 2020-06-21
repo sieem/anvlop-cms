@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'anvlop-root',
   templateUrl: './app.component.html',
