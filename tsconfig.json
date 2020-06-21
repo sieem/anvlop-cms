@@ -24,7 +24,8 @@
       "@anvlop/ui/admin/auth": ["libs/ui/admin/auth/src/index.ts"],
       "@anvlop/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@anvlop/shared/constants": ["libs/shared/constants/src/index.ts"],
-      "@anvlop/ui/static/home": ["libs/ui/static/home/src/index.ts"]
+      "@anvlop/ui/static/home": ["libs/ui/static/home/src/index.ts"],
+      "@anvlop/ui/static/projects": ["libs/ui/static/projects/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

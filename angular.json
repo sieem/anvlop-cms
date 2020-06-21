@@ -559,6 +559,38 @@
           "style": "scss"
         }
       }
+    },
+    "ui-static-projects": {
+      "projectType": "library",
+      "root": "libs/ui/static/projects",
+      "sourceRoot": "libs/ui/static/projects/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/static/projects/tsconfig.lib.json",
+              "libs/ui/static/projects/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/static/projects/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/static/projects/jest.config.js",
+            "tsConfig": "libs/ui/static/projects/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/static/projects/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

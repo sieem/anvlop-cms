@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
 import { UiStaticHomeModule, uiStaticHomeRoutes } from '@anvlop/ui/static/home';
+import { UiStaticProjectsModule, uiStaticProjectsRoutes } from '@anvlop/ui/static/projects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,10 +16,12 @@ import { UiStaticHomeModule, uiStaticHomeRoutes } from '@anvlop/ui/static/home';
     RouterModule.forRoot(
       [
         { path: '', children: uiStaticHomeRoutes },
+        { path: 'projects', children: uiStaticProjectsRoutes },
       ],
       { initialNavigation: 'enabled' }
     ),
     UiStaticHomeModule,
+    UiStaticProjectsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

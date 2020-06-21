@@ -62,6 +62,9 @@
     },
     "ui-static-home": {
       "tags": []
+    },
+    "ui-static-projects": {
+      "tags": []
     }
   }
 }
