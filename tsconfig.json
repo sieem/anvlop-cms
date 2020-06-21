@@ -30,9 +30,6 @@
       "@anvlop/api/auth": [
         "libs/api/auth/src/index.ts"
       ],
-      "@anvlop/constants": [
-        "libs/constants/src/index.ts"
-      ],
       "@anvlop/api/asset": [
         "libs/api/asset/src/index.ts"
       ],
@@ -44,6 +41,9 @@
       ],
       "@anvlop/shared/interfaces": [
         "libs/shared/interfaces/src/index.ts"
+      ],
+      "@anvlop/shared/constants": [
+        "libs/shared/constants/src/index.ts"
       ]
     }
   },

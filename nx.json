@@ -45,9 +45,6 @@
     "api-auth": {
       "tags": []
     },
-    "constants": {
-      "tags": []
-    },
     "api-asset": {
       "tags": []
     },
@@ -67,6 +64,9 @@
       "tags": []
     },
     "shared-interfaces": {
+      "tags": []
+    },
+    "shared-constants": {
       "tags": []
     }
   }

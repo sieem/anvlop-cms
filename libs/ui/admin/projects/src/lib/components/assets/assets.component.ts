@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { IProject, IAsset } from '@anvlop/shared/interfaces';
-import { allowedFileTypes } from '@anvlop/constants';
+import { allowedFileTypes } from '@anvlop/shared/constants';
 import { UploadService } from '../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
 

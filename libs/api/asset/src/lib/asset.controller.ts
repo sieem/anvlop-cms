@@ -2,7 +2,7 @@ import { Controller, Post, HttpException, HttpStatus, Param, UseGuards, UseInter
 import { FileInterceptor } from '@nestjs/platform-express';
 import { AssetService } from './asset.service';
 import { JwtAuthGuard } from '@anvlop/api/auth';
-import { allowedFileTypes } from '@anvlop/constants';
+import { allowedFileTypes } from '@anvlop/shared/constants';
 
 @Controller()
 export class AssetController {

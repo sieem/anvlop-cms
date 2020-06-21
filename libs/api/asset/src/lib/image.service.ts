@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { imageFileTypes } from '@anvlop/constants';
+import { imageFileTypes } from '@anvlop/shared/constants';
 import * as Jimp from 'jimp';
 
 @Injectable()
