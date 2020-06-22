@@ -26,7 +26,7 @@
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
-    "scully": "scully",
+    "scully": "scully  --scanRoutes",
     "scully:serve": "scully serve"
   },
   "private": true,
