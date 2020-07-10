@@ -60,12 +60,6 @@
       "tags": [],
       "implicitDependencies": ["ui-static"]
     },
-    "ui-static-home": {
-      "tags": []
-    },
-    "ui-static-projects": {
-      "tags": []
-    },
     "ui-static-pages": {
       "tags": []
     },
