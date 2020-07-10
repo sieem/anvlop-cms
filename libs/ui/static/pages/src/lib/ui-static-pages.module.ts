@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
+import { UiStaticBlocksModule } from '@anvlop/ui/static/blocks';
+
 import { HomeComponent } from './home/home.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { SingleProjectComponent } from './single-project/single-project.component';
@@ -13,13 +15,11 @@ export const uiStaticPagesRoutes: Route[] = [
   },
   {
     path: 'projects',
-    component: ProjectsComponent,
-    children: [
-      {
-        path: ':slug',
-        component: SingleProjectComponent,
-      }
-    ]
+    component: ProjectsComponent
+  },
+  {
+    path: 'projects/:projectSlug',
+    component: SingleProjectComponent,
   },
   {
     path: 'about',
@@ -28,7 +28,7 @@ export const uiStaticPagesRoutes: Route[] = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, UiStaticBlocksModule],
   declarations: [HomeComponent, ProjectsComponent, SingleProjectComponent, AboutComponent],
 })
 export class UiStaticPagesModule {}

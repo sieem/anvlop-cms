@@ -7,5 +7,6 @@ import { SingleProjectBlockComponent } from './single-project-block/single-proje
 @NgModule({
   imports: [CommonModule, RouterModule],
   declarations: [ProjectsBlockComponent, SingleProjectBlockComponent],
+  exports: [ProjectsBlockComponent, SingleProjectBlockComponent],
 })
 export class UiStaticBlocksModule {}
