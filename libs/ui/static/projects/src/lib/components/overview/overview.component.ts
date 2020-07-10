@@ -14,7 +14,7 @@ const projectsStateKey = 'projects';
 export class OverviewComponent implements OnInit {
   public readonly projects$ = isScullyGenerated()
     ? this.transferStateService.getState<Project[]>(projectsStateKey)
-    : this.http.get<Project[]>('http://localhost:3333/api/projects').pipe(
+    : this.http.get<Project[]>('/api/projects').pipe(
       tap(projects => this.transferStateService.setState<Project[]>(projectsStateKey, projects)));
 
   constructor(

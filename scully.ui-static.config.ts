@@ -1,5 +1,7 @@
 import { ScullyConfig } from '@scullyio/scully';
 import { Projects } from './.scully/plugins/scully-projects';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 export const config: ScullyConfig = {
   projectRoot: "./apps/ui/static/src",
@@ -8,13 +10,9 @@ export const config: ScullyConfig = {
   routes: {
     '/projects/:projectSlug': {
       type: Projects,
-      url: 'http://localhost:3333/api/projects'
+      url: `${process.env.API_URL}/api/projects`,
     },
   },
-  // proxyConfig: './apps/ui/static/proxy.conf.json',
-  puppeteerLaunchOptions: {
-    devtools: true,
-    slowMo: 1000
-  },
+  proxyConfig: './apps/ui/static/proxy.conf.json',
   appPort: 1864,
 };

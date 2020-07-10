@@ -34,7 +34,7 @@ export class ProjectComponent implements OnInit {
 
       this.project$ = isScullyGenerated()
       ? this.transferStateService.getState<Project>(params.projectSlug)
-        : this.http.get<Project>(`http://localhost:3333/api/project/${params.projectSlug}`).pipe(
+        : this.http.get<Project>(`/api/project/${params.projectSlug}`).pipe(
         tap(project => this.transferStateService.setState<Project>(params.projectSlug, project)));
     })
   }
