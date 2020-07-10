@@ -4,7 +4,6 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User } from '@anvlop/shared/interfaces';
 import { CreateUserDto } from '@anvlop/shared/interfaces';
 import * as bcrypt from 'bcrypt';
-import { bcryptConstants } from '@anvlop/shared/constants';
 
 @Injectable()
 export class UserService {
@@ -45,7 +44,7 @@ export class UserService {
 
     private hashPassword(password: string): Promise<string> {
         return new Promise((resolve, reject) => {
-            bcrypt.hash(password, bcryptConstants.saltRounds, (err, hash) => {
+            bcrypt.hash(password, process.env.BCRYPT_ROUNDS, (err, hash) => {
                 if (err) {
                     reject(err);
                 }

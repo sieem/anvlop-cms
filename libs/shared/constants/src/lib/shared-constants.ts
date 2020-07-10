@@ -1,11 +1,3 @@
-export const jwtConstants = {
-    secret: 'secretKey',
-};
-
-export const bcryptConstants = {
-    saltRounds: 10,
-};
-
 export const imageFileTypes = [
     'image/jpeg',
     'image/png',
