@@ -6,7 +6,26 @@ import { ProjectsComponent } from './projects/projects.component';
 import { SingleProjectComponent } from './single-project/single-project.component';
 import { AboutComponent } from './about/about.component';
 
-export const uiStaticPagesRoutes: Route[] = [];
+export const uiStaticPagesRoutes: Route[] = [
+  {
+    path: '',
+    component: HomeComponent,
+  },
+  {
+    path: 'projects',
+    component: ProjectsComponent,
+    children: [
+      {
+        path: ':slug',
+        component: SingleProjectComponent,
+      }
+    ]
+  },
+  {
+    path: 'about',
+    component: AboutComponent,
+  },
+];
 
 @NgModule({
   imports: [CommonModule, RouterModule],

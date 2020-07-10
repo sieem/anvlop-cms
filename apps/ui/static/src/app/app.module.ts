@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 
-import { UiStaticHomeModule, uiStaticHomeRoutes } from '@anvlop/ui/static/home';
+import { UiStaticPagesModule, uiStaticPagesRoutes } from '@anvlop/ui/static/pages';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
@@ -15,12 +15,11 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
     HttpClientModule,
     RouterModule.forRoot(
       [
-        { path: '', children: uiStaticHomeRoutes },
-        { path: 'projects', loadChildren: () => import('@anvlop/ui/static/projects').then(m => m.UiStaticProjectsModule) },
+        { path: '', children: uiStaticPagesRoutes },
       ],
       { initialNavigation: 'enabled' }
     ),
-    UiStaticHomeModule,
+    UiStaticPagesModule,
     ScullyLibModule
   ],
   providers: [],
