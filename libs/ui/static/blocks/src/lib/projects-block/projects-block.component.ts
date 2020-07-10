@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '@anvlop/ui/static/services';
 import { Project } from '@anvlop/shared/interfaces';
-import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
-import { tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const projectsStateKey = 'projects';
 
@@ -12,14 +11,10 @@ const projectsStateKey = 'projects';
   styleUrls: ['./projects-block.component.scss']
 })
 export class ProjectsBlockComponent implements OnInit {
-  public readonly projects$ = isScullyGenerated()
-    ? this.transferStateService.getState<Project[]>(projectsStateKey)
-    : this.http.get<Project[]>('/api/projects').pipe(
-      tap(projects => this.transferStateService.setState<Project[]>(projectsStateKey, projects)));
+  public readonly projects$: Observable<Project[]> = this.api.httpCall('/api/projects', projectsStateKey);
 
   constructor(
-    private http: HttpClient,
-    private readonly transferStateService: TransferStateService
+    private api: ApiService,
   ) { }
 
   ngOnInit(): void {

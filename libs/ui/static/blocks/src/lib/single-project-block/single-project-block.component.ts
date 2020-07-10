@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { Project } from '@anvlop/shared/interfaces';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
-import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
+import { ApiService } from '@anvlop/ui/static/services';
 
 @Component({
   selector: 'anvlop-single-project-block',
@@ -16,8 +14,7 @@ export class SingleProjectBlockComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
-    private readonly transferStateService: TransferStateService,
+    private api: ApiService,
   ) { }
 
   ngOnInit(): void {
@@ -26,10 +23,7 @@ export class SingleProjectBlockComponent implements OnInit {
         return;
       }
 
-      this.project$ = isScullyGenerated()
-        ? this.transferStateService.getState<Project>(params.projectSlug)
-        : this.http.get<Project>(`/api/project/${params.projectSlug}`).pipe(
-          tap(project => this.transferStateService.setState<Project>(params.projectSlug, project)));
+      this.project$ = this.api.httpCall(`/api/project/${params.projectSlug}`, params.projectSlug);
     })
   }
 
