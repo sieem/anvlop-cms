@@ -591,6 +591,102 @@
           "style": "scss"
         }
       }
+    },
+    "ui-static-pages": {
+      "projectType": "library",
+      "root": "libs/ui/static/pages",
+      "sourceRoot": "libs/ui/static/pages/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/static/pages/tsconfig.lib.json",
+              "libs/ui/static/pages/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/static/pages/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/static/pages/jest.config.js",
+            "tsConfig": "libs/ui/static/pages/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/static/pages/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": ".scss"
+        }
+      }
+    },
+    "ui-static-blocks": {
+      "projectType": "library",
+      "root": "libs/ui/static/blocks",
+      "sourceRoot": "libs/ui/static/blocks/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/static/blocks/tsconfig.lib.json",
+              "libs/ui/static/blocks/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/static/blocks/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/static/blocks/jest.config.js",
+            "tsConfig": "libs/ui/static/blocks/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/static/blocks/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": ".scss"
+        }
+      }
+    },
+    "ui-static-services": {
+      "projectType": "library",
+      "root": "libs/ui/static/services",
+      "sourceRoot": "libs/ui/static/services/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/static/services/tsconfig.lib.json",
+              "libs/ui/static/services/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/static/services/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/static/services/jest.config.js",
+            "tsConfig": "libs/ui/static/services/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/static/services/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": ".scss"
+        }
+      }
     }
   },
   "cli": {

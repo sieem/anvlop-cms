@@ -25,7 +25,10 @@
       "@anvlop/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
       "@anvlop/shared/constants": ["libs/shared/constants/src/index.ts"],
       "@anvlop/ui/static/home": ["libs/ui/static/home/src/index.ts"],
-      "@anvlop/ui/static/projects": ["libs/ui/static/projects/src/index.ts"]
+      "@anvlop/ui/static/projects": ["libs/ui/static/projects/src/index.ts"],
+      "@anvlop/ui/static/pages": ["libs/ui/static/pages/src/index.ts"],
+      "@anvlop/ui/static/blocks": ["libs/ui/static/blocks/src/index.ts"],
+      "@anvlop/ui/static/services": ["libs/ui/static/services/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

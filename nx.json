@@ -65,6 +65,15 @@
     },
     "ui-static-projects": {
       "tags": []
+    },
+    "ui-static-pages": {
+      "tags": []
+    },
+    "ui-static-blocks": {
+      "tags": []
+    },
+    "ui-static-services": {
+      "tags": []
     }
   }
 }
