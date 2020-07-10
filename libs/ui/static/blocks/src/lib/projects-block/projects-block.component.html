@@ -1,1 +1,5 @@
-<p>projects-block works!</p>
+<div class="overview">
+    <div class="project" *ngFor="let project of projects$ | async">
+        <a [routerLink]="[project.slug]" routerLinkActive="router-link-active">{{ project.title }}</a>
+    </div>
+</div>

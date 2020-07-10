@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Project } from '@anvlop/shared/interfaces';
+import { isScullyGenerated, TransferStateService } from '@scullyio/ng-lib';
+import { tap } from 'rxjs/operators';
+
+const projectsStateKey = 'projects';
 
 @Component({
   selector: 'anvlop-projects-block',
@@ -6,8 +12,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./projects-block.component.scss']
 })
 export class ProjectsBlockComponent implements OnInit {
+  public readonly projects$ = isScullyGenerated()
+    ? this.transferStateService.getState<Project[]>(projectsStateKey)
+    : this.http.get<Project[]>('/api/projects').pipe(
+      tap(projects => this.transferStateService.setState<Project[]>(projectsStateKey, projects)));
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private readonly transferStateService: TransferStateService
+  ) { }
 
   ngOnInit(): void {
   }
