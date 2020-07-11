@@ -40,5 +40,6 @@ Thumbs.db
 
 # Firebase
 firebase.json
+/.firebase
 
 .env

@@ -1,0 +1,18 @@
+{
+  "targets": {
+    "anvlop-cms": {
+      "hosting": {
+        "ui-admin": [
+          "anvlop-admin"
+        ]
+      }
+    },
+    "anvlop-cms": {
+      "hosting": {
+        "ui-static": [
+          "anvlop-static"
+        ]
+      }
+    }
+  }
+}
