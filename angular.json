@@ -226,7 +226,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ui-admin:build",
-            "proxyConfig": "apps/ui/admin/proxy.conf.json"
+            "proxyConfig": "apps/ui/admin/proxy.conf.json",
+            "port": 4201,
+            "open": true
           },
           "configurations": {
             "production": {
@@ -466,7 +468,9 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
             "browserTarget": "ui-static:build",
-            "proxyConfig": "apps/ui/static/proxy.conf.json"
+            "proxyConfig": "apps/ui/static/proxy.conf.json",
+            "port": 4200,
+            "open": true
           },
           "configurations": {
             "production": {
