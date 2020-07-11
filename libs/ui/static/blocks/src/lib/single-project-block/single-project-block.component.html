@@ -1,5 +1,6 @@
 <a [routerLink]="['/projects']" routerLinkActive="router-link-active">Go back</a>
-<div class="project" *ngIf="project$ | async as project">
-    {{ project._id }}
-    {{ project.slug }}
+<div class="project" *ngIf="project">
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.slug }}</p>
+    <p>{{ project.description }}</p>
 </div>

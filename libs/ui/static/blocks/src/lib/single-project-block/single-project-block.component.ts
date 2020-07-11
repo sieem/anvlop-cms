@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { Project } from '@anvlop/shared/interfaces';
-import { Observable } from 'rxjs';
-import { ApiService } from '@anvlop/ui/static/services';
+import { Component, OnInit, Input } from '@angular/core';
+import { IProject } from '@anvlop/shared/interfaces';
 
 @Component({
   selector: 'anvlop-single-project-block',
@@ -10,21 +7,14 @@ import { ApiService } from '@anvlop/ui/static/services';
   styleUrls: ['./single-project-block.component.scss']
 })
 export class SingleProjectBlockComponent implements OnInit {
-  project$: Observable<Project>;
+  @Input() project: IProject;
 
   constructor(
-    private route: ActivatedRoute,
-    private api: ApiService,
+
   ) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe(async (params) => {
-      if (!params.projectSlug) {
-        return;
-      }
 
-      this.project$ = this.api.httpCall(`/api/project/${params.projectSlug}`, params.projectSlug);
-    })
   }
 
 }
