@@ -2,5 +2,5 @@
 <div class="project" *ngIf="project">
     <h1>{{ project.title }}</h1>
     <p>{{ project.slug }}</p>
-    <p>{{ project.description }}</p>
+    <p [innerHTML]="project.description"></p>
 </div>
