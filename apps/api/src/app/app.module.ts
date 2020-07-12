@@ -5,6 +5,9 @@ import { ProjectModule } from '@anvlop/api/project';
 import { AuthModule } from '@anvlop/api/auth';
 import { AssetModule } from '@anvlop/api/asset';
 
+import { config } from 'dotenv';
+config();
+
 @Module({
   imports: [
     MongooseModule.forRoot(process.env.MONGODB_URL),
