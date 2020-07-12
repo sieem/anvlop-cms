@@ -27,7 +27,8 @@
     "help": "nx help",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "scully": "scully  --scanRoutes",
-    "scully:serve": "scully serve"
+    "scully:serve": "scully serve",
+    "deploy:api": "now --prod --token rufetggngAsDyibXFkcGbKY3"
   },
   "private": true,
   "dependencies": {
@@ -71,6 +72,7 @@
     "firebase": "^7.13.1"
   },
   "devDependencies": {
+    "@angular-devkit/architect": ">= 0.900 < 0.1100",
     "@angular-devkit/build-angular": "0.901.0",
     "@angular/cli": "9.1.0",
     "@angular/compiler-cli": "^9.1.0",
@@ -93,21 +95,21 @@
     "cypress": "^4.1.0",
     "dotenv": "8.2.0",
     "eslint": "6.8.0",
+    "firebase-tools": "^8.0.0",
+    "fuzzy": "^0.1.3",
     "husky": "^4.2.5",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jest": "25.2.3",
     "jest-preset-angular": "8.1.2",
     "lint-staged": "^10.2.11",
+    "now": "^19.1.2",
+    "open": "^7.0.3",
     "prettier": "2.0.4",
     "ts-jest": "25.2.1",
     "ts-node": "~7.0.0",
     "tslint": "~6.0.0",
-    "typescript": "~3.8.3",
-    "@angular-devkit/architect": ">= 0.900 < 0.1100",
-    "firebase-tools": "^8.0.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
-    "open": "^7.0.3"
+    "typescript": "~3.8.3"
   },
   "husky": {
     "hooks": {
