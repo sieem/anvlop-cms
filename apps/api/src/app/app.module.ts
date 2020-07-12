@@ -7,7 +7,7 @@ import { AssetModule } from '@anvlop/api/asset';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost/anvlop-cms'),
+    MongooseModule.forRoot(process.env.MONGODB_URL),
     UserModule,
     ProjectModule,
     AuthModule,
