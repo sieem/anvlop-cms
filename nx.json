@@ -71,6 +71,9 @@
     },
     "api-category": {
       "tags": []
+    },
+    "api-page": {
+      "tags": []
     }
   }
 }

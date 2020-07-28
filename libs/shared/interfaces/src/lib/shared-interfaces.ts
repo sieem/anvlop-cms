@@ -15,3 +15,8 @@ export * from './asset/asset.schema';
 export * from './category/category.interface';
 export * from './category/category.schema';
 export * from './category/create-category.dto';
+
+// page
+export * from './page/page.interface';
+export * from './page/page.schema';
+export * from './page/create-page.dto';
