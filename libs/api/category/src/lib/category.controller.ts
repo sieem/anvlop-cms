@@ -9,7 +9,7 @@ import { Types, isValidObjectId } from 'mongoose';
 export class CategoryController {
     constructor(private readonly categoryService: CategoryService) { }
 
-    @Get('categorys')
+    @Get('categories')
     async findAll(): Promise<Category[]> {
         return this.categoryService.findAll();
     }
