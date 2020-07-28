@@ -1,7 +1,7 @@
 import { ScullyConfig } from '@scullyio/scully';
 import { Projects } from './.scully/plugins/scully-projects';
-import * as dotenv from 'dotenv';
-dotenv.config();
+import { config } from 'dotenv';
+config();
 
 export const config: ScullyConfig = {
   projectRoot: "./apps/ui/static/src",
