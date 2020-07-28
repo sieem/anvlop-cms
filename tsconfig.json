@@ -26,7 +26,8 @@
       "@anvlop/shared/constants": ["libs/shared/constants/src/index.ts"],
       "@anvlop/ui/static/pages": ["libs/ui/static/pages/src/index.ts"],
       "@anvlop/ui/static/blocks": ["libs/ui/static/blocks/src/index.ts"],
-      "@anvlop/ui/static/services": ["libs/ui/static/services/src/index.ts"]
+      "@anvlop/ui/static/services": ["libs/ui/static/services/src/index.ts"],
+      "@anvlop/api/category": ["libs/api/category/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

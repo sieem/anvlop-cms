@@ -68,6 +68,9 @@
     },
     "ui-static-services": {
       "tags": []
+    },
+    "api-category": {
+      "tags": []
     }
   }
 }

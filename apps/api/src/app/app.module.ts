@@ -4,6 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProjectModule } from '@anvlop/api/project';
 import { AuthModule } from '@anvlop/api/auth';
 import { AssetModule } from '@anvlop/api/asset';
+import { CategoryModule } from '@anvlop/api/category';
 
 import { config } from 'dotenv';
 config();
@@ -15,6 +16,7 @@ config();
     ProjectModule,
     AuthModule,
     AssetModule,
+    CategoryModule,
   ],
   controllers: [],
 })
