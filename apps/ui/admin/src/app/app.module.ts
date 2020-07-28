@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { AdminProjectModule, adminProjectsRoutes } from '@anvlop/ui/admin/projects';
 import { UiAdminAuthModule, adminAuthRoutes, UiAdminAuthInterceptor } from '@anvlop/ui/admin/auth';
+import { AdminPagesModule, adminPagesRoutes } from '@anvlop/ui/admin/pages';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 @NgModule({
@@ -14,12 +15,14 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     RouterModule.forRoot(
       [
         { path: 'projects', children: adminProjectsRoutes },
-        { path: 'auth', children: adminAuthRoutes }
+        { path: 'auth', children: adminAuthRoutes },
+        { path: 'pages', children: adminPagesRoutes },
       ],
       { initialNavigation: 'enabled' }
     ),
     AdminProjectModule,
     UiAdminAuthModule,
+    AdminPagesModule,
   ],
   providers: [
     {

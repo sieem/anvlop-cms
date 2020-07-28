@@ -74,6 +74,9 @@
     },
     "api-page": {
       "tags": []
+    },
+    "ui-admin-pages": {
+      "tags": []
     }
   }
 }
