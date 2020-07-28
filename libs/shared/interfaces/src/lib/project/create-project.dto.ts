@@ -13,6 +13,9 @@ export class CreateProjectDto implements IProject {
     year: string;
 
     @IsString()
+    category: string;
+
+    @IsString()
     description: string;
 
     @IsArray()

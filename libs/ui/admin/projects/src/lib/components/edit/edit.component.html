@@ -14,6 +14,12 @@
         <label for="year">Year</label>
         <input type="year" name="year" formControlName="year">
     </div>
+    <div class="inputGroup">
+        <label for="category">Category</label>
+        <select name="category" formControlName="category">
+            <option *ngFor="let category of categories$ | async" [value]="category.slug">{{category.title}}</option>
+        </select>
+    </div>
 
     <div class="inputGroup">
         <quill-editor formControlName="description">

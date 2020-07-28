@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { IProject } from '@anvlop/shared/interfaces';
+import { IProject, Category } from '@anvlop/shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
@@ -18,6 +18,7 @@ export class EditComponent implements OnInit {
   public projectId: string;
   public submitted = false;
   public projectLoaded: Subject<IProject> = new Subject<IProject>();
+  public categories$ = this.http.get<Category[]> ('/api/categories');
 
   constructor(
     private formBuilder: FormBuilder,
@@ -32,6 +33,7 @@ export class EditComponent implements OnInit {
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
       year: ['', []],
+      category: ['', []],
       description: ['', []],
       assets: this.formBuilder.array([])
     });
@@ -51,6 +53,7 @@ export class EditComponent implements OnInit {
           title: project.title,
           slug: project.slug,
           year: project.year,
+          category: project.category,
           description: project.description,
           assets: []
         });
