@@ -83,6 +83,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
               this.addAsset({
                 src: newAsset.src,
                 type: newAsset.type,
+                mainAsset: this.assets.controls.length === 0,
               });
             }
 
