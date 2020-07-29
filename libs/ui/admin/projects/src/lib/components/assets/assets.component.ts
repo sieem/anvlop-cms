@@ -2,7 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { IProject, IAsset } from '@anvlop/shared/interfaces';
-import { allowedFileTypes } from '@anvlop/shared/constants';
+import { allowedFileTypes, maxAssetFileSize } from '@anvlop/shared/constants';
 import { UploadService } from '../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -35,7 +35,8 @@ export class AssetsComponent implements OnInit, OnDestroy {
   addAsset(asset:IAsset) {
     this.assets.push(new FormGroup({
       mainAsset: new FormControl(asset.mainAsset),
-      src: new FormControl(asset.src)
+      src: new FormControl(asset.src),
+      type: new FormControl(asset.type),
     }));
   }
 
@@ -54,6 +55,7 @@ export class AssetsComponent implements OnInit, OnDestroy {
       assetControl.setValue({
         mainAsset,
         src: assetControl.value.src,
+        type: assetControl.value.type,
       });
     }
   }
@@ -66,14 +68,21 @@ export class AssetsComponent implements OnInit, OnDestroy {
           continue;
         }
 
+        if (asset.size > maxAssetFileSize) {
+          this.toastr.error(asset.name, `Filesize too big, max size is ${maxAssetFileSize / 1024 / 1024} MB`);
+          continue;
+        }
+
         const formData = new FormData();
         formData.append('asset', asset);
 
         this.uploadService.upload(this.projectId || 'newProject', formData).subscribe(
           (res) => {
-            if (res && res.filename) {
+            if (res && res.src) {
+              const newAsset = res as IAsset;
               this.addAsset({
-                src: res.filename
+                src: newAsset.src,
+                type: newAsset.type,
               });
             }
 

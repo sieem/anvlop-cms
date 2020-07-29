@@ -14,3 +14,5 @@ export const allowedFileTypes = [
     ...imageFileTypes,
     ...videoFileTypes,
 ];
+
+export const maxAssetFileSize = 5 * 1024 * 1024;

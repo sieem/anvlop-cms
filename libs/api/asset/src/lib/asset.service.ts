@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import { ImageService } from './image.service';
 import { Project, IAsset } from '@anvlop/shared/interfaces';
+import { imageFileTypes } from '@anvlop/shared/constants';
 
 @Injectable()
 export class AssetService {
@@ -18,7 +19,9 @@ export class AssetService {
     constructor(private imageService: ImageService) { }
 
     async upload(projectId: string, file): Promise<any> {
-        file = await this.imageService.convert(file);
+        if (imageFileTypes.includes(file.mimetype)) {
+            file = await this.imageService.convert(file);
+        }
 
         //https://storage.cloud.google.com/[BUCKET_NAME]/[OBJECT_NAME]
         const fileUpload = this.bucket.file(`${projectId}/${Date.now()}_${file.originalname}`);
@@ -43,7 +46,8 @@ export class AssetService {
         });
 
         return {
-            filename: fileUpload.name,
+            src: fileUpload.name,
+            type: imageFileTypes.includes(file.mimetype) ? 'image' : 'video'
         };
     }
 
