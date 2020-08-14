@@ -10,6 +10,7 @@ import { QuillModule } from 'ngx-quill'
 
 import { EditComponent } from './components/edit/edit.component';
 import { AssetsComponent } from './components/assets/assets.component';
+import { SharedAngularModule } from '@anvlop/shared/angular';
 
 import { SortablejsModule } from 'ngx-sortablejs';
 
@@ -39,6 +40,7 @@ export const adminProjectsRoutes: Route[] = [
     ReactiveFormsModule,
     QuillModule.forRoot(),
     SortablejsModule.forRoot({ animation: 150 }),
+    SharedAngularModule,
   ],
   declarations: [OverviewComponent, EditComponent, AssetsComponent],
   exports: [OverviewComponent, EditComponent],

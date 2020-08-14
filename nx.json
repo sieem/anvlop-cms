@@ -80,6 +80,9 @@
     },
     "ui-admin-categories": {
       "tags": []
+    },
+    "shared-angular": {
+      "tags": []
     }
   }
 }

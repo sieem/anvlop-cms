@@ -6,10 +6,10 @@
             <div *ngIf="asset.value" [class.mainAsset]="asset.value.mainAsset">
                 <div *ngFor="let file of asset.value.files">
                     <div *ngIf="file.type === 'image'">
-                        <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{file.src}}" alt="" width="100">
+                        <img src="{{file.src | fileUrl}}" alt="" width="100">
                     </div>
                     <div *ngIf="file.type === 'video'">
-                        <video src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{file.src}}" alt="" width="100"></video>
+                        <video src="{{file.src | fileUrl}}" alt="" width="100"></video>
                     </div>
                     <div class="delete" (click)="removeFile(file.src, asset)">x</div>
                 </div>
