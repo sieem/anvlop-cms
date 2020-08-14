@@ -5,14 +5,17 @@ import { UiAdminProjectModule, uiAdminProjectsRoutes } from '@anvlop/ui/admin/pr
 import { UiAdminAuthModule, uiAdminAuthRoutes } from '@anvlop/ui/admin/auth';
 import { UiAdminPagesModule, uiAdminPagesRoutes } from '@anvlop/ui/admin/pages';
 import { UiAdminCategoriesModule, uiAdminCategoriesRoutes } from '@anvlop/ui/admin/categories';
+import { IsLoggedInGuard } from '@anvlop/ui/admin/auth';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
+import { AppComponent } from './app.component';
 
 export const uiAdminMainRoutes: Route[] = [
-  { path: 'projects', children: uiAdminProjectsRoutes },
+  { path: '', component: HomeComponent, canActivate: [IsLoggedInGuard] },
+  { path: 'projects', children: uiAdminProjectsRoutes, canActivate: [IsLoggedInGuard] },
   { path: 'auth', children: uiAdminAuthRoutes },
-  { path: 'pages', children: uiAdminPagesRoutes },
-  { path: 'categories', children: uiAdminCategoriesRoutes },
+  { path: 'pages', children: uiAdminPagesRoutes, canActivate: [IsLoggedInGuard] },
+  { path: 'categories', children: uiAdminCategoriesRoutes, canActivate: [IsLoggedInGuard] },
 ];
 
 @NgModule({
@@ -25,8 +28,8 @@ export const uiAdminMainRoutes: Route[] = [
     UiAdminCategoriesModule,
     RouterModule.forRoot(uiAdminMainRoutes),
   ],
-  declarations: [NavComponent, HomeComponent],
+  declarations: [NavComponent, HomeComponent, AppComponent],
   bootstrap: [HomeComponent],
-  exports: [HomeComponent]
+  exports: [AppComponent]
 })
 export class UiAdminMainModule {}
