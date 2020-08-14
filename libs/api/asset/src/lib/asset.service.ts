@@ -66,7 +66,7 @@ export class AssetService {
     async deleteUnusedFiles(project: Project): Promise<void> {
         const files = await this.bucket.getFiles( { directory: project._id });
         const projectAssets = project.assets.reduce((acc, curr) => {
-            return [...acc, curr.files.map(({src})=> src)]
+            return [...acc, ...curr.files.map(({src})=> src)]
         }, []);
 
         for (const file of files[0]) {
