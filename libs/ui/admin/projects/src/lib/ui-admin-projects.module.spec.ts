@@ -1,14 +1,14 @@
 import { async, TestBed } from '@angular/core/testing';
-import { AdminProjectModule } from './ui-admin-projects.module';
+import { UiAdminProjectModule } from './ui-admin-projects.module';
 
-describe('AdminProjectModule', () => {
+describe('UiAdminProjectModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AdminProjectModule],
+      imports: [UiAdminProjectModule],
     }).compileComponents();
   }));
 
   it('should create', () => {
-    expect(AdminProjectModule).toBeDefined();
+    expect(UiAdminProjectModule).toBeDefined();
   });
 });

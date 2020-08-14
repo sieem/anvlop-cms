@@ -83,6 +83,9 @@
     },
     "shared-angular": {
       "tags": []
+    },
+    "ui-admin-main": {
+      "tags": []
     }
   }
 }

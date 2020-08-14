@@ -31,7 +31,8 @@
       "@anvlop/api/page": ["libs/api/page/src/index.ts"],
       "@anvlop/ui/admin/pages": ["libs/ui/admin/pages/src/index.ts"],
       "@anvlop/ui/admin/categories": ["libs/ui/admin/categories/src/index.ts"],
-      "@anvlop/shared/angular": ["libs/shared/angular/src/index.ts"]
+      "@anvlop/shared/angular": ["libs/shared/angular/src/index.ts"],
+      "@anvlop/ui/admin/main": ["libs/ui/admin/main/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

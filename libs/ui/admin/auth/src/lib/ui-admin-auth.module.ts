@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 
-export const adminAuthRoutes: Route[] = [
+export const uiAdminAuthRoutes: Route[] = [
   {
     path: '',
     redirectTo: 'login',

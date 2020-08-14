@@ -15,7 +15,7 @@ import { IsLoggedInGuard } from '@anvlop/ui/admin/auth';
 
 import { SortablejsModule } from 'ngx-sortablejs';
 
-export const adminProjectsRoutes: Route[] = [
+export const uiAdminProjectsRoutes: Route[] = [
   {
     path: '',
     component: OverviewComponent,
@@ -49,4 +49,4 @@ export const adminProjectsRoutes: Route[] = [
   declarations: [OverviewComponent, EditComponent, AssetsComponent],
   exports: [OverviewComponent, EditComponent],
 })
-export class AdminProjectModule {}
+export class UiAdminProjectModule {}

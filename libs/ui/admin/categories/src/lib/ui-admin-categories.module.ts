@@ -11,7 +11,7 @@ import { QuillModule } from 'ngx-quill'
 import { EditComponent } from './components/edit/edit.component';
 
 
-export const adminCategoriesRoutes: Route[] = [
+export const uiAdminCategoriesRoutes: Route[] = [
   {
     path: '',
     component: OverviewComponent
@@ -40,4 +40,4 @@ export const adminCategoriesRoutes: Route[] = [
   declarations: [OverviewComponent, EditComponent],
   exports: [OverviewComponent, EditComponent],
 })
-export class AdminCategoriesModule { }
+export class UiAdminCategoriesModule { }
