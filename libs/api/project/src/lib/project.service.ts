@@ -34,7 +34,9 @@ export class ProjectService {
         }
 
         createdProject.assets = createdProject.assets.map((asset) => {
-            asset.src = asset.src.replace('newProject', createdProject._id);
+            asset.files.map((file) => {
+                file.src = file.src.replace('newProject', createdProject._id);
+            });
             return asset;
         });
 

@@ -10,6 +10,7 @@ export * from './project/create-project.dto';
 
 // asset
 export * from './asset/asset.schema';
+export * from './asset/file.schema';
 
 // category
 export * from './category/category.interface';

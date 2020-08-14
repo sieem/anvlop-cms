@@ -1,5 +1,7 @@
+import { IFile } from './file.schema';
+
 export interface IAsset {
+    id: string;
     mainAsset?: boolean;
-    src: string;
-    type: 'image' | 'video';
+    files?: IFile[];
 }

@@ -4,19 +4,22 @@
         <div formArrayName="assets" 
         *ngFor="let asset of assets.controls">
             <div *ngIf="asset.value" [class.mainAsset]="asset.value.mainAsset">
-                <div *ngIf="asset.value.type === 'image'">
-                    <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{asset.value.src}}" alt="" width="100">
+                <div *ngFor="let file of asset.value.files">
+                    <div *ngIf="file.type === 'image'">
+                        <img src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{file.src}}" alt="" width="100">
+                    </div>
+                    <div *ngIf="file.type === 'video'">
+                        <video src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{file.src}}" alt="" width="100"></video>
+                    </div>
+                    <div class="delete" (click)="removeFile(file.src, asset)">x</div>
                 </div>
-                <div *ngIf="asset.value.type === 'video'">
-                    <video src="https://storage.cloud.google.com/anvlop-cms.appspot.com/{{asset.value.src}}" alt="" width="100"></video>
-                </div>
-                <div class="delete" (click)="removeAsset(asset.value.src)">x</div>
-                <div class="star" (click)="makeMainAsset(asset.value.src)">*</div>
+                <div class="star" (click)="makeMainAsset(asset.value.id)">*</div>
+                <div class="delete" (click)="removeAsset(asset.value.id)">xxx</div>
+                <input type="file" multiple name="Add asset" (change)="onFileChange($event, asset.value.id)" />
             </div>
         </div>
     </div>
-
+    <div (click)="addAsset()">Add asset</div>
     <div>{{uploadProgress}}%</div>
-    <input type="file" multiple name="Add asset" (change)="onFileChange($event)" />
 </div>
 

@@ -51,10 +51,12 @@ export class AssetService {
         };
     }
 
-    moveNewProjectFiles(projectId: string, files: IAsset[]): void {
+    moveNewProjectFiles(projectId: string, assets: IAsset[]): void {
         try {
-            for (const file of files) {
-                this.bucket.file(file.src).move(file.src.replace('newProject', projectId));
+            for (const { files } of assets) {
+                for (const { src } of files) {
+                    this.bucket.file(src).move(src.replace('newProject', projectId));
+                }
             }
         } catch (error) {
             console.log(error);
@@ -63,7 +65,9 @@ export class AssetService {
 
     async deleteUnusedFiles(project: Project): Promise<void> {
         const files = await this.bucket.getFiles( { directory: project._id });
-        const projectAssets = project.assets.map((el) => el.src );
+        const projectAssets = project.assets.reduce((acc, curr) => {
+            return [...acc, curr.files.map(({src})=> src)]
+        }, []);
 
         for (const file of files[0]) {
             if (projectAssets.indexOf(file.name) > -1) {

@@ -5,6 +5,8 @@ import { IProject, IAsset } from '@anvlop/shared/interfaces';
 import { allowedFileTypes, maxAssetFileSize } from '@anvlop/shared/constants';
 import { UploadService } from '../../services/upload.service';
 import { ToastrService } from 'ngx-toastr';
+import { IFile } from '@anvlop/shared/interfaces';
+import { v4 as guid } from 'uuid';
 
 @Component({
   selector: 'anvlop-assets',
@@ -26,41 +28,64 @@ export class AssetsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.projectLoadedSubcription = this.projectLoaded.subscribe((project) => {
+      if (!project.assets.length) {
+        return this.addAsset();
+      }
       for (const asset of project.assets) {
         this.addAsset(asset);
       }
     });
   }
 
-  addAsset(asset:IAsset) {
+  generateFilesForm(files) {
+    const filesForm = new FormArray([]);
+    if (files) {
+      for (const file of files) {
+        filesForm.push(new FormGroup({
+          src: new FormControl(file.src),
+          type: new FormControl(file.type),
+        }));
+      }
+    }
+    return filesForm;
+  }
+
+  addAsset(asset: IAsset = { id: guid() }) {
     this.assets.push(new FormGroup({
+      id: new FormControl(asset.id), 
       mainAsset: new FormControl(asset.mainAsset),
-      src: new FormControl(asset.src),
-      type: new FormControl(asset.type),
+      files: this.generateFilesForm(asset.files),
     }));
   }
 
-  removeAsset(asset:string) {
+  removeAsset(asset: string) {
     const assetsFlat = this.assets.value.map((el) => el.src);
     this.assets.removeAt(assetsFlat.indexOf(asset));
   }
 
-  makeMainAsset(asset) {
+  removeFile(fileSrc: string, asset) {
+    const assetsFlat = asset.value.files.map((file: IFile) => file.src);
+    asset.controls.files.removeAt(assetsFlat.indexOf(fileSrc));
+  }
+
+  makeMainAsset(assetId) {
     for (const assetControl of this.assets.controls) {
-      let mainAsset = null;
-      if (assetControl.value.src === asset) {
+      let mainAsset = false;
+      if (assetControl.value.id === assetId) {
         mainAsset = true;
       }
 
-      assetControl.setValue({
+      assetControl.patchValue({
         mainAsset,
-        src: assetControl.value.src,
-        type: assetControl.value.type,
       });
     }
   }
 
-  onFileChange(event) {
+  findAsset(assetId) {
+    return this.assets.controls.find(asset => asset.value.id === assetId);
+  }
+
+  onFileChange(event, assetId) {
     if (!!event.target.files) {
       for (const asset of event.target.files) {
         if (allowedFileTypes.indexOf(asset.type) === -1) {
@@ -79,12 +104,19 @@ export class AssetsComponent implements OnInit, OnDestroy {
         this.uploadService.upload(this.projectId || 'newProject', formData).subscribe(
           (res) => {
             if (res && res.src) {
-              const newAsset = res as IAsset;
-              this.addAsset({
-                src: newAsset.src,
-                type: newAsset.type,
-                mainAsset: this.assets.controls.length === 0,
+              const newAsset = res as IFile;
+              const assetToUpdate = this.findAsset(assetId);
+              const fileToAdd = new FormGroup({
+                src: new FormControl(newAsset.src),
+                type: new FormControl(newAsset.type),
               });
+
+              const filesToUpdate = <FormArray>assetToUpdate.get('files');
+              filesToUpdate.push(fileToAdd);
+
+              assetToUpdate.patchValue({
+                files: [filesToUpdate],
+              })
             }
 
             if (res && res.progress) {
