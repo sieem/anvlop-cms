@@ -10,6 +10,11 @@ import { LoginComponent } from './components/login/login.component';
 export const adminAuthRoutes: Route[] = [
   {
     path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
+  {
+    path: 'login',
     component: LoginComponent
   },
 ];

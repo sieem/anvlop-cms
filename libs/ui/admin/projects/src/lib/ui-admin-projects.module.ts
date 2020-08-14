@@ -11,21 +11,25 @@ import { QuillModule } from 'ngx-quill'
 import { EditComponent } from './components/edit/edit.component';
 import { AssetsComponent } from './components/assets/assets.component';
 import { SharedAngularModule } from '@anvlop/shared/angular';
+import { IsLoggedInGuard } from '@anvlop/ui/admin/auth';
 
 import { SortablejsModule } from 'ngx-sortablejs';
 
 export const adminProjectsRoutes: Route[] = [
   {
     path: '',
-    component: OverviewComponent
+    component: OverviewComponent,
+    canActivate: [IsLoggedInGuard],
   },
   {
     path: 'new',
-    component: EditComponent
+    component: EditComponent,
+    canActivate: [IsLoggedInGuard],
   },
   {
     path: 'edit/:projectId',
-    component: EditComponent
+    component: EditComponent,
+    canActivate: [IsLoggedInGuard],
   },
 ];
 
