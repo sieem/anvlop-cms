@@ -17,6 +17,7 @@
     <div class="inputGroup">
         <label for="category">Category</label>
         <select name="category" formControlName="category">
+            <option value="">Choose category</option>
             <option *ngFor="let category of categories$ | async" [value]="category.slug">{{category.title}}</option>
         </select>
     </div>
