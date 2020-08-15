@@ -27,7 +27,7 @@ export class PageService {
 
     const savedPage = await createdPage.save();
 
-    return { pageId: savedPage._id };
+    return { id: savedPage._id };
   }
 
   async update(updatedValues: Page, id: string): Promise<Page> {

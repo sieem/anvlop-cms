@@ -22,8 +22,8 @@ export class OverviewProjectComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  async deleteProject(projectId: string) {
-    await this.http.delete<Project>(`/api/project/${projectId}`).toPromise();
+  async deleteProject(id: string) {
+    await this.http.delete<Project>(`/api/project/${id}`).toPromise();
     this.projectsEvent$.next(true);
   }
 

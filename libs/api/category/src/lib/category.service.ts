@@ -27,7 +27,7 @@ export class CategoryService {
 
     const savedCategory = await createdCategory.save();
 
-    return { categoryId: savedCategory._id };
+    return { id: savedCategory._id };
   }
 
   async update(updatedValues: Category, id: string): Promise<Category> {

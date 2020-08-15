@@ -22,8 +22,8 @@ export class OverviewCategoryComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  async deleteCategory(categoryId: string) {
-    await this.http.delete<Category>(`/api/category/${categoryId}`).toPromise();
+  async deleteCategory(id: string) {
+    await this.http.delete<Category>(`/api/category/${id}`).toPromise();
     this.categoriesEvent$.next(true);
   }
 

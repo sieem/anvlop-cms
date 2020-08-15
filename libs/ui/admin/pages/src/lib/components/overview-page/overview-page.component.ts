@@ -22,8 +22,8 @@ export class OverviewPageComponent implements OnInit {
   ngOnInit(): void {
   }
   
-  async deletePage(pageId: string) {
-    await this.http.delete<Page>(`/api/page/${pageId}`).toPromise();
+  async deletePage(id: string) {
+    await this.http.delete<Page>(`/api/page/${id}`).toPromise();
     this.pagesEvent$.next(true);
   }
 

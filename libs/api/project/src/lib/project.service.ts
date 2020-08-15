@@ -42,7 +42,7 @@ export class ProjectService {
 
         const savedProject = await createdProject.save();
 
-        return { projectId: savedProject._id };
+        return { id: savedProject._id };
     }
 
     async update(updatedValues: Project, id: string): Promise<Project> {
