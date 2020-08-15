@@ -3,7 +3,7 @@ import { FormArray, FormGroup, FormControl } from '@angular/forms';
 import { Subscription, Observable } from 'rxjs';
 import { IProject, IAsset } from '@anvlop/shared/interfaces';
 import { allowedFileTypes, maxAssetFileSize } from '@anvlop/shared/constants';
-import { UploadService } from '../../services/upload.service';
+import { UploadAssetService } from '../../services/upload-asset.service';
 import { ToastrService } from 'ngx-toastr';
 import { IFile } from '@anvlop/shared/interfaces';
 import { v4 as guid } from 'uuid';
@@ -22,7 +22,7 @@ export class AssetsProjectComponent implements OnInit, OnDestroy {
   private projectLoadedSubcription: Subscription; 
 
   constructor(
-    private uploadService: UploadService,
+    private uploadAssetService: UploadAssetService,
     private toastr: ToastrService,
   ) { }
 
@@ -101,7 +101,7 @@ export class AssetsProjectComponent implements OnInit, OnDestroy {
         const formData = new FormData();
         formData.append('asset', asset);
 
-        this.uploadService.upload(this.projectId || 'newProject', formData).subscribe(
+        this.uploadAssetService.upload(this.projectId || 'newProject', formData).subscribe(
           (res) => {
             if (res && res.src) {
               const newAsset = res as IFile;

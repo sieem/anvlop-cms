@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class UploadService {
+export class UploadAssetService {
 
   constructor(private httpClient: HttpClient) { }
 
