@@ -11,7 +11,7 @@ export class PageService {
   ) { }
 
   async findAll(): Promise<Page[]> {
-    return this.pageModel.find().exec();
+    return this.pageModel.find().sort({ order: 1 }).exec();
   }
 
   async findBySlug(slug: string): Promise<Page> {
@@ -24,6 +24,7 @@ export class PageService {
 
   async create(createPageDto: CreatePageDto): Promise<any> {
     const createdPage = new this.pageModel(createPageDto);
+    createdPage.order = (await this.pageModel.find().exec()).length + 1;
 
     const savedPage = await createdPage.save();
 
@@ -42,6 +43,14 @@ export class PageService {
     }
 
     return await updatedPage.save();
+  }
+
+  async updateOrder(updatedValues: Page[]): Promise<any> {
+    let i = 0;
+    for (const updatedValue of updatedValues) {
+      await this.pageModel.findOneAndUpdate({_id: updatedValue._id }, { order: i++ }).exec();
+    }
+    return { success: true };
   }
 
   async delete(id: string) {

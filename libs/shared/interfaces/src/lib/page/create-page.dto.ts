@@ -1,4 +1,4 @@
-import { IsString, IsArray } from 'class-validator';
+import { IsString, IsArray, IsNumber } from 'class-validator';
 import { IPage } from '@anvlop/shared/interfaces';
 
 export class CreatePageDto implements IPage {
@@ -7,6 +7,9 @@ export class CreatePageDto implements IPage {
 
     @IsString()
     slug: string;
+
+    @IsNumber()
+    order: number;
 
     @IsString()
     content: string;

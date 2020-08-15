@@ -5,9 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedAngularModule } from '@anvlop/shared/angular';
 
 import { OverviewCategoryComponent } from './components/overview-category/overview-category.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
+
 
 
 export const uiAdminCategoriesRoutes: Route[] = [
@@ -34,6 +36,7 @@ export const uiAdminCategoriesRoutes: Route[] = [
     ToastrModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedAngularModule,
   ],
   declarations: [OverviewCategoryComponent, EditCategoryComponent],
   exports: [OverviewCategoryComponent, EditCategoryComponent],

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards, Patch } from '@nestjs/common';
 import { PageService } from './page.service';
 import { Page } from '@anvlop/shared/interfaces';
 import { CreatePageDto } from '@anvlop/shared/interfaces';
@@ -42,6 +42,16 @@ export class PageController {
     async update(@Body() updatedValues: Page, @Param() params: any) {
         try {
             return await this.pageService.update(updatedValues, params.id);
+        } catch (error) {
+            throw new HttpException(error, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Patch('pages')
+    async updateOrder(@Body() updatedValues: Page[]) {
+        try {
+            return await this.pageService.updateOrder(updatedValues);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }

@@ -5,7 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill'
+import { QuillModule } from 'ngx-quill';
+import { SortablejsModule } from 'ngx-sortablejs';
+import { SharedAngularModule } from '@anvlop/shared/angular';
 
 import { OverviewPageComponent } from './components/overview-page/overview-page.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
@@ -35,7 +37,9 @@ export const uiAdminPagesRoutes: Route[] = [
     ToastrModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedAngularModule,
     QuillModule.forRoot(),
+    SortablejsModule.forRoot({ animation: 150 }),
   ],
   declarations: [OverviewPageComponent, EditPageComponent],
   exports: [OverviewPageComponent, EditPageComponent],

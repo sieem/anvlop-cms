@@ -6,13 +6,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill'
+import { SortablejsModule } from 'ngx-sortablejs';
 
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
 import { OverviewProjectComponent } from './components/overview-project/overview-project.component';
 import { AssetsProjectComponent } from './components/assets-project/assets-project.component';
 import { SharedAngularModule } from '@anvlop/shared/angular';
 
-import { SortablejsModule } from 'ngx-sortablejs';
 
 export const uiAdminProjectsRoutes: Route[] = [
   {

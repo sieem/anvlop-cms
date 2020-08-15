@@ -16,15 +16,27 @@ export class OverviewPageComponent implements OnInit {
     switchMapTo(this.http.get<Page[]>('/api/pages'))
   );
 
+  sortablejsOptions = {
+    onUpdate: (event: any) => {
+      this.updatePages();
+    }
+  };
 
-  constructor(private http: HttpClient) { }
+  pages = [];
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
+    this.pages$.subscribe((pages) => this.pages = pages);
   }
   
   async deletePage(id: string) {
     await this.http.delete<Page>(`/api/page/${id}`).toPromise();
     this.pagesEvent$.next(true);
+  }
+
+  updatePages() {
+    this.http.patch<any>(`/api/pages`, this.pages).toPromise();
   }
 
   trackByPage(i: number, item: Page) {

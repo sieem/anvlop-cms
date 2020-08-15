@@ -11,6 +11,9 @@ export class Page extends Document implements IPage {
     slug: string;
 
     @Prop({ required: true })
+    order: number;
+
+    @Prop({ required: true })
     content: string;
 }
 
