@@ -7,11 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'anvlop-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  selector: 'anvlop-edit-category',
+  templateUrl: './edit-category.component.html',
+  styleUrls: ['./edit-category.component.scss']
 })
-export class EditComponent implements OnInit {
+export class EditCategoryComponent implements OnInit {
 
   public categoryForm: FormGroup;
   public assets: FormArray;
