@@ -15,7 +15,7 @@ export class EditComponent implements OnInit {
 
   public categoryForm: FormGroup;
   public assets: FormArray;
-  public categoryId: string;
+  public id: string;
   public submitted = false;
 
   constructor(
@@ -33,13 +33,13 @@ export class EditComponent implements OnInit {
     });
 
     this.route.params.subscribe(async (params) => {
-      if (!params.categoryId) {
+      if (!params.id) {
         return;
       }
       
-      this.categoryId = params.categoryId;
+      this.id = params.id;
       try {
-        const category: ICategory = await this.http.get<any>('/api/category/' + this.categoryId).toPromise();
+        const category: ICategory = await this.http.get<any>('/api/category/' + this.id).toPromise();
 
         this.categoryForm.setValue({
           title: category.title,
@@ -64,8 +64,8 @@ export class EditComponent implements OnInit {
 
     const body = { ...this.categoryForm.value }
 
-    if (this.categoryId) {
-      this.http.put<any>(`/api/category/${this.categoryId}`, body).subscribe(
+    if (this.id) {
+      this.http.put<any>(`/api/category/${this.id}`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
         },
@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
       this.http.post<any>(`/api/category`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
-          this.router.navigate(['categories', 'edit', res.categoryId]);
+          this.router.navigate(['categories', 'edit', res.id]);
         },
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       )

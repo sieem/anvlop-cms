@@ -15,7 +15,7 @@ export class EditComponent implements OnInit {
 
   public pageForm: FormGroup;
   public assets: FormArray;
-  public pageId: string;
+  public id: string;
   public submitted = false;
 
   constructor(
@@ -33,13 +33,13 @@ export class EditComponent implements OnInit {
     });
 
     this.route.params.subscribe(async (params) => {
-      if (!params.pageId) {
+      if (!params.id) {
         return;
       }
       
-      this.pageId = params.pageId;
+      this.id = params.id;
       try {
-        const page: IPage = await this.http.get<any>('/api/page/' + this.pageId).toPromise();
+        const page: IPage = await this.http.get<any>('/api/page/' + this.id).toPromise();
 
         this.pageForm.setValue({
           title: page.title,
@@ -64,8 +64,8 @@ export class EditComponent implements OnInit {
 
     const body = { ...this.pageForm.value }
 
-    if (this.pageId) {
-      this.http.put<any>(`/api/page/${this.pageId}`, body).subscribe(
+    if (this.id) {
+      this.http.put<any>(`/api/page/${this.id}`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
         },
@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
       this.http.post<any>(`/api/page`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
-          this.router.navigate(['pages', 'edit', res.pageId]);
+          this.router.navigate(['pages', 'edit', res.id]);
         },
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       )

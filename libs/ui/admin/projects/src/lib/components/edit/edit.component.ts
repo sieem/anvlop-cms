@@ -15,7 +15,7 @@ export class EditComponent implements OnInit {
 
   public projectForm: FormGroup;
   public assets: FormArray;
-  public projectId: string;
+  public id: string;
   public submitted = false;
   public projectLoaded: Subject<IProject> = new Subject<IProject>();
   public categories$ = this.http.get<Category[]> ('/api/categories');
@@ -41,13 +41,13 @@ export class EditComponent implements OnInit {
     this.assets = this.projectForm.get('assets') as FormArray;
 
     this.route.params.subscribe(async (params) => {
-      if (!params.projectId) {
+      if (!params.id) {
         return;
       }
       
-      this.projectId = params.projectId;
+      this.id = params.id;
       try {
-        const project: IProject = await this.http.get<any>('/api/project/' + this.projectId).toPromise();
+        const project: IProject = await this.http.get<any>('/api/project/' + this.id).toPromise();
 
         this.projectForm.setValue({
           title: project.title,
@@ -65,7 +65,7 @@ export class EditComponent implements OnInit {
         this.toastr.error(error, `Error`);
       }
 
-    })
+    });
   }
 
   onSubmit() {
@@ -78,8 +78,8 @@ export class EditComponent implements OnInit {
 
     const body = { ...this.projectForm.value }
 
-    if (this.projectId) {
-      this.http.put<any>(`/api/project/${this.projectId}`, body).subscribe(
+    if (this.id) {
+      this.http.put<any>(`/api/project/${this.id}`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
         },
@@ -89,7 +89,7 @@ export class EditComponent implements OnInit {
       this.http.post<any>(`/api/project`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
-          this.router.navigate(['projects', 'edit', res.projectId]);
+          this.router.navigate(['projects', 'edit', res.id]);
         },
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       )

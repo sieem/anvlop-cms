@@ -24,7 +24,7 @@ export const uiAdminProjectsRoutes: Route[] = [
     component: EditComponent,
   },
   {
-    path: 'edit/:projectId',
+    path: 'edit/:id',
     component: EditComponent,
   },
 ];

@@ -21,7 +21,7 @@ export const uiAdminCategoriesRoutes: Route[] = [
     component: EditComponent
   },
   {
-    path: 'edit/:categoryId',
+    path: 'edit/:id',
     component: EditComponent
   },
 ];

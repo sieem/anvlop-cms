@@ -21,7 +21,7 @@ export const uiAdminPagesRoutes: Route[] = [
     component: EditComponent
   },
   {
-    path: 'edit/:pageId',
+    path: 'edit/:id',
     component: EditComponent
   },
 ];
