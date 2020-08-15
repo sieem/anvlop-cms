@@ -7,11 +7,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'anvlop-edit',
-  templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.scss']
+  selector: 'anvlop-edit-project',
+  templateUrl: './edit-project.component.html',
+  styleUrls: ['./edit-project.component.scss']
 })
-export class EditComponent implements OnInit {
+export class EditProjectComponent implements OnInit {
 
   public projectForm: FormGroup;
   public assets: FormArray;

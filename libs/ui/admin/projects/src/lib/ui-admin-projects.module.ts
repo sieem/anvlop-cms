@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
-import { OverviewComponent } from './components/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill'
 
-import { EditComponent } from './components/edit/edit.component';
-import { AssetsComponent } from './components/assets/assets.component';
+import { EditProjectComponent } from './components/edit-project/edit-project.component';
+import { OverviewProjectComponent } from './components/overview-project/overview-project.component';
+import { AssetsProjectComponent } from './components/assets-project/assets-project.component';
 import { SharedAngularModule } from '@anvlop/shared/angular';
 
 import { SortablejsModule } from 'ngx-sortablejs';
@@ -17,15 +17,15 @@ import { SortablejsModule } from 'ngx-sortablejs';
 export const uiAdminProjectsRoutes: Route[] = [
   {
     path: '',
-    component: OverviewComponent,
+    component: OverviewProjectComponent,
   },
   {
     path: 'new',
-    component: EditComponent,
+    component: EditProjectComponent,
   },
   {
     path: 'edit/:id',
-    component: EditComponent,
+    component: EditProjectComponent,
   },
 ];
 
@@ -42,7 +42,7 @@ export const uiAdminProjectsRoutes: Route[] = [
     SortablejsModule.forRoot({ animation: 150 }),
     SharedAngularModule,
   ],
-  declarations: [OverviewComponent, EditComponent, AssetsComponent],
-  exports: [OverviewComponent, EditComponent],
+  declarations: [OverviewProjectComponent, EditProjectComponent, AssetsProjectComponent],
+  exports: [OverviewProjectComponent, EditProjectComponent],
 })
 export class UiAdminProjectModule {}

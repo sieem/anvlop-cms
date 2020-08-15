@@ -9,11 +9,11 @@ import { IFile } from '@anvlop/shared/interfaces';
 import { v4 as guid } from 'uuid';
 
 @Component({
-  selector: 'anvlop-assets',
-  templateUrl: './assets.component.html',
-  styleUrls: ['./assets.component.scss']
+  selector: 'anvlop-assets-project',
+  templateUrl: './assets-project.component.html',
+  styleUrls: ['./assets-project.component.scss']
 })
-export class AssetsComponent implements OnInit, OnDestroy {
+export class AssetsProjectComponent implements OnInit, OnDestroy {
   @Input() projectId: string;
   @Input() projectForm: FormGroup;
   @Input() assets: FormArray;
