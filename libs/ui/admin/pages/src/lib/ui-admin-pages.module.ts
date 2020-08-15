@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
-import { OverviewComponent } from './components/overview/overview.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { QuillModule } from 'ngx-quill'
 
-import { EditComponent } from './components/edit/edit.component';
+import { OverviewPageComponent } from './components/overview-page/overview-page.component';
+import { EditPageComponent } from './components/edit-page/edit-page.component';
 
 
 export const uiAdminPagesRoutes: Route[] = [
   {
     path: '',
-    component: OverviewComponent
+    component: OverviewPageComponent
   },
   {
     path: 'new',
-    component: EditComponent
+    component: EditPageComponent
   },
   {
     path: 'edit/:id',
-    component: EditComponent
+    component: EditPageComponent
   },
 ];
 
@@ -37,7 +37,7 @@ export const uiAdminPagesRoutes: Route[] = [
     ReactiveFormsModule,
     QuillModule.forRoot(),
   ],
-  declarations: [OverviewComponent, EditComponent],
-  exports: [OverviewComponent, EditComponent],
+  declarations: [OverviewPageComponent, EditPageComponent],
+  exports: [OverviewPageComponent, EditPageComponent],
 })
 export class UiAdminPagesModule { }

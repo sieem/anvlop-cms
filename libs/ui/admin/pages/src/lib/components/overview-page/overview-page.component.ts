@@ -5,11 +5,11 @@ import { switchMapTo } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
-  selector: 'anvlop-overview',
-  templateUrl: './overview.component.html',
-  styleUrls: ['./overview.component.scss']
+  selector: 'anvlop-overview-page',
+  templateUrl: './overview-page.component.html',
+  styleUrls: ['./overview-page.component.scss']
 })
-export class OverviewComponent implements OnInit {
+export class OverviewPageComponent implements OnInit {
   pagesEvent$ = new BehaviorSubject(true);
 
   pages$ = this.pagesEvent$.pipe(
