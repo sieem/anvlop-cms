@@ -7,4 +7,7 @@ export class CreatePageDto implements IPage {
 
     @IsString()
     slug: string;
+
+    @IsString()
+    content: string;
 }

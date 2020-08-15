@@ -9,6 +9,9 @@ export class Page extends Document implements IPage {
 
     @Prop({ required: true, unique: true })
     slug: string;
+
+    @Prop({ required: true })
+    content: string;
 }
 
 export const PageSchema = SchemaFactory.createForClass(Page);

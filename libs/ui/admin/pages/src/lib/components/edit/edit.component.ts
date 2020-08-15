@@ -30,6 +30,7 @@ export class EditComponent implements OnInit {
     this.pageForm = this.formBuilder.group({
       title: ['', [Validators.required]],
       slug: ['', [Validators.required]],
+      content: ['', [Validators.required]],
     });
 
     this.route.params.subscribe(async (params) => {
@@ -44,6 +45,7 @@ export class EditComponent implements OnInit {
         this.pageForm.setValue({
           title: page.title,
           slug: page.slug,
+          content: page.content,
         });
 
       } catch (error) {
