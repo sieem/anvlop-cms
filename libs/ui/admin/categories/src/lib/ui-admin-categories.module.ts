@@ -5,7 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill'
 
 import { OverviewCategoryComponent } from './components/overview-category/overview-category.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
@@ -35,7 +34,6 @@ export const uiAdminCategoriesRoutes: Route[] = [
     ToastrModule,
     FormsModule,
     ReactiveFormsModule,
-    QuillModule.forRoot(),
   ],
   declarations: [OverviewCategoryComponent, EditCategoryComponent],
   exports: [OverviewCategoryComponent, EditCategoryComponent],
