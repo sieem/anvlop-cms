@@ -5,6 +5,7 @@ export interface IProject {
     slug: string,
     order: number,
     year: number,
+    client: string,
     category: string,
     description: string,
     assets: IAsset[]

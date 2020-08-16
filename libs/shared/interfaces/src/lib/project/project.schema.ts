@@ -18,6 +18,9 @@ export class Project extends Document implements IProject {
     year: number;
 
     @Prop()
+    client: string;
+
+    @Prop()
     category: string;
 
     @Prop()

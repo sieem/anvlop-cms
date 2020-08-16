@@ -34,6 +34,7 @@ export class EditProjectComponent implements OnInit {
       slug: ['', [Validators.required]],
       year: ['', []],
       category: ['', []],
+      client: ['', []],
       description: ['', []],
       assets: this.formBuilder.array([])
     });
@@ -50,11 +51,12 @@ export class EditProjectComponent implements OnInit {
         const project: IProject = await this.http.get<any>('/api/project/' + this.id).toPromise();
 
         this.projectForm.setValue({
-          title: project.title,
-          slug: project.slug,
-          year: project.year,
-          category: project.category,
-          description: project.description,
+          title: project.title || '',
+          slug: project.slug || '',
+          year: project.year || '',
+          category: project.category || '',
+          client: project.client || '',
+          description: project.description || '',
           assets: []
         });
 
