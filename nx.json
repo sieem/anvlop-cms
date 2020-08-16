@@ -14,7 +14,12 @@
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -39,7 +44,9 @@
     },
     "ui-admin-e2e": {
       "tags": [],
-      "implicitDependencies": ["ui-admin"]
+      "implicitDependencies": [
+        "ui-admin"
+      ]
     },
     "ui-admin-projects": {
       "tags": []
@@ -58,7 +65,9 @@
     },
     "ui-static-e2e": {
       "tags": [],
-      "implicitDependencies": ["ui-static"]
+      "implicitDependencies": [
+        "ui-static"
+      ]
     },
     "ui-static-pages": {
       "tags": []
@@ -81,10 +90,10 @@
     "ui-admin-categories": {
       "tags": []
     },
-    "shared-angular": {
+    "ui-admin-main": {
       "tags": []
     },
-    "ui-admin-main": {
+    "ui-shared": {
       "tags": []
     }
   }

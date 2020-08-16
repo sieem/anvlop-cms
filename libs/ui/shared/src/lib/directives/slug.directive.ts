@@ -1,6 +1,6 @@
 import { Directive, HostListener, ElementRef, Input, OnInit } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { SlugService } from './services/slug.service';
+import { SlugService } from '../services/slug.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Directive({

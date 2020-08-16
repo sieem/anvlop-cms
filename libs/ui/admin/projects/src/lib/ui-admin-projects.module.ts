@@ -11,7 +11,7 @@ import { SortablejsModule } from 'ngx-sortablejs';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
 import { OverviewProjectComponent } from './components/overview-project/overview-project.component';
 import { AssetsProjectComponent } from './components/assets-project/assets-project.component';
-import { SharedAngularModule } from '@anvlop/shared/angular';
+import { UiSharedModule } from '@anvlop/ui/shared';
 
 
 export const uiAdminProjectsRoutes: Route[] = [
@@ -40,7 +40,7 @@ export const uiAdminProjectsRoutes: Route[] = [
     ReactiveFormsModule,
     QuillModule.forRoot(),
     SortablejsModule.forRoot({ animation: 150 }),
-    SharedAngularModule,
+    UiSharedModule,
   ],
   declarations: [OverviewProjectComponent, EditProjectComponent, AssetsProjectComponent],
   exports: [OverviewProjectComponent, EditProjectComponent],

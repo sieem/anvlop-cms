@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'shared-angular',
+  name: 'ui-shared',
   preset: '../../../jest.config.js',
-  coverageDirectory: '../../../coverage/libs/shared/angular',
+  coverageDirectory: '../../../coverage/libs/ui/shared',
   snapshotSerializers: [
     'jest-preset-angular/build/AngularNoNgAttributesSnapshotSerializer.js',
     'jest-preset-angular/build/AngularSnapshotSerializer.js',
