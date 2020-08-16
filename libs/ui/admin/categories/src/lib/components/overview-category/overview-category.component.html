@@ -1,7 +1,6 @@
-<div class="overview">
-    <a [routerLink]="['']" routerLinkActive="router-link-active">Home</a>
-    <a [routerLink]="['new']" routerLinkActive="router-link-active" >New category</a>
-    <div class="category" *ngFor="let category of categories$ | async; trackBy: trackByCategory">
+<a [routerLink]="['new']" routerLinkActive="router-link-active" >New category</a>
+<div class="overview"  [sortablejs]="categories" [sortablejsOptions]="sortablejsOptions">
+    <div class="category" *ngFor="let category of categories; trackBy: trackByCategory">
         <a [routerLink]="['edit', category._id]" routerLinkActive="router-link-active" >{{ category.title }}</a>
         <span (click)="deleteCategory(category._id)">X</span>
     </div>

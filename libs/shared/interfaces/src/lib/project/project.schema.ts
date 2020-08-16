@@ -11,8 +11,11 @@ export class Project extends Document implements IProject {
     @Prop({ required: true, unique: true })
     slug: string;
 
+    @Prop({ required: true })
+    order: number;
+
     @Prop()
-    year: string;
+    year: number;
 
     @Prop()
     category: string;

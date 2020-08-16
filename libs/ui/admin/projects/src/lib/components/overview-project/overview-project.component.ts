@@ -16,15 +16,26 @@ export class OverviewProjectComponent implements OnInit {
     switchMapTo(this.http.get<Project[]>('/api/projects'))
   );
 
+  sortablejsOptions = {
+    onUpdate: event => this.updateProjects()
+  };
+
+  projects: Project[] = [];
+
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.projects$.subscribe((projects) => this.projects = projects);
   }
   
   async deleteProject(id: string) {
     await this.http.delete<Project>(`/api/project/${id}`).toPromise();
     this.projectsEvent$.next(true);
+  }
+
+  updateProjects() {
+    this.http.patch<any>(`/api/projects`, this.projects).toPromise();
   }
 
   trackByProject(i: number, item: Project) {

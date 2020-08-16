@@ -16,15 +16,26 @@ export class OverviewCategoryComponent implements OnInit {
     switchMapTo(this.http.get<Category[]>('/api/categories'))
   );
 
+  sortablejsOptions = {
+    onUpdate: event => this.updateCategories()
+  };
+
+  categories: Category[] = [];
+
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.categories$.subscribe((categories) => this.categories = categories);
   }
   
   async deleteCategory(id: string) {
     await this.http.delete<Category>(`/api/category/${id}`).toPromise();
     this.categoriesEvent$.next(true);
+  }
+
+  updateCategories() {
+    this.http.patch<any>(`/api/categories`, this.categories).toPromise();
   }
 
   trackByCategory(i: number, item: Category) {

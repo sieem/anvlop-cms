@@ -1,4 +1,4 @@
-import { IsString, IsArray } from 'class-validator';
+import { IsString, IsArray, IsNumber } from 'class-validator';
 import { IProject } from '@anvlop/shared/interfaces';
 import { IAsset } from '../asset/asset.schema';
 
@@ -9,8 +9,11 @@ export class CreateProjectDto implements IProject {
     @IsString()
     slug: string;
 
-    @IsString()
-    year: string;
+    @IsNumber()
+    order: number;
+
+    @IsNumber()
+    year: number;
 
     @IsString()
     category: string;

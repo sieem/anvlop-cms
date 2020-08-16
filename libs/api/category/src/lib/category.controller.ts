@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards, Patch } from '@nestjs/common';
 import { CategoryService } from './category.service';
 import { Category } from '@anvlop/shared/interfaces';
 import { CreateCategoryDto } from '@anvlop/shared/interfaces';
@@ -42,6 +42,16 @@ export class CategoryController {
     async update(@Body() updatedValues: Category, @Param() params: any) {
         try {
             return await this.categoryService.update(updatedValues, params.id);
+        } catch (error) {
+            throw new HttpException(error, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Patch('categories')
+    async updateOrder(@Body() updatedValues: Category[]) {
+        try {
+            return await this.categoryService.updateOrder(updatedValues);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }

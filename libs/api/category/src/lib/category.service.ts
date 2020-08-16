@@ -11,7 +11,7 @@ export class CategoryService {
   ) { }
 
   async findAll(): Promise<Category[]> {
-    return this.categoryModel.find().exec();
+    return this.categoryModel.find().sort({ order: 1 }).exec();
   }
 
   async findBySlug(slug: string): Promise<Category> {
@@ -24,6 +24,8 @@ export class CategoryService {
 
   async create(createCategoryDto: CreateCategoryDto): Promise<any> {
     const createdCategory = new this.categoryModel(createCategoryDto);
+    createdCategory.order = (await this.categoryModel.find().exec()).length + 1;
+
 
     const savedCategory = await createdCategory.save();
 
@@ -42,6 +44,14 @@ export class CategoryService {
     }
 
     return await updatedCategory.save();
+  }
+
+  async updateOrder(updatedValues: Category[]): Promise<any> {
+    let i = 0;
+    for (const updatedValue of updatedValues) {
+      await this.categoryModel.findOneAndUpdate({ _id: updatedValue._id }, { order: i++ }).exec();
+    }
+    return { success: true };
   }
 
   async delete(id: string) {

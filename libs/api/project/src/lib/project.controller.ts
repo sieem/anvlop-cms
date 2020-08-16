@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, HttpException, HttpStatus, Param, Put, Delete, UseGuards, Patch } from '@nestjs/common';
 import { ProjectService } from './project.service';
 import { Project } from '@anvlop/shared/interfaces';
 import { CreateProjectDto } from '@anvlop/shared/interfaces';
@@ -42,6 +42,16 @@ export class ProjectController {
     async update(@Body() updatedValues: Project, @Param() params: any) {
         try {
             return await this.projectService.update(updatedValues, params.id);
+        } catch (error) {
+            throw new HttpException(error, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @Patch('projects')
+    async updateOrder(@Body() updatedValues: Project[]) {
+        try {
+            return await this.projectService.updateOrder(updatedValues);
         } catch (error) {
             throw new HttpException(error, HttpStatus.BAD_REQUEST);
         }

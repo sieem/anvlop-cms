@@ -13,7 +13,7 @@ export class ProjectService {
     ) { }
 
     async findAll(): Promise<Project[]> {
-        return this.projectModel.find().exec();
+        return this.projectModel.find().sort({ order: 1 }).exec();
     }
 
     async findBySlug(slug: string): Promise<Project> {
@@ -26,6 +26,7 @@ export class ProjectService {
 
     async create(createProjectDto: CreateProjectDto): Promise<any> {
         const createdProject = new this.projectModel(createProjectDto);
+        createdProject.order = (await this.projectModel.find().exec()).length + 1;
 
         try {
             await this.assetService.moveNewProjectFiles(createdProject._id, createdProject.assets);
@@ -59,6 +60,14 @@ export class ProjectService {
         this.assetService.deleteUnusedFiles(updatedProject);
 
         return await updatedProject.save();
+    }
+
+    async updateOrder(updatedValues: Project[]): Promise<any> {
+        let i = 0;
+        for (const updatedValue of updatedValues) {
+            await this.projectModel.findOneAndUpdate({ _id: updatedValue._id }, { order: i++ }).exec();
+        }
+        return { success: true };
     }
 
     async delete(id: string) {

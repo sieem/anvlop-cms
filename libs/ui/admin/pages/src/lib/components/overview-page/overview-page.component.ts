@@ -17,12 +17,10 @@ export class OverviewPageComponent implements OnInit {
   );
 
   sortablejsOptions = {
-    onUpdate: (event: any) => {
-      this.updatePages();
-    }
+    onUpdate: event => this.updatePages()
   };
 
-  pages = [];
+  pages: Page[] = [];
 
   constructor(private http: HttpClient) {}
 
