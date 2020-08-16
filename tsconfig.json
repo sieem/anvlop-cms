@@ -10,72 +10,31 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@anvlop/api/project": [
-        "libs/api/project/src/index.ts"
-      ],
-      "@anvlop/api/user": [
-        "libs/api/user/src/index.ts"
-      ],
-      "@anvlop/api/auth": [
-        "libs/api/auth/src/index.ts"
-      ],
-      "@anvlop/api/asset": [
-        "libs/api/asset/src/index.ts"
-      ],
-      "@anvlop/ui/admin/projects": [
-        "libs/ui/admin/projects/src/index.ts"
-      ],
-      "@anvlop/ui/admin/auth": [
-        "libs/ui/admin/auth/src/index.ts"
-      ],
-      "@anvlop/shared/interfaces": [
-        "libs/shared/interfaces/src/index.ts"
-      ],
-      "@anvlop/shared/constants": [
-        "libs/shared/constants/src/index.ts"
-      ],
-      "@anvlop/ui/static/pages": [
-        "libs/ui/static/pages/src/index.ts"
-      ],
-      "@anvlop/ui/static/blocks": [
-        "libs/ui/static/blocks/src/index.ts"
-      ],
-      "@anvlop/ui/static/services": [
-        "libs/ui/static/services/src/index.ts"
-      ],
-      "@anvlop/api/category": [
-        "libs/api/category/src/index.ts"
-      ],
-      "@anvlop/api/page": [
-        "libs/api/page/src/index.ts"
-      ],
-      "@anvlop/ui/admin/pages": [
-        "libs/ui/admin/pages/src/index.ts"
-      ],
-      "@anvlop/ui/admin/categories": [
-        "libs/ui/admin/categories/src/index.ts"
-      ],
-      "@anvlop/ui/admin/main": [
-        "libs/ui/admin/main/src/index.ts"
-      ],
-      "@anvlop/ui/shared": [
-        "libs/ui/shared/src/index.ts"
-      ]
+      "@anvlop/api/project": ["libs/api/project/src/index.ts"],
+      "@anvlop/api/user": ["libs/api/user/src/index.ts"],
+      "@anvlop/api/auth": ["libs/api/auth/src/index.ts"],
+      "@anvlop/api/asset": ["libs/api/asset/src/index.ts"],
+      "@anvlop/ui/admin/projects": ["libs/ui/admin/projects/src/index.ts"],
+      "@anvlop/ui/admin/auth": ["libs/ui/admin/auth/src/index.ts"],
+      "@anvlop/shared/interfaces": ["libs/shared/interfaces/src/index.ts"],
+      "@anvlop/shared/constants": ["libs/shared/constants/src/index.ts"],
+      "@anvlop/ui/static/pages": ["libs/ui/static/pages/src/index.ts"],
+      "@anvlop/ui/static/blocks": ["libs/ui/static/blocks/src/index.ts"],
+      "@anvlop/ui/static/services": ["libs/ui/static/services/src/index.ts"],
+      "@anvlop/api/category": ["libs/api/category/src/index.ts"],
+      "@anvlop/api/page": ["libs/api/page/src/index.ts"],
+      "@anvlop/ui/admin/pages": ["libs/ui/admin/pages/src/index.ts"],
+      "@anvlop/ui/admin/categories": ["libs/ui/admin/categories/src/index.ts"],
+      "@anvlop/ui/admin/main": ["libs/ui/admin/main/src/index.ts"],
+      "@anvlop/ui/shared": ["libs/ui/shared/src/index.ts"],
+      "@anvlop/ui/static/all": ["libs/ui/static/all/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

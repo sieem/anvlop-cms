@@ -1,0 +1,5 @@
+<div class="project" *ngIf="project$ | async as project">
+    <h1>{{ project.title }}</h1>
+    <p>{{ project.slug }}</p>
+    <p [innerHTML]="project.description"></p>
+</div>
