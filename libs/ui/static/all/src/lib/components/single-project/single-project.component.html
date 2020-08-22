@@ -1,5 +1,27 @@
 <div class="project" *ngIf="project$ | async as project">
+    <div class="mainAsset" *ngIf="project | mainAsset as mainAsset">
+        <div *ngFor="let file of mainAsset.files">
+            <div *ngIf="file.type === 'image'">
+                <img src="{{file.src | fileUrl}}" alt="" width="100">
+            </div>
+            <div *ngIf="file.type === 'video'">
+                <video src="{{file.src | fileUrl}}" alt="" width="100"></video>
+            </div>
+        </div>
+    </div>
     <h1>{{ project.title }}</h1>
-    <p>{{ project.slug }}</p>
-    <p [innerHTML]="project.description"></p>
+    <div class="client"> {{ project.client }} </div>
+    <div class="description" [innerHTML]="project.description"></div>
+    <div class="assets" *ngIf="project | NotMainAssets as NotMainAssets">
+        <div class="asset" *ngFor="let asset of NotMainAssets">
+            <div *ngFor="let file of asset.files">
+                <div *ngIf="file.type === 'image'">
+                    <img src="{{file.src | fileUrl}}" alt="" width="100">
+                </div>
+                <div *ngIf="file.type === 'video'">
+                    <video src="{{file.src | fileUrl}}" alt="" width="100" autoplay></video>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
