@@ -2,7 +2,7 @@
     <label for="assets">Assets</label>
     <div class="assets" [sortablejs]="assets">
         <div formArrayName="assets" 
-        *ngFor="let asset of assets.controls">
+        *ngFor="let asset of assets.controls; index as i">
             <div *ngIf="asset.value" [class.mainAsset]="asset.value.mainAsset">
                 <div *ngFor="let file of asset.value.files">
                     <div *ngIf="file.type === 'image'">
@@ -12,6 +12,9 @@
                         <video src="{{file.src | fileUrl}}" alt="" width="100"></video>
                     </div>
                     <div class="delete" (click)="removeFile(file.src, asset)">x</div>
+                </div>
+                <div [formGroupName]="i">
+                    <input type="text" formControlName="caption">
                 </div>
                 <div class="star" (click)="makeMainAsset(asset.value.id)">*</div>
                 <div class="delete" (click)="removeAsset(asset.value.id)">xxx</div>

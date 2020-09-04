@@ -52,7 +52,8 @@ export class AssetsProjectComponent implements OnInit, OnDestroy {
 
   addAsset(asset: IAsset = { id: guid() }) {
     this.assets.push(new FormGroup({
-      id: new FormControl(asset.id), 
+      id: new FormControl(asset.id),
+      caption: new FormControl(asset.caption),
       mainAsset: new FormControl(asset.mainAsset),
       files: this.generateFilesForm(asset.files),
     }));
