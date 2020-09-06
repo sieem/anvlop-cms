@@ -1,8 +1,7 @@
 FROM node:latest as build-stage
 WORKDIR /app
-COPY package.json .
-RUN npm install --only=production
 COPY . .
+RUN npm ci
 RUN npm run build ui-admin -- --prod
 
 FROM nginx:latest as production-stage
