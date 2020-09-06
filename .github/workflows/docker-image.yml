@@ -23,3 +23,4 @@ jobs:
         deploy_path: /root/anvlop
         stack_file_name: docker-compose.yaml
         keep_files: 5
+        args: test 
