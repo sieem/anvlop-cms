@@ -16,7 +16,7 @@ services:
       - 80:80
 
   api:
-    image: api
+    image: sieem/api
     container_name: api
     build: 
       context: ./
@@ -24,12 +24,10 @@ services:
     ports:
       - 1333:3333
     restart: on-failure
-    env_file:
-    - .env.prod
 
 
   ui-static:
-    image: ui-static
+    image: sieem/ui-static
     container_name: ui-static
     build: 
       context: ./
@@ -42,7 +40,7 @@ services:
 
 
   ui-admin:
-    image: ui-admin
+    image: sieem/ui-admin
     container_name: ui-admin
     build:
       context: ./
