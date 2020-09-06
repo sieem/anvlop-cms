@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -32,7 +31,6 @@ export const uiAdminPagesRoutes: Route[] = [
   imports: [
     CommonModule,
     RouterModule,
-    HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule,
     FormsModule,
