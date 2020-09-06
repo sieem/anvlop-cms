@@ -80,6 +80,9 @@
     },
     "ui-static-all": {
       "tags": []
+    },
+    "shared-config": {
+      "tags": []
     }
   }
 }

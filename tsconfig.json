@@ -33,7 +33,8 @@
       "@anvlop/ui/admin/categories": ["libs/ui/admin/categories/src/index.ts"],
       "@anvlop/ui/admin/main": ["libs/ui/admin/main/src/index.ts"],
       "@anvlop/ui/shared": ["libs/ui/shared/src/index.ts"],
-      "@anvlop/ui/static/all": ["libs/ui/static/all/src/index.ts"]
+      "@anvlop/ui/static/all": ["libs/ui/static/all/src/index.ts"],
+      "@anvlop/shared/config": ["libs/shared/config/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
