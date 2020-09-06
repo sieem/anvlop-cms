@@ -3,7 +3,7 @@ WORKDIR /app
 COPY package.json .
 RUN npm install --only=production
 COPY . .
-RUN npm run build ui-admin --prod
+RUN npm run build ui-admin -- --prod
 
 FROM nginx:latest as production-stage
 RUN mkdir /app

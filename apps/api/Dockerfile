@@ -2,7 +2,7 @@ FROM node:12.13-alpine As development
 WORKDIR /app
 COPY . .
 RUN npm install --only=production
-RUN npm run build api --prod
+RUN npm run build api -- --prod
 
 FROM node:12.13-alpine as production
 
