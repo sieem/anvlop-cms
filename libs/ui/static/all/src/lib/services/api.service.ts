@@ -17,7 +17,7 @@ export class ApiService {
   public httpCall(url, key) {
     return isScullyGenerated()
       ? this.transferStateService.getState<any>(key)
-      : this.http.get<any>(this.appConfig.apiUrl + '/' + url).pipe(
+      : this.http.get<any>(`${this.appConfig.apiUrl}/${url}`).pipe(
         tap(item => this.transferStateService.setState<any>(key, item)));
   }
 }

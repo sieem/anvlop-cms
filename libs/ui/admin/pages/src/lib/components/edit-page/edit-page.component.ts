@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { IPage } from '@anvlop/shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Component({
   selector: 'anvlop-edit-page',
@@ -21,7 +20,7 @@ export class EditPageComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private http: HttpClient,
+    private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }
@@ -40,7 +39,7 @@ export class EditPageComponent implements OnInit {
       
       this.id = params.id;
       try {
-        const page: IPage = await this.http.get<any>('/api/page/' + this.id).toPromise();
+        const page: IPage = await this.api.get<any>('page/' + this.id).toPromise();
 
         this.pageForm.setValue({
           title: page.title,
@@ -67,14 +66,14 @@ export class EditPageComponent implements OnInit {
     const body = { ...this.pageForm.value }
 
     if (this.id) {
-      this.http.put<any>(`/api/page/${this.id}`, body).subscribe(
+      this.api.put<any>(`page/${this.id}`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
         },
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       );
     } else {
-      this.http.post<any>(`/api/page`, body).subscribe(
+      this.api.post<any>(`page`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
           this.router.navigate(['pages', 'edit', res.id]);

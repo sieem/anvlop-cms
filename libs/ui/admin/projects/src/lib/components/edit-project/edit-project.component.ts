@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { IProject, Category } from '@anvlop/shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Component({
   selector: 'anvlop-edit-project',
@@ -18,12 +18,12 @@ export class EditProjectComponent implements OnInit {
   public id: string;
   public submitted = false;
   public projectLoaded: Subject<IProject> = new Subject<IProject>();
-  public categories$ = this.http.get<Category[]> ('/api/categories');
+  public categories$ = this.api.get<Category[]> ('categories');
 
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private http: HttpClient,
+    private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }
@@ -48,7 +48,7 @@ export class EditProjectComponent implements OnInit {
       
       this.id = params.id;
       try {
-        const project: IProject = await this.http.get<any>('/api/project/' + this.id).toPromise();
+        const project: IProject = await this.api.get<any>('project/' + this.id).toPromise();
 
         this.projectForm.setValue({
           title: project.title || '',
@@ -81,14 +81,14 @@ export class EditProjectComponent implements OnInit {
     const body = { ...this.projectForm.value }
 
     if (this.id) {
-      this.http.put<any>(`/api/project/${this.id}`, body).subscribe(
+      this.api.put<any>(`project/${this.id}`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
         },
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       );
     } else {
-      this.http.post<any>(`/api/project`, body).subscribe(
+      this.api.post<any>(`project`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
           this.router.navigate(['projects', 'edit', res.id]);
