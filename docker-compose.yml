@@ -1,0 +1,54 @@
+version: '3'
+
+services:
+
+  # Proxies requests to internal services
+  reverse-proxy:
+    image: nginx:1.17.10
+    container_name: reverse_proxy
+    depends_on:
+        - api
+        - ui-static
+        - ui-admin
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+
+  api:
+    image: api
+    container_name: api
+    build: 
+      context: ./
+      dockerfile: ./apps/api/Dockerfile
+    ports:
+      - 1333:3333
+    restart: on-failure
+    env_file:
+    - .env.prod
+
+
+  ui-static:
+    image: ui-static
+    container_name: ui-static
+    build: 
+      context: ./
+      dockerfile: ./apps/ui/static/Dockerfile
+    depends_on:
+      - api
+    ports:
+      - 1200:80
+    restart: on-failure
+
+
+  ui-admin:
+    image: ui-admin
+    container_name: ui-admin
+    build:
+      context: ./
+      dockerfile: ./apps/ui/admin/Dockerfile
+    depends_on:
+      - api
+    ports:
+      - 1201:80
+    restart: on-failure
