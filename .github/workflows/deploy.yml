@@ -28,4 +28,5 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
     - name: Push to docker hub
-      run: docker-compose push
+      run: docker-compose -f docker-compose.yml push
+
