@@ -42,5 +42,5 @@ Thumbs.db
 firebase.json
 /.firebase
 
-.env
+.env*
 .vercel

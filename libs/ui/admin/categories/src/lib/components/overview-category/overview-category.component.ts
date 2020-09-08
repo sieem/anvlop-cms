@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Category } from '@anvlop/shared/interfaces';
 import { switchMapTo } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Component({
   selector: 'anvlop-overview-category',
@@ -13,7 +13,7 @@ export class OverviewCategoryComponent implements OnInit {
   categoriesEvent$ = new BehaviorSubject(true);
 
   categories$ = this.categoriesEvent$.pipe(
-    switchMapTo(this.http.get<Category[]>('/api/categories'))
+    switchMapTo(this.api.get<Category[]>('categories'))
   );
 
   sortablejsOptions = {
@@ -23,19 +23,19 @@ export class OverviewCategoryComponent implements OnInit {
   categories: Category[] = [];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit(): void {
     this.categories$.subscribe((categories) => this.categories = categories);
   }
   
   async deleteCategory(id: string) {
-    await this.http.delete<Category>(`/api/category/${id}`).toPromise();
+    await this.api.delete<Category>(`category/${id}`).toPromise();
     this.categoriesEvent$.next(true);
   }
 
   updateCategories() {
-    this.http.patch<any>(`/api/categories`, this.categories).toPromise();
+    this.api.patch<any>(`categories`, this.categories).toPromise();
   }
 
   trackByCategory(i: number, item: Category) {

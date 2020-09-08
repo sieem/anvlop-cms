@@ -11,7 +11,7 @@ const projectsStateKey = 'projects';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  public readonly projects$: Observable<Project[]> = this.api.httpCall('/api/projects', projectsStateKey);
+  public readonly projects$: Observable<Project[]> = this.api.httpCall('projects', projectsStateKey);
 
   constructor(
     private api: ApiService,

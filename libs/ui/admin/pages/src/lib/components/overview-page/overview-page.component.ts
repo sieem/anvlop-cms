@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Page } from '@anvlop/shared/interfaces';
 import { switchMapTo } from 'rxjs/operators';
 import { BehaviorSubject } from 'rxjs';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Component({
   selector: 'anvlop-overview-page',
@@ -13,7 +13,7 @@ export class OverviewPageComponent implements OnInit {
   pagesEvent$ = new BehaviorSubject(true);
 
   pages$ = this.pagesEvent$.pipe(
-    switchMapTo(this.http.get<Page[]>('/api/pages'))
+    switchMapTo(this.api.get<Page[]>('pages'))
   );
 
   sortablejsOptions = {
@@ -22,19 +22,19 @@ export class OverviewPageComponent implements OnInit {
 
   pages: Page[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.pages$.subscribe((pages) => this.pages = pages);
   }
   
   async deletePage(id: string) {
-    await this.http.delete<Page>(`/api/page/${id}`).toPromise();
+    await this.api.delete<Page>(`page/${id}`).toPromise();
     this.pagesEvent$.next(true);
   }
 
   updatePages() {
-    this.http.patch<any>(`/api/pages`, this.pages).toPromise();
+    this.api.patch<any>(`pages`, this.pages).toPromise();
   }
 
   trackByPage(i: number, item: Page) {

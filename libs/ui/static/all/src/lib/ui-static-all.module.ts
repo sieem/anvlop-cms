@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Route } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 
 import { UiSharedModule } from '@anvlop/ui/shared';
 
@@ -21,7 +20,6 @@ export const uiStaticAllRoutes: Route[] = [
     CommonModule,
     RouterModule.forRoot(uiStaticAllRoutes),
     ScullyLibModule,
-    HttpClientModule,
     UiSharedModule,
   ],
   declarations: [

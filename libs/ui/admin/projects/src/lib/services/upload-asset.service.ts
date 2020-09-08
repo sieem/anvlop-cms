@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpEventType } from '@angular/common/http';
+import { HttpEventType } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadAssetService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private api: ApiService) { }
 
   public upload(projectId: string, formData: FormData) {
-    return this.httpClient.post<any>(`/api/asset/${projectId}`, formData, {
+    return this.api.post<any>(`asset/${projectId}`, formData, {
       reportProgress: true,
       observe: 'events'
     }).pipe(map((event) => {

@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { FormBuilder, Validators, FormGroup, FormArray } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ICategory } from '@anvlop/shared/interfaces';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Component({
   selector: 'anvlop-edit-category',
@@ -21,7 +20,7 @@ export class EditCategoryComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private http: HttpClient,
+    private api: ApiService,
     private route: ActivatedRoute,
     private router: Router,
     ) { }
@@ -39,7 +38,7 @@ export class EditCategoryComponent implements OnInit {
       
       this.id = params.id;
       try {
-        const category: ICategory = await this.http.get<any>('/api/category/' + this.id).toPromise();
+        const category: ICategory = await this.api.get<any>('category/' + this.id).toPromise();
 
         this.categoryForm.setValue({
           title: category.title,
@@ -65,14 +64,14 @@ export class EditCategoryComponent implements OnInit {
     const body = { ...this.categoryForm.value }
 
     if (this.id) {
-      this.http.put<any>(`/api/category/${this.id}`, body).subscribe(
+      this.api.put<any>(`category/${this.id}`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
         },
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       );
     } else {
-      this.http.post<any>(`/api/category`, body).subscribe(
+      this.api.post<any>(`category`, body).subscribe(
         (res: any) => {
           this.toastr.info('Saved that damn thing.');
           this.router.navigate(['categories', 'edit', res.id]);
