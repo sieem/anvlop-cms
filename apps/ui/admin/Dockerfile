@@ -1,4 +1,4 @@
-FROM node:latest as build-stage
+FROM node:12.13-alpine as build-stage
 WORKDIR /app
 COPY . .
 RUN npm ci

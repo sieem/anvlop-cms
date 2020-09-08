@@ -10,7 +10,6 @@ import { AppModule } from './app/app.module';
 import { config } from 'dotenv';
 import { environment } from './environments/environment';
 
-console.log(environment);
 
 if (!environment.production) {
   config();

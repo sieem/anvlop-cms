@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  nginx:
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf
+
+  api: 
+    env_file:
+        .env.prod

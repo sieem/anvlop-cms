@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://api.anvlop.local',
+  apiUrl: 'https://api.anvlop.dev',
 };
