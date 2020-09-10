@@ -15,7 +15,6 @@ export class SettingsStoreService {
   ) { }
 
   async getSettingsValue(setting: string): Promise<any> {
-    console.log(setting);
     const settings = await this.settings$.toPromise();
     return settings.find((el) => el.setting === setting).value
   }

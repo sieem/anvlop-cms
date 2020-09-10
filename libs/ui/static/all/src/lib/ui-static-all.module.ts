@@ -10,6 +10,7 @@ import { AppComponent } from './components/app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
 import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 export const uiStaticAllRoutes: Route[] = [
   { path: '', component: ProjectsComponent },
@@ -30,6 +31,7 @@ export const uiStaticAllRoutes: Route[] = [
     SingleProjectComponent,
     HeaderComponent,
     NavComponent,
+    FooterComponent,
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
