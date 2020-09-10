@@ -21,3 +21,8 @@ export * from './category/create-category.dto';
 export * from './page/page.interface';
 export * from './page/page.schema';
 export * from './page/create-page.dto';
+
+// setting
+export * from './setting/setting.interface';
+export * from './setting/setting.schema';
+export * from './setting/create-setting.dto';

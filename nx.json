@@ -83,6 +83,9 @@
     },
     "shared-config": {
       "tags": []
+    },
+    "api-setting": {
+      "tags": []
     }
   }
 }
