@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 
 import { UiStaticAllModule } from '@anvlop/ui/static/all';
 
+import { APP_CONFIG } from '@anvlop/shared/config';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -12,7 +15,9 @@ import { UiStaticAllModule } from '@anvlop/ui/static/all';
     BrowserModule,
     UiStaticAllModule,
   ],
-  providers: [],
+  providers: [
+    { provide: APP_CONFIG, useValue: environment }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -23,7 +23,7 @@ export class SingleProjectComponent implements OnInit {
         return;
       }
 
-      this.project$ = this.api.httpCall(`/api/project/${params.projectSlug}`, params.projectSlug);
+      this.project$ = this.api.httpCall(`project/${params.projectSlug}`, params.projectSlug);
     })
   }
 

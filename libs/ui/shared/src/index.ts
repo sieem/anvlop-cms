@@ -1,3 +1,3 @@
-import { from } from 'rxjs';
-
 export * from './lib/ui-shared.module';
+
+export * from './lib/services/api.service'

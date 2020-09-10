@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../services/auth.service';
 import { FormService } from '../../services/form.service';
+import { ApiService } from '@anvlop/ui/shared';
 
 @Component({
   selector: 'anvlop-login',
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     public formService: FormService,
     private auth: AuthService,
     private toastr: ToastrService,
-    private http: HttpClient) { }
+    private api: ApiService) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
       password: this.loginForm.value.password
     }
 
-    this.http.post<any>('/api/login', body).subscribe(
+    this.api.post<any>('login', body).subscribe(
       (res: any) => {
         this.auth.saveToken(res.access_token);
         this.router.navigate(['/']);
