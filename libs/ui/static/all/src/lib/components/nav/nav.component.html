@@ -1,1 +1,6 @@
-<p>nav works!</p>
+<div>
+    <a [routerLink]="['projects']" routerLinkActive="router-link-active">projects</a>
+</div>
+<div *ngFor="let page of pages$ | async">
+    <a [routerLink]="['pages', page.slug]" routerLinkActive="router-link-active">{{page.title}}</a>
+</div>
