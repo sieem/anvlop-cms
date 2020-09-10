@@ -8,6 +8,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { SingleProjectComponent } from './components/single-project/single-project.component';
 import { AppComponent } from './components/app.component';
 import { ScullyLibModule } from '@scullyio/ng-lib';
+import { HeaderComponent } from './components/header/header.component';
+import { NavComponent } from './components/nav/nav.component';
 
 export const uiStaticAllRoutes: Route[] = [
   { path: '', component: ProjectsComponent },
@@ -26,6 +28,8 @@ export const uiStaticAllRoutes: Route[] = [
     AppComponent,
     ProjectsComponent,
     SingleProjectComponent,
+    HeaderComponent,
+    NavComponent,
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
