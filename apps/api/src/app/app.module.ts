@@ -6,6 +6,7 @@ import { AuthModule } from '@anvlop/api/auth';
 import { AssetModule } from '@anvlop/api/asset';
 import { CategoryModule } from '@anvlop/api/category';
 import { PageModule } from '@anvlop/api/page';
+import { SettingModule } from '@anvlop/api/setting';
 
 import { config } from 'dotenv';
 config();
@@ -19,6 +20,7 @@ config();
     AssetModule,
     CategoryModule,
     PageModule,
+    SettingModule,
   ],
   controllers: [],
 })

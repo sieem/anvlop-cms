@@ -5,6 +5,7 @@ import { UiAdminProjectModule, uiAdminProjectsRoutes } from '@anvlop/ui/admin/pr
 import { UiAdminAuthModule, uiAdminAuthRoutes } from '@anvlop/ui/admin/auth';
 import { UiAdminPagesModule, uiAdminPagesRoutes } from '@anvlop/ui/admin/pages';
 import { UiAdminCategoriesModule, uiAdminCategoriesRoutes } from '@anvlop/ui/admin/categories';
+import { UiAdminSettingsModule, uiAdminSettingsRoutes } from '@anvlop/ui/admin/settings';
 import { IsLoggedInGuard } from '@anvlop/ui/admin/auth';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,6 +17,7 @@ export const uiAdminMainRoutes: Route[] = [
   { path: 'auth', children: uiAdminAuthRoutes },
   { path: 'pages', children: uiAdminPagesRoutes, canActivate: [IsLoggedInGuard] },
   { path: 'categories', children: uiAdminCategoriesRoutes, canActivate: [IsLoggedInGuard] },
+  { path: 'settings', children: uiAdminSettingsRoutes, canActivate: [IsLoggedInGuard] },
 ];
 
 @NgModule({
@@ -26,6 +28,7 @@ export const uiAdminMainRoutes: Route[] = [
     UiAdminAuthModule,
     UiAdminPagesModule,
     UiAdminCategoriesModule,
+    UiAdminSettingsModule,
     RouterModule.forRoot(uiAdminMainRoutes),
   ],
   declarations: [NavComponent, HomeComponent, AppComponent],
