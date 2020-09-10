@@ -86,6 +86,9 @@
     },
     "api-setting": {
       "tags": []
+    },
+    "ui-admin-settings": {
+      "tags": []
     }
   }
 }

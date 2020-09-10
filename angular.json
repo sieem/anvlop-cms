@@ -803,6 +803,38 @@
           }
         }
       }
+    },
+    "ui-admin-settings": {
+      "projectType": "library",
+      "root": "libs/ui/admin/settings",
+      "sourceRoot": "libs/ui/admin/settings/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/admin/settings/tsconfig.lib.json",
+              "libs/ui/admin/settings/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/admin/settings/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/admin/settings/jest.config.js",
+            "tsConfig": "libs/ui/admin/settings/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/admin/settings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
     }
   },
   "cli": {

@@ -35,7 +35,8 @@
       "@anvlop/ui/shared": ["libs/ui/shared/src/index.ts"],
       "@anvlop/ui/static/all": ["libs/ui/static/all/src/index.ts"],
       "@anvlop/shared/config": ["libs/shared/config/src/index.ts"],
-      "@anvlop/api/setting": ["libs/api/setting/src/index.ts"]
+      "@anvlop/api/setting": ["libs/api/setting/src/index.ts"],
+      "@anvlop/ui/admin/settings": ["libs/ui/admin/settings/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
