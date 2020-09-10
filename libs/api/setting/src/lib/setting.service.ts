@@ -18,8 +18,8 @@ export class SettingService {
     return await this.categoryModel.findOne({ setting }).exec();
   }
 
-  async create(createSettingDto: CreateSettingDto): Promise<any> {
-    const createdSetting = new this.categoryModel(createSettingDto);
+  async create(setting: Setting): Promise<any> {
+    const createdSetting = new this.categoryModel(setting as CreateSettingDto);
     const savedSetting = await createdSetting.save();
 
     return { id: savedSetting._id };
