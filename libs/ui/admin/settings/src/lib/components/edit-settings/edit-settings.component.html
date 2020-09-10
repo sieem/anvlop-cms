@@ -1,1 +1,27 @@
-<p>edit-settings works!</p>
+<a [routerLink]="['/pages']" routerLinkActive="router-link-active">Back to overview</a>
+<form [formGroup]="settingsForm" class="wrapper" (ngSubmit)="onSubmit()">
+
+    <div formArrayName="settings" *ngFor="let settingForm of settingsFormArray.controls; index as i">
+        <div [formGroupName]="i">
+            <div class="inputGroup">
+                <label for="value">{{ settingsFormArray.value[i].setting }}</label>
+                <div [ngSwitch]="settingsFormArray.value[i].setting | settingType">
+                    <div *ngSwitchCase="'html'">
+                        <quill-editor formControlName="value">
+                        </quill-editor>
+                    </div>
+                    <div *ngSwitchCase="'code'">
+                        <textarea name="value" formControlName="value" style="line-break: pre;"></textarea>
+                    </div>
+                    <div *ngSwitchDefault>
+                        <input type="value" name="value" formControlName="value">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="inputGroup right">
+        <input type="submit" value="Save">
+    </div>
+</form>
