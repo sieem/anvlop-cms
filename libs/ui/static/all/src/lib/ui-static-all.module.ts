@@ -11,11 +11,13 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
 import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { SinglePageComponent } from './components/single-page/single-page.component';
 
 export const uiStaticAllRoutes: Route[] = [
   { path: '', component: ProjectsComponent },
   { path: 'projects', component: ProjectsComponent },
   { path: 'projects/:projectSlug', component: SingleProjectComponent },
+  { path: 'pages/:pageSlug', component: SinglePageComponent },
 ];
 
 @NgModule({
@@ -32,6 +34,7 @@ export const uiStaticAllRoutes: Route[] = [
     HeaderComponent,
     NavComponent,
     FooterComponent,
+    SinglePageComponent,
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
