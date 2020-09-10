@@ -11,7 +11,7 @@
     </div>
     <h1>{{ project.title }}</h1>
     <div class="client"> {{ project.client }} </div>
-    <div class="description" [innerHTML]="project.description"></div>
+    <div class="description" [innerHTML]="project.description | safeHtml"></div>
     <div class="assets" *ngIf="project | NotMainAssets as NotMainAssets">
         <div class="asset" *ngFor="let asset of NotMainAssets">
             <div *ngFor="let file of asset.files">

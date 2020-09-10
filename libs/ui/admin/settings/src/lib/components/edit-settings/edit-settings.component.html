@@ -1,4 +1,4 @@
-<a [routerLink]="['/pages']" routerLinkActive="router-link-active">Back to overview</a>
+<a [routerLink]="['/']" routerLinkActive="router-link-active">Back</a>
 <form [formGroup]="settingsForm" class="wrapper" (ngSubmit)="onSubmit()">
 
     <div formArrayName="settings" *ngFor="let settingForm of settingsFormArray.controls; index as i">
