@@ -30,12 +30,12 @@ export class OverviewProjectComponent implements OnInit {
   }
   
   async deleteProject(id: string) {
-    await this.api.delete<Project>(`/api/project/${id}`).toPromise();
+    await this.api.delete<Project>(`project/${id}`).toPromise();
     this.projectsEvent$.next(true);
   }
 
   updateProjects() {
-    this.api.patch<any>(`/api/projects`, this.projects).toPromise();
+    this.api.patch<any>(`projects`, this.projects).toPromise();
   }
 
   trackByProject(i: number, item: Project) {
