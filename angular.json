@@ -431,10 +431,9 @@
             "tsConfig": "apps/ui/static/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/ui/static/src/favicon.ico",
-              "apps/ui/static/src/assets"
+              "apps/ui/static/src/favicon.ico"
             ],
-            "styles": ["libs/ui/static/all/assets/styles/main.scss"],
+            "styles": ["libs/ui/static/all/src/assets/styles/main.scss"],
             "scripts": []
           },
           "configurations": {
