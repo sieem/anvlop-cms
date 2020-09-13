@@ -23,8 +23,8 @@ export class NavComponent implements OnInit {
     this.router.events.subscribe(() => this.menuOpen = false);
   }
 
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
+  toggleMenu(close): void {
+    close ? this.menuOpen = false : this.menuOpen = !this.menuOpen;
   }
 
 }
