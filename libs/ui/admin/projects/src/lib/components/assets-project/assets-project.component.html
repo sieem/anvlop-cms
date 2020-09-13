@@ -1,28 +1,32 @@
-<div class="inputGroup" [formGroup]="projectForm">
+<div class="input-group" [formGroup]="projectForm">
     <label for="assets">Assets</label>
     <div class="assets" [sortablejs]="assets">
         <div formArrayName="assets" 
-        *ngFor="let asset of assets.controls; index as i">
-            <div *ngIf="asset.value" [class.mainAsset]="asset.value.mainAsset">
-                <div *ngFor="let file of asset.value.files">
-                    <div *ngIf="file.type === 'image'">
-                        <img src="{{file.src | fileUrl}}" alt="" width="100">
-                    </div>
-                    <div *ngIf="file.type === 'video'">
-                        <video src="{{file.src | fileUrl}}" alt="" width="100"></video>
-                    </div>
-                    <div class="delete" (click)="removeFile(file.src, asset)">x</div>
-                </div>
-                <div [formGroupName]="i">
-                    <input type="text" formControlName="caption">
-                </div>
-                <div class="star" (click)="makeMainAsset(asset.value.id)">*</div>
-                <div class="delete" (click)="removeAsset(asset.value.id)">xxx</div>
-                <input type="file" multiple name="Add asset" (change)="onFileChange($event, asset.value.id)" />
+            class="asset"
+            *ngFor="let asset of assets.controls; index as i"
+            [class.main-asset]="asset.value.mainAsset">
+            <div class="button small make-main-asset" (click)="makeMainAsset(asset.value.id)">make main asset</div>
+            <div class="button small delete" (click)="removeAsset(asset.value.id)">x</div>
+            <div [formGroupName]="i">
+              <input type="text" formControlName="caption" placeholder="caption">
             </div>
+
+            <div class="files">
+                <div class="file" *ngFor="let file of asset.value.files">
+                  <ng-container *ngIf="file.type === 'image'">
+                    <img src="{{file.src | fileUrl}}" alt="" width="100">
+                  </ng-container>
+                  <ng-container *ngIf="file.type === 'video'">
+                    <video src="{{file.src | fileUrl}}" alt="" width="100"></video>
+                  </ng-container>
+                  <div class="button small delete" (click)="removeFile(file.src, asset)">X</div>
+                </div>
+            </div>
+
+            <input type="file" multiple name="Add asset" (change)="onFileChange($event, asset.value.id)" />
         </div>
     </div>
-    <div (click)="addAsset()">Add asset</div>
-    <div>{{uploadProgress}}%</div>
+    <div class="button" (click)="addAsset()">Add asset</div>
+    <!-- <div>{{uploadProgress}}%</div> -->
 </div>
 

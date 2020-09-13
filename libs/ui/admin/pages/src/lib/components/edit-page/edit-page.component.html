@@ -1,21 +1,20 @@
-<a [routerLink]="['/pages']" routerLinkActive="router-link-active" >Back to overview</a>
 <form [formGroup]="pageForm" class="wrapper" (ngSubmit)="onSubmit()">
-    <div class="inputGroup">
+    <div class="input-group">
         <label for="title">Title</label>
         <input type="title" name="title" formControlName="title" anvlopSlug="input">
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
         <label for="slug">Slug</label>
         <input type="slug" name="slug" formControlName="slug" anvlopSlug="output">
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
         <quill-editor formControlName="content">
         </quill-editor>
     </div>
 
-    <div class="inputGroup right">
+    <div class="input-group right">
         <input type="submit" value="Save">
     </div>
 </form>

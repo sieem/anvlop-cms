@@ -181,11 +181,15 @@
             "tsConfig": "apps/ui/admin/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "apps/ui/admin/src/favicon.ico",
-              "apps/ui/admin/src/assets"
+              {
+                "glob": "**/*",
+                "input": "./libs/ui/admin/main/src/assets",
+                "output": "./"
+              }
             ],
             "styles": [
-              "apps/ui/admin/src/styles.scss",
+              "./libs/ui/admin/main/src/assets/styles/main.scss",
+              "./node_modules/ngx-toastr/toastr.css",
               "./node_modules/quill/dist/quill.core.css",
               "./node_modules/quill/dist/quill.snow.css"
             ],

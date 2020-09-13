@@ -1,9 +1,8 @@
-<a [routerLink]="['/']" routerLinkActive="router-link-active">Back</a>
 <form [formGroup]="settingsForm" class="wrapper" (ngSubmit)="onSubmit()">
 
     <div formArrayName="settings" *ngFor="let settingForm of settingsFormArray.controls; index as i">
         <div [formGroupName]="i">
-            <div class="inputGroup">
+            <div class="input-group">
                 <label for="value">{{ settingsFormArray.value[i].setting }}</label>
                 <div [ngSwitch]="settingsFormArray.value[i].setting | setting: 'type'">
                     <div *ngSwitchCase="'html'">
@@ -31,7 +30,7 @@
         </div>
     </div>
 
-    <div class="inputGroup right">
+    <div class="input-group right">
         <input type="submit" value="Save">
     </div>
 </form>

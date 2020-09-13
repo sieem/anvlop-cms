@@ -1,26 +1,26 @@
-<a [routerLink]="['/projects']" routerLinkActive="router-link-active" >Back to overview</a>
 <form [formGroup]="projectForm" class="wrapper" (ngSubmit)="onSubmit()">
-    <div class="inputGroup">
+    <h1 class="title">{{ projectForm.value.title }}</h1>
+    <div class="input-group">
         <label for="title">Title</label>
         <input type="title" name="title" formControlName="title" anvlopSlug="input">
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
         <label for="slug">Slug</label>
         <input type="slug" name="slug" formControlName="slug" anvlopSlug="output">
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
         <label for="year">Year</label>
         <input type="year" name="year" type="number" formControlName="year">
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
         <label for="client">Client</label>
         <input type="client" name="client" formControlName="client">
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
         <label for="category">Category</label>
         <select name="category" formControlName="category">
             <option value="">Choose category</option>
@@ -28,7 +28,8 @@
         </select>
     </div>
 
-    <div class="inputGroup">
+    <div class="input-group">
+        <label for="category">Description</label>
         <quill-editor formControlName="description">
         </quill-editor>
     </div>
@@ -39,7 +40,7 @@
     [(assets)]="assets" 
     [projectLoaded]="projectLoaded.asObservable()"></anvlop-assets-project>
 
-    <div class="inputGroup right">
+    <div class="input-group right">
         <input type="submit" value="Save">
     </div>
 </form>
