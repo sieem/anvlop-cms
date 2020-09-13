@@ -1,7 +1,9 @@
-<div class="overview" [sortablejs]="categories" [sortablejsOptions]="sortablejsOptions">
+<div class="overview">
     <a class="button" [routerLink]="['new']" routerLinkActive="router-link-active">New category</a>
-    <div class="item" *ngFor="let category of categories; trackBy: trackByCategory">
-        <a class="link" [routerLink]="['edit', category._id]" routerLinkActive="router-link-active" >{{ category.title }}</a>
-        <span class="delete" (click)="deleteCategory(category._id)">X</span>
+    <div class="items" [sortablejs]="categories" [sortablejsOptions]="sortablejsOptions">
+        <div class="item" *ngFor="let category of categories; trackBy: trackByCategory">
+            <a class="link" [routerLink]="['edit', category._id]" routerLinkActive="router-link-active" >{{ category.title }}</a>
+            <span class="delete" (click)="deleteCategory(category._id)">X</span>
+        </div>
     </div>
 </div>
