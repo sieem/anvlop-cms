@@ -76,6 +76,11 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 5px 0;
+    cursor: grab;
+
+    &.sortable-chosen {
+      cursor: grabbing;
+    }
 
     &:last-child {
       border: none;
