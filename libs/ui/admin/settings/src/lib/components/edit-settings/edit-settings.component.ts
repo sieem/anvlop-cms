@@ -37,7 +37,7 @@ export class EditSettingsComponent implements OnInit {
       for (const configSetting of this.settingsService.initSettings) {
         const foundSetting = settings.find((el) => el.setting === configSetting.setting);
         this.settingsFormArray.push(this.formBuilder.group({
-          setting: [configSetting.setting, [Validators.required]],
+          setting: [configSetting.setting, []],
           value: [foundSetting ? foundSetting.value : '', []],
         }))
       }

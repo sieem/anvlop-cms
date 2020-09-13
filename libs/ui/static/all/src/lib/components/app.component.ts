@@ -7,6 +7,7 @@ import { SettingsStoreService } from '../settings-store.service';
 })
 export class AppComponent implements OnInit {
   public customCss$ = this.settingsStoreService.getSettingsValue('customCss');
+  public theme$ = this.settingsStoreService.getSettingsValue('theme');
 
   constructor(
     private settingsStoreService: SettingsStoreService,

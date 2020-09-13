@@ -434,7 +434,7 @@
               "apps/ui/static/src/favicon.ico",
               "apps/ui/static/src/assets"
             ],
-            "styles": ["apps/ui/static/src/styles.scss"],
+            "styles": ["libs/ui/static/all/assets/styles/main.scss"],
             "scripts": []
           },
           "configurations": {

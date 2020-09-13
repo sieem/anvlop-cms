@@ -6,7 +6,7 @@ import { ISetting } from '@anvlop/shared/interfaces';
 export class Setting extends Document implements ISetting {
     @Prop({ required: true, unique: true })
     setting: string;
-    @Prop({ required: true })
+    @Prop()
     value: string;
 }
 

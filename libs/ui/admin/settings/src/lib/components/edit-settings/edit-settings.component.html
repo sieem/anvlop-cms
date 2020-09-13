@@ -5,13 +5,23 @@
         <div [formGroupName]="i">
             <div class="inputGroup">
                 <label for="value">{{ settingsFormArray.value[i].setting }}</label>
-                <div [ngSwitch]="settingsFormArray.value[i].setting | settingType">
+                <div [ngSwitch]="settingsFormArray.value[i].setting | setting: 'type'">
                     <div *ngSwitchCase="'html'">
                         <quill-editor formControlName="value">
                         </quill-editor>
                     </div>
                     <div *ngSwitchCase="'code'">
                         <textarea name="value" formControlName="value" style="line-break: pre;"></textarea>
+                    </div>
+                    <div *ngSwitchCase="'select'">
+                        <select name="value" formControlName="value">
+                          <option value="">Choose {{ settingsFormArray.value[i].setting }}</option>
+                          <option 
+                            *ngFor="let element of settingsFormArray.value[i].setting | setting: 'data'"
+                            [value]="element.value">
+                                {{element.text}}
+                        </option>
+                        </select>
                     </div>
                     <div *ngSwitchDefault>
                         <input type="value" name="value" formControlName="value">

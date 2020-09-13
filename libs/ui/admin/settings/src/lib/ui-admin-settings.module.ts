@@ -7,7 +7,7 @@ import { QuillModule } from 'ngx-quill';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UiSharedModule } from '@anvlop/ui/shared';
 import { EditSettingsComponent } from './components/edit-settings/edit-settings.component';
-import { SettingTypePipe } from './pipes/setting-type.pipe';
+import { SettingPipe } from './pipes/setting.pipe';
 
 export const uiAdminSettingsRoutes: Route[] = [
   {
@@ -27,7 +27,7 @@ export const uiAdminSettingsRoutes: Route[] = [
     UiSharedModule,
     QuillModule.forRoot(),
   ],
-  declarations: [EditSettingsComponent, SettingTypePipe],
+  declarations: [EditSettingsComponent, SettingPipe],
   exports: [EditSettingsComponent],
 })
 export class UiAdminSettingsModule {}

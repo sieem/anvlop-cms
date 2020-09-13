@@ -1,3 +1,5 @@
-<anvlop-header></anvlop-header>
-<router-outlet></router-outlet>
-<anvlop-footer></anvlop-footer>
+<div class="theme" [class]="theme$ | async">
+    <anvlop-header></anvlop-header>
+    <router-outlet></router-outlet>
+    <anvlop-footer></anvlop-footer>
+</div>
