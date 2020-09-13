@@ -1,5 +1,8 @@
 
 export interface ISetting {
-    setting: string,
-    value: any,
+    slug: string,
+    text?: string,
+    type?: 'text' | 'html' | 'code' | 'select',
+    value?: any,
+    data?: any,
 }

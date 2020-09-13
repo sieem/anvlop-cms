@@ -14,8 +14,8 @@ export class SettingService {
     return this.categoryModel.find().sort({ order: 1 }).exec();
   }
 
-  async findBySetting(setting: string): Promise<Setting> {
-    return await this.categoryModel.findOne({ setting }).exec();
+  async findBySlug(slug: string): Promise<Setting> {
+    return await this.categoryModel.findOne({ slug }).exec();
   }
 
   async create(setting: Setting): Promise<any> {
@@ -25,8 +25,8 @@ export class SettingService {
     return { id: savedSetting._id };
   }
 
-  async update(updatedValues: Setting, setting: string): Promise<Setting> {
-    const oldSetting = await this.findBySetting(setting);
+  async update(updatedValues: Setting, slug: string): Promise<Setting> {
+    const oldSetting = await this.findBySlug(slug);
     const updatedSetting = oldSetting;
 
     for (const key in updatedValues) {
@@ -39,8 +39,8 @@ export class SettingService {
     return await updatedSetting.save();
   }
 
-  async delete(setting: string) {
-    const category = await this.findBySetting(setting);
+  async delete(slug: string) {
+    const category = await this.findBySlug(slug);
     return await category.remove();
   }
 }

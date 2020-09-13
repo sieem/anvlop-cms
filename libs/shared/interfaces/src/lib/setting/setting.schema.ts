@@ -5,7 +5,7 @@ import { ISetting } from '@anvlop/shared/interfaces';
 @Schema()
 export class Setting extends Document implements ISetting {
     @Prop({ required: true, unique: true })
-    setting: string;
+    slug: string;
     @Prop()
     value: string;
 }

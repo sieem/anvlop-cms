@@ -14,8 +14,9 @@ export class SettingsStoreService {
     private api: ApiService,
   ) { }
 
-  async getSettingsValue(setting: string): Promise<any> {
+  async getSettingsValue(slug: string): Promise<any> {
     const settings = await this.settings$.toPromise();
-    return settings.find((el) => el.setting === setting).value
+    const foundSetting = settings.find((el) => el.slug === slug);
+    return foundSetting ? foundSetting.value : null;
   }
 }

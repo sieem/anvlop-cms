@@ -35,9 +35,9 @@ export class EditSettingsComponent implements OnInit {
       const settings: ISetting[] = await this.api.get<any>('settings').toPromise();
 
       for (const configSetting of this.settingsService.initSettings) {
-        const foundSetting = settings.find((el) => el.setting === configSetting.setting);
+        const foundSetting = settings.find((el) => el.slug === configSetting.slug);
         this.settingsFormArray.push(this.formBuilder.group({
-          setting: [configSetting.setting, []],
+          slug: [configSetting.slug, []],
           value: [foundSetting ? foundSetting.value : '', []],
         }))
       }
@@ -58,7 +58,7 @@ export class EditSettingsComponent implements OnInit {
       return;
     }
 
-    const body = { ...this.settingsForm.value }.settings
+    const body = { ...this.settingsForm.value }.settings.filter((el) => !!el.value);
 
     this.api.post<any>(`settings`, body).subscribe(
       (res: any) => {

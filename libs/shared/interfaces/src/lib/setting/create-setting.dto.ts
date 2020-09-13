@@ -3,7 +3,7 @@ import { ISetting } from '@anvlop/shared/interfaces';
 
 export class CreateSettingDto implements ISetting {
     @IsString()
-    setting: string;
+    slug: string;
 
     @IsObject()
     value: any;

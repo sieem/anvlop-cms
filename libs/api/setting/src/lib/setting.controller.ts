@@ -17,8 +17,8 @@ export class SettingController {
     async update(@Body() updatedValues: Setting[]) {
         try {
             for (const updatedValue of updatedValues) {
-                if (!!await this.settingService.findBySetting(updatedValue.setting)) {
-                    await this.settingService.update(updatedValue, updatedValue.setting);
+                if (!!await this.settingService.findBySlug(updatedValue.slug)) {
+                    await this.settingService.update(updatedValue, updatedValue.slug);
                 } else {
                     await this.settingService.create(updatedValue);
                 }

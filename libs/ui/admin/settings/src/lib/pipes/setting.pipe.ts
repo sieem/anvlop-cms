@@ -10,8 +10,8 @@ export class SettingPipe implements PipeTransform {
     private settingsService: SettingsService,
   ) { }
 
-  transform(value: string, argument: string): string | any {
-    const foundSetting = this.settingsService.initSettings.find((el) => el.setting === value);
+  transform(slug: string, argument: string): string | any {
+    const foundSetting = this.settingsService.initSettings.find((el) => el.slug === slug);
     return foundSetting ? foundSetting[argument] : null;
   }
 

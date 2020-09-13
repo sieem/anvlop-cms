@@ -3,8 +3,8 @@
     <div formArrayName="settings" *ngFor="let settingForm of settingsFormArray.controls; index as i">
         <div [formGroupName]="i">
             <div class="input-group">
-                <label for="value">{{ settingsFormArray.value[i].setting }}</label>
-                <div [ngSwitch]="settingsFormArray.value[i].setting | setting: 'type'">
+                <label for="value">{{ settingsFormArray.value[i].slug | setting: 'text'}}</label>
+                <div [ngSwitch]="settingsFormArray.value[i].slug | setting: 'type'">
                     <div *ngSwitchCase="'html'">
                         <quill-editor formControlName="value">
                         </quill-editor>
@@ -14,9 +14,9 @@
                     </div>
                     <div *ngSwitchCase="'select'">
                         <select name="value" formControlName="value">
-                          <option value="">Choose {{ settingsFormArray.value[i].setting }}</option>
+                          <option value="">Choose {{ settingsFormArray.value[i].slug }}</option>
                           <option 
-                            *ngFor="let element of settingsFormArray.value[i].setting | setting: 'data'"
+                            *ngFor="let element of settingsFormArray.value[i].slug | setting: 'data'"
                             [value]="element.value">
                                 {{element.text}}
                         </option>
