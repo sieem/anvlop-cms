@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './services/api.service';
+import { ApiService } from './api.service';
 import { Observable } from 'rxjs';
 import { Setting } from '@anvlop/shared/interfaces';
 import { shareReplay } from 'rxjs/operators';

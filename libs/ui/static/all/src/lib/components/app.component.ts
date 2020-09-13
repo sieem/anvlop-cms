@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SettingsStoreService } from '../settings-store.service';
+import { SettingsStoreService } from '../services/settings-store.service';
 
 @Component({
   selector: 'anvlop-app',
