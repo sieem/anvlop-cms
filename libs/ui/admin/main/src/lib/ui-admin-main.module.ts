@@ -10,6 +10,9 @@ import { IsLoggedInGuard } from '@anvlop/ui/admin/auth';
 import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppComponent } from './app.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpErrorHandlingInterceptor } from './interceptors/http-error-handling.interceptor';
+import { ToastrModule } from 'ngx-toastr';
 
 export const uiAdminMainRoutes: Route[] = [
   { path: '', component: HomeComponent, canActivate: [IsLoggedInGuard] },
@@ -30,9 +33,17 @@ export const uiAdminMainRoutes: Route[] = [
     UiAdminCategoriesModule,
     UiAdminSettingsModule,
     RouterModule.forRoot(uiAdminMainRoutes),
+    ToastrModule,
   ],
   declarations: [NavComponent, HomeComponent, AppComponent],
   bootstrap: [HomeComponent],
-  exports: [AppComponent]
+  exports: [AppComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorHandlingInterceptor,
+      multi: true
+    },
+  ],
 })
 export class UiAdminMainModule {}
