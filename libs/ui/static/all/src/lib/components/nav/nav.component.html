@@ -1,4 +1,4 @@
-<div class="menu-icon" (click)="toggleMenu()">menu</div>
+<div class="menu-icon" (click)="toggleMenu(false)">menu</div>
 <div class="menu" [class.open]="menuOpen" (click)="toggleMenu(true)">
     <a [routerLink]="['projects']" routerLinkActive="router-link-active">projects</a>
     <a *ngFor="let page of pages$ | async" [routerLink]="['pages', page.slug]" routerLinkActive="router-link-active">
