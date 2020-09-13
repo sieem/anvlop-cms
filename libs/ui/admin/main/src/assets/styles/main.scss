@@ -134,8 +134,15 @@ anvlop-assets-project {
     .asset {
       position: relative;
       border: 3px solid transparent;
+
+      cursor: grab;
+
+      &.sortable-chosen {
+        cursor: grabbing;
+      }
+
       &.main-asset {
-        border: 3px dotted goldenrod;
+        border-bottom: 3px dotted goldenrod;
       }
     }
     
