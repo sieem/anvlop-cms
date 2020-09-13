@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap');
+$mobile-breakpoint: 600px;
+
+:root {
+  --text-color: #000;
+}
+
+.verhaygen {
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+
+  anvlop-header {
+    display: flex;
+    justify-content: space-between;
+
+    position: sticky;
+    top: 0;
+
+    padding: 10px;
+
+    .site-title {
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    anvlop-nav {
+      .menu-icon {
+        text-transform: uppercase;
+        cursor: pointer;
+        display: none;
+        @media screen and (max-width: $mobile-breakpoint) {
+          display: block;
+        }
+      }
+
+      .menu {
+        display: block;
+        @media screen and (max-width: $mobile-breakpoint) {
+          display: none;
+
+          &.open {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 100vw;
+
+            background: #ffffffaa;
+
+            a {
+              display: block;
+              margin: 20px;
+              text-decoration: none;
+              font-weight: 400;
+              color: var(--text-color);
+              font-size: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  anvlop-projects,
+  anvlop-single-project {
+    .project {
+      display: grid;
+      grid-template-areas: 
+        "main-asset main-asset"
+        "title client"
+        "description description"
+        "assets assets";
+      grid-template-columns: 1fr 1fr;
+      font-weight: 400;
+    }
+
+    .asset {
+      grid-area: main-asset;
+    }
+
+    .title {
+      grid-area: title;
+      text-decoration: none;
+      color: var(--text-color);
+    }
+
+    .client {
+      grid-area: client;
+    }
+  }
+
+  anvlop-single-project {
+    .description {
+      grid-area: description;
+    }
+
+    .assets {
+      grid-area: assets;
+    }
+  }
+
+  anvlop-asset {
+    display: flex;
+    cursor: pointer;
+    width: 100%;
+
+    img,
+    video {
+      width: 100%;
+      height: auto;
+    }
+
+    .caption {
+      font-style: italic;
+    }
+  }
+
+  anvlop-single-page {
+
+  }
+
+  anvlop-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+    .gradient {
+      pointer-events: none;
+      height: 70px;
+      background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    }
+
+    .content {
+      background: #fff;
+      padding: 5px;
+    }
+  }
+}

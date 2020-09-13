@@ -1,0 +1,13 @@
+<ng-container *ngFor="let file of asset.files">
+  <div [ngSwitch]="file.type">
+    <ng-container *ngSwitchCase="'image'">
+      <img src="{{file.src | fileUrl}}" alt="asset.caption">
+    </ng-container>
+    <ng-container *ngSwitchCase="'video'">
+      <video src="{{file.src | fileUrl}}" alt="asset.caption"></video>
+    </ng-container>
+  </div>
+  <div class="caption">
+      {{ asset.caption }}
+  </div>
+</ng-container>

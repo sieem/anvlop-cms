@@ -1,20 +1,10 @@
-<div class="overview">
-    <div class="project" *ngFor="let project of projects$ | async">
-        <div class="mainAsset" *ngIf="project | mainAsset as mainAsset">
-            <div *ngFor="let file of mainAsset.files">
-                <div *ngIf="file.type === 'image'">
-                    <img src="{{file.src | fileUrl}}" alt="" width="100">
-                </div>
-                <div *ngIf="file.type === 'video'">
-                    <video src="{{file.src | fileUrl}}" alt="" width="100"></video>
-                </div>
-            </div>
-        </div>
-        <div class="title">
-            <a [routerLink]="'/projects/' + [project.slug]" routerLinkActive="router-link-active">{{ project.title }}</a>
-        </div>
-        <div class="client">
-            {{ project.client }}
-        </div>
+<div class="project" *ngFor="let project of projects$ | async">
+    <div class="asset main-asset" *ngIf="project | mainAsset as mainAsset" [routerLink]="['/projects/', project.slug]">
+        <anvlop-asset [asset]="mainAsset"></anvlop-asset>
+    </div>
+    <a class="title"  [routerLink]="['/projects/', project.slug]"
+        routerLinkActive="router-link-active">{{ project.title }}</a>
+    <div class="client">
+        {{ project.client }}
     </div>
 </div>

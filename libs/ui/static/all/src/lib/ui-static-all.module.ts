@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NavComponent } from './components/nav/nav.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SinglePageComponent } from './components/single-page/single-page.component';
+import { AssetComponent } from './components/asset/asset.component';
 
 export const uiStaticAllRoutes: Route[] = [
   { path: '', component: ProjectsComponent },
@@ -35,6 +36,7 @@ export const uiStaticAllRoutes: Route[] = [
     NavComponent,
     FooterComponent,
     SinglePageComponent,
+    AssetComponent,
   ],
   bootstrap: [AppComponent],
   exports: [AppComponent],
