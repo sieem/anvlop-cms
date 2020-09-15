@@ -73,7 +73,8 @@ export class EditProjectComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
 
-    if (this.projectForm.invalid) {
+
+    if (this.projectForm.invalid || !this.hasFormMainAsset(this.projectForm)) {
       this.toastr.error('Invalid form');
       return;
     }
@@ -96,5 +97,14 @@ export class EditProjectComponent implements OnInit {
         err => this.toastr.error(err.error, `Error ${err.status}: ${err.statusText}`)
       )
     }
+  }
+
+  hasFormMainAsset(form: FormGroup) {
+    for (const asset of form.value.assets) {
+      if (asset.mainAsset) {
+        return true;
+      }
+    }
+    return false;
   }
 }
