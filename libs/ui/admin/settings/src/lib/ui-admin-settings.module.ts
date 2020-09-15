@@ -1,11 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { QuillModule } from 'ngx-quill';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Route } from '@angular/router';
 import { UiSharedModule } from '@anvlop/ui/shared';
+import { UiAdminSharedModule} from '@anvlop/ui/admin/shared';
 import { EditSettingsComponent } from './components/edit-settings/edit-settings.component';
 import { SettingPipe } from './pipes/setting.pipe';
 
@@ -18,14 +14,8 @@ export const uiAdminSettingsRoutes: Route[] = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    ToastrModule,
-    FormsModule,
-    ReactiveFormsModule,
     UiSharedModule,
-    QuillModule.forRoot(),
+    UiAdminSharedModule,
   ],
   declarations: [EditSettingsComponent, SettingPipe],
   exports: [EditSettingsComponent],

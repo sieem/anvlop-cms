@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Route } from '@angular/router';
 import { UiSharedModule } from '@anvlop/ui/shared';
-import { SortablejsModule } from 'ngx-sortablejs';
+import { UiAdminSharedModule} from '@anvlop/ui/admin/shared';
 
 import { OverviewCategoryComponent } from './components/overview-category/overview-category.component';
 import { EditCategoryComponent } from './components/edit-category/edit-category.component';
-
-
 
 export const uiAdminCategoriesRoutes: Route[] = [
   {
@@ -29,14 +23,8 @@ export const uiAdminCategoriesRoutes: Route[] = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    ToastrModule,
-    FormsModule,
-    ReactiveFormsModule,
     UiSharedModule,
-    SortablejsModule.forRoot({ animation: 150 }),
+    UiAdminSharedModule,
   ],
   declarations: [OverviewCategoryComponent, EditCategoryComponent],
   exports: [OverviewCategoryComponent, EditCategoryComponent],

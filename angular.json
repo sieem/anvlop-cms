@@ -434,9 +434,7 @@
             "polyfills": "apps/ui/static/src/polyfills.ts",
             "tsConfig": "apps/ui/static/tsconfig.app.json",
             "aot": true,
-            "assets": [
-              "apps/ui/static/src/favicon.ico"
-            ],
+            "assets": ["apps/ui/static/src/favicon.ico"],
             "styles": ["libs/ui/static/all/src/assets/styles/main.scss"],
             "scripts": []
           },
@@ -830,6 +828,38 @@
             "tsConfig": "libs/ui/admin/settings/tsconfig.spec.json",
             "passWithNoTests": true,
             "setupFile": "libs/ui/admin/settings/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "style": "scss"
+        }
+      }
+    },
+    "ui-admin-shared": {
+      "projectType": "library",
+      "root": "libs/ui/admin/shared",
+      "sourceRoot": "libs/ui/admin/shared/src",
+      "prefix": "anvlop",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui/admin/shared/tsconfig.lib.json",
+              "libs/ui/admin/shared/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/ui/admin/shared/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/ui/admin/shared/jest.config.js",
+            "tsConfig": "libs/ui/admin/shared/tsconfig.spec.json",
+            "passWithNoTests": true,
+            "setupFile": "libs/ui/admin/shared/src/test-setup.ts"
           }
         }
       },

@@ -1,16 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill'
-import { SortablejsModule } from 'ngx-sortablejs';
-
+import { Route } from '@angular/router';
 import { EditProjectComponent } from './components/edit-project/edit-project.component';
 import { OverviewProjectComponent } from './components/overview-project/overview-project.component';
 import { AssetsProjectComponent } from './components/assets-project/assets-project.component';
 import { UiSharedModule } from '@anvlop/ui/shared';
+import { UiAdminSharedModule} from '@anvlop/ui/admin/shared';
 
 
 export const uiAdminProjectsRoutes: Route[] = [
@@ -30,15 +24,8 @@ export const uiAdminProjectsRoutes: Route[] = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    ToastrModule,
-    FormsModule,
-    ReactiveFormsModule,
-    QuillModule.forRoot(),
-    SortablejsModule.forRoot({ animation: 150 }),
     UiSharedModule,
+    UiAdminSharedModule,
   ],
   declarations: [OverviewProjectComponent, EditProjectComponent, AssetsProjectComponent],
   exports: [OverviewProjectComponent, EditProjectComponent],

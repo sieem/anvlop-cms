@@ -1,12 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Route } from '@angular/router';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { QuillModule } from 'ngx-quill';
-import { SortablejsModule } from 'ngx-sortablejs';
+import { Route } from '@angular/router';
 import { UiSharedModule } from '@anvlop/ui/shared';
+import { UiAdminSharedModule} from '@anvlop/ui/admin/shared';
 
 import { OverviewPageComponent } from './components/overview-page/overview-page.component';
 import { EditPageComponent } from './components/edit-page/edit-page.component';
@@ -29,15 +24,8 @@ export const uiAdminPagesRoutes: Route[] = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule,
-    BrowserAnimationsModule,
-    ToastrModule,
-    FormsModule,
-    ReactiveFormsModule,
     UiSharedModule,
-    QuillModule.forRoot(),
-    SortablejsModule.forRoot({ animation: 150 }),
+    UiAdminSharedModule,
   ],
   declarations: [OverviewPageComponent, EditPageComponent],
   exports: [OverviewPageComponent, EditPageComponent],

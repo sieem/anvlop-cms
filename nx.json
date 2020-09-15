@@ -89,6 +89,9 @@
     },
     "ui-admin-settings": {
       "tags": []
+    },
+    "ui-admin-shared": {
+      "tags": []
     }
   }
 }
