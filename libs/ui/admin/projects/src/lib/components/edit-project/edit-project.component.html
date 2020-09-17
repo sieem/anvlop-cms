@@ -1,35 +1,35 @@
 <form [formGroup]="projectForm" class="wrapper" (ngSubmit)="onSubmit()">
     <h1 class="title">{{ projectForm.value.title }}</h1>
     <div class="input-group">
-        <label for="title">Title</label>
+        <label for="title">{{ 'TITLE' | translate }}</label>
         <input type="title" name="title" formControlName="title" anvlopSlug="input">
     </div>
 
     <div class="input-group">
-        <label for="slug">Slug</label>
+        <label for="slug">{{ 'SLUG' | translate }}</label>
         <input type="slug" name="slug" formControlName="slug" anvlopSlug="output">
     </div>
 
     <div class="input-group">
-        <label for="year">Year</label>
+        <label for="year">{{ 'YEAR' | translate }}</label>
         <input type="year" name="year" type="number" formControlName="year">
     </div>
 
     <div class="input-group">
-        <label for="client">Client</label>
+        <label for="client">{{ 'CLIENT' | translate }}</label>
         <input type="client" name="client" formControlName="client">
     </div>
 
     <div class="input-group">
-        <label for="category">Category</label>
+        <label for="category">{{ 'CATEGORY' | translate }}</label>
         <select name="category" formControlName="category">
-            <option value="">Choose category</option>
+            <option value="">{{ 'CHOOSE_CATEGORY' | translate }}</option>
             <option *ngFor="let category of categories$ | async" [value]="category.slug">{{category.title}}</option>
         </select>
     </div>
 
     <div class="input-group">
-        <label for="category">Description</label>
+        <label for="category">{{ 'CATEGORY' | translate }}</label>
         <quill-editor formControlName="description">
         </quill-editor>
     </div>
@@ -41,6 +41,6 @@
     [projectLoaded]="projectLoaded.asObservable()"></anvlop-assets-project>
 
     <div class="input-group right">
-        <input type="submit" value="Save">
+        <input type="submit" [value]="'SAVE' | translate">
     </div>
 </form>

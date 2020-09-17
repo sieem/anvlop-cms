@@ -1,11 +1,11 @@
 <div class="input-group" [formGroup]="projectForm">
-    <label for="assets">Assets</label>
+    <label for="assets">{{ 'ASSETS' | translate }}</label>
     <div class="assets" [sortablejs]="assets">
         <div formArrayName="assets" 
             class="asset"
             *ngFor="let asset of assets.controls; index as i"
             [class.main-asset]="asset.value.mainAsset">
-            <div class="button small make-main-asset" (click)="makeMainAsset(asset.value.id)">make main asset</div>
+            <div class="button small make-main-asset" (click)="makeMainAsset(asset.value.id)">{{ 'MAKE_MAIN_ASSET' | translate}}</div>
             <div class="button small delete" (click)="removeAsset(asset.value.id)">x</div>
             <div [formGroupName]="i">
               <input type="text" formControlName="caption" placeholder="caption">
@@ -24,10 +24,10 @@
                 </div>
             </div>
 
-            <input type="file" multiple name="Add asset" (change)="onFileChange($event, asset.value.id)" />
+            <input type="file" multiple [name]="'ADD_ASSET' | translate" (change)="onFileChange($event, asset.value.id)" />
         </div>
     </div>
-    <div class="button" (click)="addAsset()">Add asset</div>
+    <div class="button" (click)="addAsset()">{{'ADD_ASSET' | translate}}</div>
     <!-- <div>{{uploadProgress}}%</div> -->
 </div>
 

@@ -47,6 +47,8 @@
     "@nestjs/mongoose": "^7.0.1",
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^6.11.11",
+    "@ngx-translate/core": "^13.0.0",
+    "@ngx-translate/http-loader": "^6.0.0",
     "@nrwl/angular": "9.3.0",
     "@scullyio/init": "1.0.0",
     "@scullyio/ng-lib": "1.0.0-beta.1",

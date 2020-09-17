@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpErrorHandlingInterceptor } from './interceptors/http-error-handling.interceptor';
 import { ToastrModule } from 'ngx-toastr';
+import { UiAdminSharedModule } from '@anvlop/ui/admin/shared';
 
 export const uiAdminMainRoutes: Route[] = [
   { path: '', component: HomeComponent, canActivate: [IsLoggedInGuard] },
@@ -25,15 +26,13 @@ export const uiAdminMainRoutes: Route[] = [
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule,
+    UiAdminSharedModule,
     UiAdminProjectModule,
     UiAdminAuthModule,
     UiAdminPagesModule,
     UiAdminCategoriesModule,
     UiAdminSettingsModule,
     RouterModule.forRoot(uiAdminMainRoutes),
-    ToastrModule,
   ],
   declarations: [NavComponent, HomeComponent, AppComponent],
   bootstrap: [HomeComponent],

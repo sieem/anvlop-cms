@@ -1,20 +1,20 @@
 <form [formGroup]="loginForm" class="wrapper" (ngSubmit)="onSubmit()">
     <div class="input-group">
-        <label for="email">E-mail</label>
+        <label for="email">{{ 'EMAIL' | translate }}</label>
         <input type="email" name="email" formControlName="email">
         <p *ngIf="formService.checkInputField(loginForm, 'email', submitted)" class="error">!</p>
     </div>
 
 
     <div class="input-group">
-        <label for="password">Wachtwoord</label>
+        <label for="password">{{ 'PASSWORD' | translate }}</label>
         <input type="password" name="password" formControlName="password">
         <p *ngIf="formService.checkInputField(loginForm, 'password', submitted)" class="error">!</p>
     </div>
 
     <div class="input-group right">
-        <input type="submit" value="Inloggen">
+        <input type="submit" [value]="'LOGIN' | translate">
     </div>
 
-    <a routerLink="/restore-password" routerLinkActive="active">Forgot password?</a>
+    <a routerLink="/restore-password" routerLinkActive="active">{{ 'FORGOT_PASSWORD' | translate }}</a>
 </form>

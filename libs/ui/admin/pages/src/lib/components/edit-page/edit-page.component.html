@@ -1,11 +1,11 @@
 <form [formGroup]="pageForm" class="wrapper" (ngSubmit)="onSubmit()">
     <div class="input-group">
-        <label for="title">Title</label>
+        <label for="title">{{ 'TITLE' | translate }}</label>
         <input type="title" name="title" formControlName="title" anvlopSlug="input">
     </div>
 
     <div class="input-group">
-        <label for="slug">Slug</label>
+        <label for="slug">{{ 'SLUG' | translate }}</label>
         <input type="slug" name="slug" formControlName="slug" anvlopSlug="output">
     </div>
 
@@ -15,6 +15,6 @@
     </div>
 
     <div class="input-group right">
-        <input type="submit" value="Save">
+        <input type="submit" [value]="'SAVE' | translate">
     </div>
 </form>
