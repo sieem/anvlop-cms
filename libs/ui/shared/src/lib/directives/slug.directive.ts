@@ -17,9 +17,11 @@ export class SlugDirective implements OnInit {
   @Input() anvlopSlug: string;
 
   @HostListener('input', ['$event']) onEvent($event) {
-    if (this.anvlopSlug !== 'input') {
+    if (this.anvlopSlug === 'output') {
+      this.ngControl.control.setValue(this.slugService.toSlug(this.el.nativeElement.value));
       return;
     }
+
     this.route.params.subscribe((params) => {
       if (!params.id) {
         this.slugService.titleChanged.next(this.el.nativeElement.value);
